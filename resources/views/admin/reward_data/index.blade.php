@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="layui-col-md6">
+            <div class="layui-col-md4">
                 <div class="layui-card">
                     <div class="layui-card-header">矿机手续费</div>
                     <div class="layui-card-body">
@@ -59,12 +59,22 @@
                 </div>
             </div>
 
-            <div class="layui-col-md6">
+            <div class="layui-col-md4">
                 <div class="layui-card">
                     <div class="layui-card-header">矿机手续费结余</div>
                     <div class="layui-card-body">
                         当日：{{$today_kuangji_jy}} <br>
                         累计：{{$total_kuangji_jy}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-col-md4">
+                <div class="layui-card">
+                    <div class="layui-card-header">激活矿位IUIC</div>
+                    <div class="layui-card-body">
+                        当日：{{$today_kuangwei_num}} <br>
+                        累计：{{$total_kuangwei_num}}
                     </div>
                 </div>
             </div>

@@ -46,6 +46,12 @@ class RewardDataController extends Controller
         // 累计矿机手续费
         $data['total_kuangji_tip'] = ExTip::where('type', 1)->sum('bonus_num');
 
+        // 矿位单日购买
+        $data['today_kuangwei_num'] = AccountLog::where(['coin_id' => 2, 'scene' => 20, 'remark' => '购买矿位'])->whereDate('created_at', now()->toDateString())->sum('amount');
+
+        // 矿位累计购买
+        $data['total_kuangwei_num'] = AccountLog::where(['coin_id' => 2, 'scene' => 20, 'remark' => '购买矿位'])->sum('amount');
+
         // 交易节点奖
         $data['today_trade_jd_reward'] = AccountLog::where(['coin_id' => 1, 'scene' => 14, 'remark' => '实时节点奖'])->whereDate('created_at', now()->toDateString())->sum('amount');
         $data['total_trade_jd_reward'] = AccountLog::where(['coin_id' => 1, 'scene' => 14, 'remark' => '实时节点奖'])->sum('amount');
@@ -130,7 +136,7 @@ class RewardDataController extends Controller
         $data['total_kuangji_jy'] = $data['total_kuangji_jy'] - $data['total_kuangji_shichang_reward'] - $data['total_kuangji_tuandui_reward'];
         $data['total_kuangji_jy'] = $data['total_kuangji_jy'] - $data['total_kuangji_hhr_reward'];
         $data['total_kuangji_jy'] = bcmul($data['total_kuangji_jy'], 1, 8);
-        
+
         return view('admin.reward_data.index', $data);
 
     }
