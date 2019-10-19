@@ -42,4 +42,9 @@ class User extends Model
         return $this->hasOne(Authentication::class, 'uid', 'id');
     }
 
+    public function pid_user()
+    {
+        return $this->hasOne(User::class, 'id', 'pid');
+    }
+
 }

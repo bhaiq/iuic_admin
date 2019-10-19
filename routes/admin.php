@@ -162,4 +162,45 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('community', ['as' => 'admin.community.index', 'uses' => 'CommunityController@index']);
     Route::any('community/index', ['as' => 'admin.community.index', 'uses' => 'CommunityController@index']);
 
+    // 新商城分类
+    Route::any('mall_category/index', ['as' => 'admin.mall_category.index', 'uses' => 'MallCategoryController@index']);
+    Route::resource('mall_category', 'MallCategoryController', ['names' => ['update' => 'admin.mall_category.edit', 'store' => 'admin.mall_category.create']]);
+
+    // 新商城轮播图
+    Route::any('mall_banner/index', ['as' => 'admin.mall_banner.index', 'uses' => 'MallBannerController@index']);
+    Route::resource('mall_banner', 'MallBannerController', ['names' => ['update' => 'admin.mall_banner.edit', 'store' => 'admin.mall_banner.create']]);
+
+    // 新商城店铺
+    Route::post('mall_store/ajax', ['as' => 'admin.mall_store.edit', 'uses' => 'MallStoreController@ajax']);
+    Route::get('mall_store', ['as' => 'admin.mall_store.index', 'uses' => 'MallStoreController@index']);
+    Route::any('mall_store/index', ['as' => 'admin.mall_store.index', 'uses' => 'MallStoreController@index']);
+
+    // 新商城商品
+    Route::any('mall_goods/pool', ['as' => 'admin.mall_goods.edit', 'uses' => 'MallGoodsController@pool']);
+    Route::post('mall_goods/ajax', ['as' => 'admin.mall_goods.edit', 'uses' => 'MallGoodsController@ajax']);
+    Route::get('mall_goods', ['as' => 'admin.mall_goods.index', 'uses' => 'MallGoodsController@index']);
+    Route::any('mall_goods/index', ['as' => 'admin.mall_goods.index', 'uses' => 'MallGoodsController@index']);
+
+    // 新商城订单
+    Route::post('mall_order/ajax', ['as' => 'admin.mall_order.edit', 'uses' => 'MallOrderController@ajax']);
+    Route::get('mall_order', ['as' => 'admin.mall_order.index', 'uses' => 'MallOrderController@index']);
+    Route::any('mall_order/index', ['as' => 'admin.mall_order.index', 'uses' => 'MallOrderController@index']);
+
+    // 矿机列表
+    Route::any('kuangji/index', ['as' => 'admin.kuangji.index', 'uses' => 'KuangjiController@index']);
+    Route::resource('kuangji', 'KuangjiController', ['names' => ['update' => 'admin.kuangji.edit', 'store' => 'admin.kuangji.create']]);
+
+    // 矿机列表
+    Route::any('kuangwei/index', ['as' => 'admin.kuangwei.index', 'uses' => 'KuangWeiController@index']);
+    Route::resource('kuangwei', 'KuangWeiController', ['names' => ['update' => 'admin.kuangwei.edit', 'store' => 'admin.kuangwei.create']]);
+
+    // 矿机订单
+    Route::get('kuangji_order', ['as' => 'admin.kuangji_order.index', 'uses' => 'KuangjiOrderController@index']);
+    Route::any('kuangji_order/index', ['as' => 'admin.kuangji_order.index', 'uses' => 'KuangjiOrderController@index']);
+
+    // 分红数据
+    Route::get('reward_data', ['as' => 'admin.reward_data.index', 'uses' => 'RewardDataController@index']);
+    Route::any('reward_data/index', ['as' => 'admin.reward_data.index', 'uses' => 'RewardDataController@index']);
+
+
 });

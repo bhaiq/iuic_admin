@@ -32,6 +32,7 @@
                     <li class="">交易配置</li>
                     <li class="">奖励配置</li>
                     <li class="">合伙人配置</li>
+                    <li class="">矿机配置</li>
                 </ul>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
@@ -441,6 +442,44 @@
                                                value="{{$tip_partner}}">
                                     </div>
                                     <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="layui-tab-item">
+                        <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
+                        矿机配置
+                        <div class="layui-card-body">
+                            <form class="layui-form layui-form-pane" method="post"
+                                  action="{{url('admin/config/update')}}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>矿机释放手续费比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="kuangji_release_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$kuangji_release_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.3表示30%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>币币交易释放开关</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="radio" name="trade_release_status" value="0" title="关闭" @if($trade_release_status == 0) checked @endif>
+                                        <input type="radio" name="trade_release_status" value="1" title="开启" @if($trade_release_status == 1) checked @endif>
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：请输入不能比前一个小的数字</div>
                                 </div>
 
                                 <div class="layui-form-item">

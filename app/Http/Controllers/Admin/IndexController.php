@@ -12,6 +12,7 @@ use App\Models\ReleaseOrder;
 use App\Models\ShopOrder;
 use App\Models\User;
 use App\Models\UserInfo;
+use App\Models\UserWalletLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -23,6 +24,24 @@ class IndexController extends Controller
     {
 
         $data = [];
+
+        // 单日交易挖矿释放
+        $data['today_trade_release'] = UserWalletLog::where('exp', '交易释放')->whereDate('created_at', now()->toDateTimeString())->sum('num');
+
+        // 累计交易挖矿释放
+        $data['total_trade_release'] = UserWalletLog::where('exp', '交易释放')->sum('num');
+
+        // 单日算力挖矿释放
+        $data['today_kuangji_release'] = UserWalletLog::where('exp', '矿机释放')->whereDate('created_at', now()->toDateTimeString())->sum('num');
+
+        // 累计算力挖矿释放
+        $data['total_kuangji_release'] = UserWalletLog::where('exp', '矿机释放')->sum('num');
+
+        // 当日释放
+        $data['today_release'] = bcadd($data['today_trade_release'], $data['today_kuangji_release'], 8);
+
+        // 累计释放
+        $data['total_release'] = bcadd($data['total_trade_release'], $data['total_kuangji_release'], 8);
 
         // 注册用户
         $data['zc_user'] = User::count();
@@ -37,75 +56,35 @@ class IndexController extends Controller
         $data['total_ore_pool'] = UserInfo::sum('buy_total');
 
         // 购买赠送矿池数
-        $data['buy_ore_pool'] = ShopOrder::sum('ore_pool');
+        $data['buy_ore_pool'] = ReleaseOrder::where('type', 0)->sum('total_num');
 
         // 推荐赠送矿池数
         $data['recommend_ore_pool'] = bcsub($data['total_ore_pool'], $data['buy_ore_pool']);
 
-        // 单日释放
-        $data['dr_release'] = ReleaseOrder::whereDate('release_time', now()->toDateString())->sum('today_num');
+        // 单日USDT提现手续费
+        $data['today_tixian_tip'] = CoinExtract::where(['status' => 1, 'coin_id' => 1])->whereDate('created_at', now()->toDateString())->sum('charge');
 
-        // 累计释放
-        $data['lj_release'] = ReleaseOrder::sum('release_num');
+        // 累计USDT提现手续费
+        $data['total_tixian_tip'] = CoinExtract::where(['status' => 1, 'coin_id' => 1])->sum('charge');
 
-        // 单日手续费
-        $data['today_tip'] = ExTip::whereDate('created_at', now()->toDateString())->sum('num');
+        // 用户USDT钱包
+        $data['usdt_bb_num'] = Account::where('type', 0)->where('coin_id', 1)->sum(\DB::raw('amount + amount_freeze'));
+        $data['usdt_fb_num'] = Account::where('type', 1)->where('coin_id', 1)->sum(\DB::raw('amount + amount_freeze'));
 
-        // 单日分红手续费
-        $data['today_bonus_tip'] = ExTip::whereDate('created_at', now()->toDateString())->sum('bonus_num');
+        // 用户卖盘USDT数量
+        $data['usdt_sell_num'] = ExOrder::where(['status' => 0, 'type' => 0])->sum('amount_deal');
 
-        // 单日燃烧费
-        $data['today_burn'] = bcsub($data['today_tip'], $data['today_bonus_tip'], 8);
-
-        // 累计交易手续费
-        $data['total_tip'] = ExTip::sum('num');
-
-        // 累计分红手续费
-        $data['total_bonus_tip'] = ExTip::sum('bonus_num');
-
-        // 累计燃烧费
-        $data['total_burn'] = bcsub($data['total_tip'], $data['total_bonus_tip'], 8);
-
-        // 获取当日释放、管理奖和节点奖
-        $data = array_merge($data, $this->getReleaseBonus());
-
-        // 获取额外奖励
-        $data = array_merge($data, $this->getExtraBonus());
-
-        // 当日结余
-        $data['jieyu_today'] = $this->getTodayJieyu($data);
-
-        // 累计结余
-        $data['jieyu_total'] = $this->getTotalJieyu($data);
-
-        // USDT当日提现手续费累计
-        $data['today_tb_tip'] = 0;
-
-        // USDT提现手续费累计
-        $data['total_tb_tip'] = 0;
-
-        // 获取USDT的币种ID
-        $coin = Coin::where('name', 'USDT')->first();
-        if($coin){
-            $data['today_tb_tip'] = CoinExtract::where(['status' => 1, 'coin_id' => $coin->id])->whereDate('created_at', now()->toDateString())->sum('charge');
-            $data['total_tb_tip'] = CoinExtract::where('status', 1)->sum('charge');
-        }
-
-        // 用户可用USDT总量
-        $data['user_usdt_num'] = Account::where('coin_id', $coin->id)->sum('amount');
-
-        // 用户冻结USDT总量
-        $data['user_frozen_usdt_num'] = Account::where('coin_id', $coin->id)->sum('amount_freeze');
-        $data['user_frozen_usdt_num'] = $data['user_frozen_usdt_num'] > 0 ? $data['user_frozen_usdt_num'] : 0;
+        // 用户买盘IUIC数量
+        $data['usdt_buy_num'] = ExOrder::where(['status' => 0, 'type' => 1])->sum('amount_deal');
 
         // 用户IUIC钱包
         $data['iuic_bb_num'] = Account::where('type', 0)->where('coin_id', 2)->sum(\DB::raw('amount + amount_freeze'));
         $data['iuic_fb_num'] = Account::where('type', 1)->where('coin_id', 2)->sum(\DB::raw('amount + amount_freeze'));
 
-        // 用户卖盘数量
+        // 用户卖盘IUIC数量
         $data['iuic_sell_num'] = ExOrder::where(['status' => 0, 'type' => 0])->sum(\DB::raw('(amount - amount_lost)'));
 
-        // 用户买盘数量
+        // 用户买盘IUIC数量
         $data['iuic_buy_num'] = ExOrder::where(['status' => 0, 'type' => 1])->sum(\DB::raw('(amount - amount_lost)'));
 
         return view('admin.index', $data);
