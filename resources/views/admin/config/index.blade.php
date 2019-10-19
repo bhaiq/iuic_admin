@@ -479,7 +479,7 @@
                                         <input type="radio" name="trade_release_status" value="0" title="关闭" @if($trade_release_status == 0) checked @endif>
                                         <input type="radio" name="trade_release_status" value="1" title="开启" @if($trade_release_status == 1) checked @endif>
                                     </div>
-                                    <div class="layui-form-mid layui-word-aux">注：请输入不能比前一个小的数字</div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
                                 </div>
 
                                 <div class="layui-form-item">
