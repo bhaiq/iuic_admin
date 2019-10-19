@@ -33,6 +33,7 @@
                     <li class="">奖励配置</li>
                     <li class="">合伙人配置</li>
                     <li class="">矿机配置</li>
+                    <li class="">节点配置</li>
                 </ul>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
@@ -480,6 +481,57 @@
                                         <input type="radio" name="trade_release_status" value="1" title="开启" @if($trade_release_status == 1) checked @endif>
                                     </div>
                                     <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="layui-tab-item">
+                        <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
+                        节点配置
+                        <div class="layui-card-body">
+                            <form class="layui-form layui-form-pane" method="post"
+                                  action="{{url('admin/config/update')}}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>小节点奖分红比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="small_node" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$small_node}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.05表示5%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>大节点奖分红比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="big_node" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$big_node}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.04表示4%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>超级节点奖分红比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="super_node" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$super_node}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.03表示3%</div>
                                 </div>
 
                                 <div class="layui-form-item">
