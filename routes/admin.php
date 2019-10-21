@@ -202,5 +202,8 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('reward_data', ['as' => 'admin.reward_data.index', 'uses' => 'RewardDataController@index']);
     Route::any('reward_data/index', ['as' => 'admin.reward_data.index', 'uses' => 'RewardDataController@index']);
 
+    // 分红列表
+    Route::get('reward_list', ['as' => 'admin.reward_list.index', 'uses' => 'RewardListController@index']);
+    Route::any('reward_list/index', ['as' => 'admin.reward_list.index', 'uses' => 'RewardListController@index']);
 
 });
