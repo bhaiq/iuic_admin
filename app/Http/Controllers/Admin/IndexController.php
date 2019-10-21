@@ -26,20 +26,20 @@ class IndexController extends Controller
         $data = [];
 
         // 单日交易挖矿释放
-        $data['today_trade_release'] = UserWalletLog::where('exp', '交易释放')->whereDate('created_at', now()->toDateTimeString())->sum('num');
+        $data['today_trade_release'] = UserWalletLog::where('exp', '交易释放')->whereDate('created_at', now()->toDateString())->sum('num');
 
         // 累计交易挖矿释放
         $data['total_trade_release'] = UserWalletLog::where('exp', '交易释放')->sum('num');
 
         // 单日算力挖矿释放
-        $data['today_kuangji_release'] = UserWalletLog::where('exp', '矿机释放')->whereDate('created_at', now()->toDateTimeString())->sum('num');
+        $data['today_kuangji_release'] = UserWalletLog::where('exp', '矿机释放')->whereDate('created_at', now()->toDateString())->sum('num');
 
         // 累计算力挖矿释放
         $data['total_kuangji_release'] = UserWalletLog::where('exp', '矿机释放')->sum('num');
 
         // 当日释放
 //        $data['today_release'] = bcadd($data['today_trade_release'], $data['today_kuangji_release'], 8);
-        dd($data, now()->toDateTimeString(), UserWalletLog::where('exp', '矿机释放')->whereDate('created_at', now()->toDateTimeString())->toSql());
+        dd($data, now()->toDateTimeString(), UserWalletLog::where('exp', '矿机释放')->whereDate('created_at', now()->toDateString())->toSql());
         // 累计释放
 //        $data['total_release'] = bcadd($data['total_trade_release'], $data['total_kuangji_release'], 8);
 
