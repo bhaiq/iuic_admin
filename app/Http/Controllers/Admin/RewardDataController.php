@@ -101,10 +101,10 @@ class RewardDataController extends Controller
         $data['total_kuangji_tuandui_reward'] = AccountLog::where(['coin_id' => 2, 'scene' => 18, 'remark' => '团队奖'])->sum('amount');
 
         // 合伙人奖励
-        $data['today_trade_hhr_reward'] = AccountLog::where(['coin_id' => 1, 'scene' => 18, 'remark' => '合伙人奖励'])->whereDate('created_at', now()->toDateString())->sum('amount');
-        $data['total_trade_hhr_reward'] = AccountLog::where(['coin_id' => 1, 'scene' => 18, 'remark' => '合伙人奖励'])->sum('amount');
-        $data['totay_kuangji_hhr_reward'] = AccountLog::where(['coin_id' => 2, 'scene' => 18, 'remark' => '合伙人奖励'])->whereDate('created_at', now()->toDateString())->sum('amount');
-        $data['total_kuangji_hhr_reward'] = AccountLog::where(['coin_id' => 2, 'scene' => 18, 'remark' => '合伙人奖励'])->sum('amount');
+        $data['today_trade_hhr_reward'] = AccountLog::where(['coin_id' => 1, 'scene' => 18, 'remark' => '合伙人分红'])->whereDate('created_at', now()->toDateString())->sum('amount');
+        $data['total_trade_hhr_reward'] = AccountLog::where(['coin_id' => 1, 'scene' => 18, 'remark' => '合伙人分红'])->sum('amount');
+        $data['totay_kuangji_hhr_reward'] = AccountLog::where(['coin_id' => 2, 'scene' => 18, 'remark' => '合伙人分红'])->whereDate('created_at', now()->toDateString())->sum('amount');
+        $data['total_kuangji_hhr_reward'] = AccountLog::where(['coin_id' => 2, 'scene' => 18, 'remark' => '合伙人分红'])->sum('amount');
 
         // 交易手续费当日结余
         $data['today_trade_jy'] = $data['today_tip'] - $data['today_trade_jd_reward'] -  $data['today_trade_xjd_reward'];
