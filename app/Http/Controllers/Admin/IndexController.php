@@ -39,7 +39,7 @@ class IndexController extends Controller
 
         // 当日释放
 //        $data['today_release'] = bcadd($data['today_trade_release'], $data['today_kuangji_release'], 8);
-        dd($data, now()->toDateTimeString(), UserWalletLog::where('exp', '矿机释放')->whereDate('created_at', now()->toDateString())->toSql());
+//        dd($data, now()->toDateTimeString(), UserWalletLog::where('exp', '矿机释放')->whereDate('created_at', now()->toDateString())->toSql());
         // 累计释放
 //        $data['total_release'] = bcadd($data['total_trade_release'], $data['total_kuangji_release'], 8);
 
