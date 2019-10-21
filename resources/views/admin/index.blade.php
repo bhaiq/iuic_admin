@@ -27,9 +27,9 @@
             </div>
             <div class="layui-col-md2">
                 <div class="layui-card">
-                    <div class="layui-card-header">当日释放</div>
+                    <div class="layui-card-header"> </div>
                     <div class="layui-card-body">
-                        {{$today_release}}
+
                     </div>
                 </div>
             </div>
@@ -76,9 +76,9 @@
             </div>
             <div class="layui-col-md2">
                 <div class="layui-card">
-                    <div class="layui-card-header">累计释放</div>
+                    <div class="layui-card-header">  </div>
                     <div class="layui-card-body">
-                        {{$total_release}}
+
                     </div>
                 </div>
             </div>

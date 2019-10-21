@@ -38,10 +38,10 @@ class IndexController extends Controller
         $data['total_kuangji_release'] = UserWalletLog::where('exp', '矿机释放')->sum('num');
 
         // 当日释放
-        $data['today_release'] = bcadd($data['today_trade_release'], $data['today_kuangji_release'], 8);
-
+//        $data['today_release'] = bcadd($data['today_trade_release'], $data['today_kuangji_release'], 8);
+        dd($data);
         // 累计释放
-        $data['total_release'] = bcadd($data['total_trade_release'], $data['total_kuangji_release'], 8);
+//        $data['total_release'] = bcadd($data['total_trade_release'], $data['total_kuangji_release'], 8);
 
         // 注册用户
         $data['zc_user'] = User::count();
