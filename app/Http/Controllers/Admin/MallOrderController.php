@@ -119,8 +119,11 @@ class MallOrderController extends Controller
             $totalNum = bcmul($up->goods_price, $up->num, 8);
 
             // 计算本次商家得到的USDT
-            $sj_num = bcmul($totalNum, 0.4, 8);
+            $sj_num = bcmul($totalNum, config('admin_mall.admin_mall_store_income_bl', 0.4), 8);
             $miData['sj_num'] = $sj_num;
+
+            // 计算平台得到的USDT
+            $pt_num = bcmul($totalNum, config('admin_mall.admin_mall_platform_income_bl', 0.6), 8);
 
             // 商家USDT增加
             Account::addAmount($up->store->uid, 1, $sj_num, Account::TYPE_LC);
@@ -129,7 +132,7 @@ class MallOrderController extends Controller
             AccountLog::addLog($up->store->uid, 1, $sj_num, 19, 1, 1, '店铺收益');
 
             // 计算本次消费者推荐人得到的USDT
-            $xfzNum = bcmul($totalNum, 0.03, 8);
+            $xfzNum = bcmul($pt_num, config('admin_mall.admin_mall_xfz_recommend_bl', 0.05), 8);
             $miData['pid_num'] = $xfzNum;
 
             if($up->user->pid > 0){
@@ -143,7 +146,7 @@ class MallOrderController extends Controller
             }
 
             // 计算本次合伙人的分红
-            $hhrNum = bcmul($totalNum, 0.06, 8);
+            $hhrNum = bcmul($pt_num, config('admin_mall.admin_mall_hhr_bl', 0.1), 8);
             $miData['hhr_num'] = $hhrNum;
 
             // 合伙人数量
@@ -165,7 +168,7 @@ class MallOrderController extends Controller
             }
 
             // 计算本次管理员的分红
-            $glyNum = bcmul($totalNum, 0.06, 8);
+            $glyNum = bcmul($pt_num, config('admin_mall.admin_mall_admin_bl', 0.1), 8);
             $miData['gly_num'] = $glyNum;
 
             // 管理员数量
@@ -190,7 +193,7 @@ class MallOrderController extends Controller
             }
 
             // 计算本次收货社区的分红
-            $sqNum = bcmul($totalNum, 0.03, 8);
+            $sqNum = bcmul($pt_num, config('admin_mall.admin_mall_community_bl', 0.05), 8);
             $miData['sq_num'] = $sqNum;
 
             // 获取社区信息

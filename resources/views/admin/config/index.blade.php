@@ -34,6 +34,7 @@
                     <li class="">合伙人配置</li>
                     <li class="">矿机配置</li>
                     <li class="">节点配置</li>
+                    <li class="">新商城配置</li>
                 </ul>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
@@ -541,6 +542,94 @@
                             </form>
                         </div>
                     </div>
+
+                    <div class="layui-tab-item">
+                        <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
+                        新商城配置
+                        <div class="layui-card-body">
+                            <form class="layui-form layui-form-pane" method="post"
+                                  action="{{url('admin/config/update')}}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>商家收入比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="admin_mall_store_income_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$admin_mall_store_income_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.4表示40%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>平台收入比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="admin_mall_platform_income_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$admin_mall_platform_income_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.6表示60%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>消费者推荐人分红比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="admin_mall_xfz_recommend_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$admin_mall_xfz_recommend_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.05表示5%，这个比例是从平台收入中扣除</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>合伙人分红比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="admin_mall_hhr_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$admin_mall_hhr_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个比例是从平台收入中扣除</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>管理奖分红比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="admin_mall_admin_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$admin_mall_admin_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个比例是从平台收入中扣除</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>社区分红比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="admin_mall_community_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$admin_mall_community_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.05表示5%，这个比例是从平台收入中扣除</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

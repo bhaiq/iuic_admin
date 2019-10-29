@@ -49,6 +49,7 @@ class ConfigController extends Controller
         $arr9 = eval(substr($str9, strpos($str9, 'return')));
 
         $arr6 = config('reward');
+        $arr10 = config('admin_mall');
 
         $data = [];
 
@@ -106,6 +107,12 @@ class ConfigController extends Controller
             }
         }
 
+        if(is_array($arr10)){
+            foreach ($arr10 as $k => $v){
+                $data[$k] = $v;
+            }
+        }
+
         $data['coin_arr'] = Coin::get()->toArray();
         $data['coin_type_arr'] = Business::COIN_TYPE;
 
@@ -145,8 +152,9 @@ class ConfigController extends Controller
         $arr9 = eval(substr($str9, strpos($str9, 'return')));
 
         $arr6 = config('reward');
+        $arr10 = config('admin_mall');
 
-        \Log::info('修改前数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9]);
+        \Log::info('修改前数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9, $arr10]);
 
         if(is_array($arr1)){
             foreach ($arr1 as $k => $v){
@@ -275,7 +283,22 @@ class ConfigController extends Controller
 
         }
 
-        \Log::info('修改后数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9]);
+        if(is_array($arr10)){
+            foreach ($arr10 as $k => $v){
+
+                if($request->has($k)){
+                    $arr10[$k] = $request->get($k);
+                }
+
+            }
+
+            $url10 = config_path('admin_mall').".php";//路径
+            $text = "<?php return ".var_export($arr10,true).";";
+            file_put_contents($url10, $text);
+
+        }
+
+        \Log::info('修改后数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9, $arr10]);
 
         AdminLog::addLog('修改了配置');
 
