@@ -60,7 +60,7 @@ class MallGoodsController extends Controller
 
         $validator = Validator::make($request->all(), [
             'id' => 'required',
-            'status' => 'required|in:9',
+            'status' => 'required|in:1,2,9',
         ], [
             'id.required' => '订单信息不能为空',
             'status.required' => '状态不能为空',
@@ -71,7 +71,15 @@ class MallGoodsController extends Controller
             return returnJson(0, $validator->errors()->first());
         }
 
-        $up = MallGood::where('id', $request->get('id'))->where('status', '!=', 9)->first();
+        if ($request->get('status') == 1 || $request->get('status') == 2){
+
+            $up = MallGood::where('id', $request->get('id'))->where('is_affirm', 0)->first();
+
+        }else{
+
+            $up = MallGood::where('id', $request->get('id'))->where('is_affirm', 1)->where('status', '!=', 9)->first();
+        }
+
         if(!$up){
             return returnJson(0, '数据有误');
         }
@@ -80,7 +88,18 @@ class MallGoodsController extends Controller
         try {
 
             // 订单状态改变
-            $up->status = $request->get('status');
+            if($request->get('status') == 1){
+                $up->is_affirm = 1;
+            }
+
+            if($request->get('status') == 2){
+                $up->is_affirm = 9;
+            }
+
+            if($request->get('status') == 9){
+                $up->status = 9;
+            }
+
             $up->save();
 
             \DB::commit();
@@ -99,8 +118,8 @@ class MallGoodsController extends Controller
 
     }
 
-    // 修改矿池
-    public function pool(Request $request)
+    // 修改商品信息
+    public function edit(Request $request)
     {
 
         $id = $request->get('id');
@@ -112,20 +131,32 @@ class MallGoodsController extends Controller
         if($request->isMethod('POST')){
 
             $validator = Validator::make($request->all(), [
-                'num' => 'required|numeric',
+                'goods_price' => 'required|numeric',
+                'goods_cost' => 'required|numeric',
+                'ore_pool' => 'required|numeric',
             ], [
-                'num.required' => '数量不能为空',
-                'num.numeric' => '数量格式不正确',
+                'goods_price.required' => '售价不能为空',
+                'goods_price.numeric' => '售价格式不正确',
+                'goods_cost.required' => '成本价不能为空',
+                'goods_cost.numeric' => '成本价格式不正确',
+                'ore_pool.required' => '赠送的矿池不能为空',
+                'ore_pool.numeric' => '赠送的矿池格式不正确',
             ]);
 
             if ($validator->fails()) {
                 return returnJson(0, $validator->errors()->first());
             }
 
+            if($request->get('goods_cost') > $request->get('goods_price')){
+                return returnJson(0, '成本价不能大于售价');
+            }
+
             \DB::beginTransaction();
             try {
 
-                $mg->ore_pool = $request->get('num');
+                $mg->goods_price = $request->get('goods_price');
+                $mg->goods_cost = $request->get('goods_cost');
+                $mg->ore_pool = $request->get('ore_pool');
                 $mg->save();
 
                 \DB::commit();
@@ -146,10 +177,13 @@ class MallGoodsController extends Controller
 
         $data = [
             'id' => $id,
-            'num' => $mg->ore_pool,
+            'goods_price' => $mg->goods_price,
+            'goods_cost' => $mg->goods_cost,
+            'ore_pool' => $mg->ore_pool,
+
         ];
 
-        return view('admin.mall_goods.pool', $data);
+        return view('admin.mall_goods.edit', $data);
 
     }
 

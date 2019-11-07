@@ -176,7 +176,7 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('mall_store/index', ['as' => 'admin.mall_store.index', 'uses' => 'MallStoreController@index']);
 
     // 新商城商品
-    Route::any('mall_goods/pool', ['as' => 'admin.mall_goods.edit', 'uses' => 'MallGoodsController@pool']);
+    Route::any('mall_goods/edit', ['as' => 'admin.mall_goods.edit', 'uses' => 'MallGoodsController@edit']);
     Route::post('mall_goods/ajax', ['as' => 'admin.mall_goods.edit', 'uses' => 'MallGoodsController@ajax']);
     Route::get('mall_goods', ['as' => 'admin.mall_goods.index', 'uses' => 'MallGoodsController@index']);
     Route::any('mall_goods/index', ['as' => 'admin.mall_goods.index', 'uses' => 'MallGoodsController@index']);

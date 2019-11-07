@@ -63,6 +63,11 @@
                         width: 130
                     }
                     , {
+                        field: 'goods_cost',
+                        title: '成本价',
+                        width: 130
+                    }
+                    , {
                         field: 'ore_pool',
                         title: '赠送的矿池数量',
                         width: 150
@@ -78,12 +83,24 @@
                         templet: function (d) {
                             var str = '';
 
-                            if(d.status == 0){
-                                str += '<span class="layui-btn layui-btn-primary layui-btn-xs">下架中</span>';
-                            }else if(d.status == 1){
-                                str += '<span class="layui-btn layui-btn-xs layui-btn-normal">上架中</span>';
+                            if(d.is_affirm == 1){
+
+                                if(d.status == 0){
+                                    str += '<span class="layui-btn layui-btn-primary layui-btn-xs">下架中</span>';
+                                }else if(d.status == 1){
+                                    str += '<span class="layui-btn layui-btn-xs layui-btn-normal">上架中</span>';
+                                }else{
+                                    str += '<span class="layui-btn layui-btn-xs layui-btn-danger">已删除</span>';
+                                }
+
+                            }else if(d.is_affirm == 0){
+
+                                str += '<span class="layui-btn layui-btn-xs layui-btn-primary">审核中</span>';
+
                             }else{
-                                str += '<span class="layui-btn layui-btn-xs layui-btn-danger">已删除</span>';
+
+                                str += '<span class="layui-btn layui-btn-xs layui-btn-danger">已拒绝</span>';
+
                             }
 
                             return str;
@@ -108,9 +125,23 @@
                             var str = '';
 
                             @if(Gate::forUser(auth('admin')->user())->check('admin.mall_goods.edit'))
+
+                            if(d.is_affirm == 1){
+
                                 str += '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>';
 
-                                str += '<a class="layui-btn layui-btn-xs layui-btn-warm"  onclick="active(\'/admin/mall_goods/pool\','+ d.id +',\'修改矿池\',\'GET\',\'800px\',\'330px\')">修改矿池</a>';
+                                str += '<a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit">修改</a>';
+
+                            }else if(d.is_affirm == 0){
+
+                                str += '<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="adopt">通过</a>';
+
+                                str += '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="refuse">拒绝</a>';
+
+                                str += '<a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit">修改</a>';
+
+                            }
+
                             @endif
 
                             return str;
@@ -144,10 +175,10 @@
                             }
                         });
                     })
-                } else if (obj.event === 'pool') {
+                } else if (obj.event === 'adopt') {
                     layer.confirm('真的通过么', function (index) {
                         $.ajax({
-                            url: "/admin/mall_goods/pool",
+                            url: "/admin/mall_goods/ajax",
                             type: "POST",
                             data: {
                                 '_token': "{{ csrf_token() }}",
@@ -165,6 +196,29 @@
                             }
                         });
                     })
+                } else if (obj.event === 'refuse') {
+                    layer.confirm('真的拒绝么', function (index) {
+                        $.ajax({
+                            url: "/admin/mall_goods/ajax",
+                            type: "POST",
+                            data: {
+                                '_token': "{{ csrf_token() }}",
+                                'id': data.id,
+                                'status' : 2,
+                            },
+                            success: function (d) {
+                                if (d.code == 1) {
+                                    layer.close(index);
+                                    layer.msg(d.msg, {icon: 6})
+                                } else {
+                                    layer.msg(d.msg, {icon: 5})
+                                }
+                                location.href = location.href;
+                            }
+                        });
+                    })
+                } else if (obj.event === 'edit') {
+                    location.href = '/admin/mall_goods/edit?id=' + data.id;
                 }
             });
 
