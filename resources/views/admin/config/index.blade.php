@@ -485,6 +485,53 @@
                                 </div>
 
                                 <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>矿机30天内赎回比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="kuangji_redeem_30_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$kuangji_redeem_30_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.3表示30%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>矿机60天内赎回比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="kuangji_redeem_60_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$kuangji_redeem_60_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.3表示30%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>矿机90天内赎回比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="kuangji_redeem_30_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$kuangji_redeem_90_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.3表示30%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>矿机赎回开关</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="radio" name="kuangji_redeem_switch" value="0" title="关闭" @if($kuangji_redeem_switch == 0) checked @endif>
+                                        <input type="radio" name="kuangji_redeem_switch" value="1" title="开启" @if($kuangji_redeem_switch == 1) checked @endif>
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                 </div>
