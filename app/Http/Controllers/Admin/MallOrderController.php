@@ -250,8 +250,6 @@ class MallOrderController extends Controller
 
         } catch (\Exception $exception) {
 
-            throw $exception;
-
             \DB::rollBack();
 
             \Log::info('结算收益出现异常', $request->all());

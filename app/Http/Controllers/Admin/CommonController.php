@@ -8,9 +8,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\AdminUser;
 use App\Services\AliOss;
+use App\Services\SmsService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class CommonController extends Controller
 {
@@ -48,6 +51,41 @@ class CommonController extends Controller
                 break;
 
         }
+
+    }
+
+    // 后台发送短信
+    public function send(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+        ], [
+            'name.required' => '用户账号不能为空',
+        ]);
+
+        if ($validator->fails()) {
+            return returnJson(0, $validator->errors()->first());
+        }
+
+        // 验证用户名是否存在
+        $au = AdminUser::where('name', $request->get('name'))->orwhere('email', $request->get('name'))->first();
+        if(!$au){
+            return returnJson(0, '账号不存在');
+        }
+
+        // 验证用户手机是否存在
+        if(empty($au->mobile)){
+            return returnJson(0, '该账户未绑定手机');
+        }
+
+        $sms = new SmsService();
+        $res = $sms->send($au->mobile);
+        if ($res['code'] != 1) {
+            return returnJson(0, $res['msg']);
+        }
+
+        return returnJson(1, '发送成功');
 
     }
 

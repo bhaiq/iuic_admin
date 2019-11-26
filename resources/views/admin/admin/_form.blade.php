@@ -15,6 +15,14 @@
     </div>
 </div>
 
+
+<div class="layui-form-item">
+    <label class="layui-form-label">手机号</label>
+    <div class="layui-input-block">
+        <input type="text" name="mobile" maxlength="120" autocomplete="off" value="{{$mobile}}" class="layui-input" required>
+    </div>
+</div>
+
 <div class="layui-form-item">
     <label class="layui-form-label">密码</label>
     <div class="layui-input-block">

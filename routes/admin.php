@@ -9,6 +9,7 @@ Route::post('logout', 'LoginController@logout');
 Route::group(['prefix' => 'common'], function () {
 
     Route::post('upload', 'CommonController@upload'); // 上传
+    Route::post('send', 'CommonController@send'); // 发送短信
 
 });
 

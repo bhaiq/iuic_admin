@@ -19,6 +19,7 @@ class AdminController extends Controller
     protected $fields = [
         'name' => '',
         'email' => '',
+        'mobile' => '',
         'roles' => []
     ];
 

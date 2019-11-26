@@ -69,6 +69,10 @@
                         title: '邮箱'
                     }
                     , {
+                        field: 'mobile',
+                        title: '手机号'
+                    }
+                    , {
                         field: 'created_at',
                         title: '创建时间',
                         sort: true,

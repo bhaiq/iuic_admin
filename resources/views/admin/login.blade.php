@@ -37,6 +37,14 @@
                            aria-describedby="sizing-addon-password">
                 </div>
             </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">验证</span>
+                    <input type="text" class="form-control" id="yzm" name="yzm" placeholder="验证码"
+                           aria-describedby="sizing-addon-password" style="width:80%;">
+                    <span class="input-group-addon" id="captcha" onclick="gettwoma()" style="border: 0;cursor: pointer;">发送</span>
+                </div>
+            </div>
             <div class="text-center">
                 <button type="submit" id="login_ok" class="btn btn-primary btn-lg">&nbsp;登&nbsp;录&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="reset" class="btn btn-default btn-lg">&nbsp;重&nbsp;置&nbsp;</button>
@@ -44,5 +52,52 @@
         </form>
     </div>
 </div>
+<script>
+
+    // 获取验证码
+    function gettwoma(){
+
+        var name = $('input[name=username]').val();
+
+        $.ajax({
+            url:"/admin/common/send",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            data:{'name':name, '_token': "{{ csrf_token() }}"},
+            type:"POST",   //请求方式
+            success:function(d){
+                if(d.code == 1){
+                    alert('发送成功');
+                    daojishi();
+                }else{
+                    alert(d.msg);
+                }
+            },
+            error:function(d){
+                alert(d.msg);
+            }
+        });
+
+    }
+
+    var flag = 1;
+    var i = 60;
+    function daojishi() {
+
+        i = i - 1;
+        var btn = document.getElementById("captcha");
+        $(btn).attr("onclick", "")
+        $(btn).text(i + '秒')
+
+        if (i == 0) {
+            $(btn).attr("onclick", "gettwoma()")
+            $(btn).text("发送")
+            flag = 1;
+            i = 60;
+            return;
+        }
+        setTimeout('daojishi()',1000);
+    }
+
+</script>
 </body>
 </html>
