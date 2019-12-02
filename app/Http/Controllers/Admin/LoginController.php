@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\AdminLog;
 use App\Models\AdminUser;
 use App\Services\SmsService;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -90,6 +91,7 @@ class LoginController extends Controller
                 return $this->sendFailLogin('验证码有误');
             }
 
+            AdminLog::addLog('登录后台');
             return $this->sendLoginResponse($request);
         }
 
@@ -111,6 +113,7 @@ class LoginController extends Controller
                 return $this->sendFailLogin('验证码有误');
             }
 
+            AdminLog::addLog('登录后台');
             return $this->sendLoginResponse($request);
         }
 
