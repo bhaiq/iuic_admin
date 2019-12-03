@@ -207,4 +207,13 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('reward_list', ['as' => 'admin.reward_list.index', 'uses' => 'RewardListController@index']);
     Route::any('reward_list/index', ['as' => 'admin.reward_list.index', 'uses' => 'RewardListController@index']);
 
+    // 灵活矿位
+    Route::get('kuangji_linghuo', ['as' => 'admin.kuangji_linghuo.index', 'uses' => 'KuangjiLinghuoController@index']);
+    Route::any('kuangji_linghuo/index', ['as' => 'admin.kuangji_linghuo.index', 'uses' => 'KuangjiLinghuoController@index']);
+
+    // 灵活订单
+    Route::get('linghuo_order', ['as' => 'admin.linghuo_order.index', 'uses' => 'LinghuoOrderController@index']);
+    Route::any('linghuo_order/index', ['as' => 'admin.linghuo_order.index', 'uses' => 'LinghuoOrderController@index']);
+
+
 });
