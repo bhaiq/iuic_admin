@@ -39,5 +39,18 @@ class AdminLog extends Model
 
     }
 
+    public static function addLoginLog($log, $uid)
+    {
+
+        $data = [
+            'admin_id' => $uid,
+            'log' => $log,
+            'method' => request()->method(),
+            'ip' => request()->ip(),
+            'agent' => request()->header('user-agent'),
+            'created_at' => now()->toDateTimeString()
+        ];
+        self::insert($data);
+    }
 
 }

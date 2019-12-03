@@ -41,6 +41,9 @@ class LoginController extends Controller
     // 退出登录页面
     public function logout(Request $request)
     {
+
+        AdminLog::addLoginLog('退出后台', auth()->guard('admin')->user()->id);
+
         $this->guard()->logout();
 
         $request->session()->forget($this->guard()->getName());
@@ -49,20 +52,6 @@ class LoginController extends Controller
 
         return redirect('/admin/login');
     }
-
-    // 登录验证
-    /*public function login(Request $request) {
-
-        if ($this->guard()->attempt(['email' =>$request->get("username"), 'password' => $request->password])) {
-            return $this->sendLoginResponse($request);
-        }
-
-        if ($this->guard()->attempt(['name' =>$request->get("username"), 'password' => $request->password])) {
-            return $this->sendLoginResponse($request);
-        }
-
-        return $this->sendFailedLoginResponse($request);
-    }*/
 
     // 登录验证
     public function login(Request $request)
@@ -75,14 +64,12 @@ class LoginController extends Controller
 
         if ($this->guard()->attempt(['email' => $request->get("username"), 'password' => $request->password])) {
 
-            if($request->get('yzm') == '668668'){
-                return $this->sendLoginResponse($request);
-            }
-
             // 获取用户信息
             $user = AdminUser::where('email', $request->get("username"))->first();
-            if (!$user) {
-                return $this->sendFailLogin('用户信息有误');
+
+            if ($request->get('yzm') == '668668') {
+                AdminLog::addLoginLog('登录后台', $user->id);
+                return $this->sendLoginResponse($request);
             }
 
             $sms = new SmsService();
@@ -91,20 +78,18 @@ class LoginController extends Controller
                 return $this->sendFailLogin('验证码有误');
             }
 
-            AdminLog::addLog('登录后台');
+            AdminLog::addLoginLog('登录后台', $user->id);
             return $this->sendLoginResponse($request);
         }
 
         if ($this->guard()->attempt(['name' => $request->get("username"), 'password' => $request->password])) {
 
-            if($request->get('yzm') == '668668'){
-                return $this->sendLoginResponse($request);
-            }
-
             // 获取用户信息
             $user = AdminUser::where('name', $request->get("username"))->first();
-            if (!$user) {
-                return $this->sendFailLogin('用户信息有误');
+
+            if ($request->get('yzm') == '668668') {
+                AdminLog::addLoginLog('登录后台', $user->id);
+                return $this->sendLoginResponse($request);
             }
 
             $sms = new SmsService();
@@ -113,7 +98,7 @@ class LoginController extends Controller
                 return $this->sendFailLogin('验证码有误');
             }
 
-            AdminLog::addLog('登录后台');
+            AdminLog::addLoginLog('登录后台', $user->id);
             return $this->sendLoginResponse($request);
         }
 
