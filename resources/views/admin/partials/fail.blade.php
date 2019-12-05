@@ -1,4 +1,4 @@
-@if (Session::has('fail'))rgb(255, 87, 34)
+@if (Session::has('fail'))
 
     <div class="layui-row" style="margin-bottom: 20px;">
         <div class="layui-col-xs12">

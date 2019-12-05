@@ -215,5 +215,9 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('linghuo_order', ['as' => 'admin.linghuo_order.index', 'uses' => 'LinghuoOrderController@index']);
     Route::any('linghuo_order/index', ['as' => 'admin.linghuo_order.index', 'uses' => 'LinghuoOrderController@index']);
 
+    // 指定节点
+    Route::any('appoint_bonus/index', ['as' => 'admin.appoint_bonus.index', 'uses' => 'AppointBonusController@index']);
+    Route::resource('appoint_bonus', 'AppointBonusController', ['names' => ['update' => 'admin.appoint_bonus.edit', 'store' => 'admin.appoint_bonus.create']]);
+
 
 });
