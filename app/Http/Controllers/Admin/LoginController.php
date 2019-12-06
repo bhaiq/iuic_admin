@@ -42,8 +42,10 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
 
-        AdminLog::addLoginLog('退出后台', auth()->guard('admin')->user()->id);
-
+        if(isset(auth()->guard('admin')->user()->id)){
+            AdminLog::addLoginLog('退出后台', auth()->guard('admin')->user()->id);
+        }
+        
         $this->guard()->logout();
 
         $request->session()->forget($this->guard()->getName());
