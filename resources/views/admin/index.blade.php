@@ -27,14 +27,6 @@
             </div>
             <div class="layui-col-md2">
                 <div class="layui-card">
-                    <div class="layui-card-header"> </div>
-                    <div class="layui-card-body">
-
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md2">
-                <div class="layui-card">
                     <div class="layui-card-header">注册用户</div>
                     <div class="layui-card-body">
                         {{$zc_user}}
@@ -58,6 +50,8 @@
                 </div>
             </div>
 
+            <div class="layui-row"></div>
+
             <div class="layui-col-md2">
                 <div class="layui-card">
                     <div class="layui-card-header">累计交易挖矿释放</div>
@@ -71,14 +65,6 @@
                     <div class="layui-card-header">累计算力挖矿释放</div>
                     <div class="layui-card-body">
                         {{$total_kuangji_release}}
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md2">
-                <div class="layui-card">
-                    <div class="layui-card-header">  </div>
-                    <div class="layui-card-body">
-
                     </div>
                 </div>
             </div>

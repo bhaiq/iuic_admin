@@ -32,10 +32,12 @@ class IndexController extends Controller
         $data['total_trade_release'] = UserWalletLog::where('exp', '交易释放')->sum('num');
 
         // 单日算力挖矿释放
-        $data['today_kuangji_release'] = UserWalletLog::where('exp', '矿机释放')->whereDate('created_at', now()->toDateString())->sum('num');
+        $data['today_kuangji_release'] = UserWalletLog::where(function ($q){
+            $q->where('exp', '矿机释放')->orwhere('exp', '灵活矿机释放');
+        })->whereDate('created_at', now()->toDateString())->sum('num');
 
         // 累计算力挖矿释放
-        $data['total_kuangji_release'] = UserWalletLog::where('exp', '矿机释放')->sum('num');
+        $data['total_kuangji_release'] = UserWalletLog::where('exp', '矿机释放')->orwhere('exp', '灵活矿机释放')->sum('num');
 
         // 当日释放
 //        $data['today_release'] = bcadd($data['today_trade_release'], $data['today_kuangji_release'], 8);
