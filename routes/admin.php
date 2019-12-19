@@ -219,5 +219,13 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('appoint_bonus/index', ['as' => 'admin.appoint_bonus.index', 'uses' => 'AppointBonusController@index']);
     Route::resource('appoint_bonus', 'AppointBonusController', ['names' => ['update' => 'admin.appoint_bonus.edit', 'store' => 'admin.appoint_bonus.create']]);
 
+    // 能量商品列表
+    Route::any('energy_goods/index', ['as' => 'admin.energy_goods.index', 'uses' => 'EnergyGoodsController@index']);
+    Route::resource('energy_goods', 'EnergyGoodsController', ['names' => ['update' => 'admin.energy_goods.edit', 'store' => 'admin.energy_goods.create']]);
+
+    // 能量订单列表
+    Route::any('energy_order/index', ['as' => 'admin.energy_order.index', 'uses' => 'EnergyOrderController@index']);
+    Route::resource('energy_order', 'EnergyOrderController', ['names' => ['update' => 'admin.energy_order.edit', 'store' => 'admin.energy_order.create']]);
+
 
 });
