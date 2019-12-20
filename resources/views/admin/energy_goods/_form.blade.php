@@ -55,5 +55,12 @@
 </div>
 
 <div class="layui-form-item">
+    <label class="layui-form-label">商品详情</label>
+    <div class="layui-input-block">
+        <textarea id="editor" type="text/plain" name="goods_details" style="width:1024px;height:500px;">{!! htmlspecialchars_decode($goods_details) !!}</textarea>
+    </div>
+</div>
+
+<div class="layui-form-item">
 
 </div>

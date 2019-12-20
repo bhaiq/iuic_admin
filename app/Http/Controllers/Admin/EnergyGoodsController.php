@@ -20,6 +20,7 @@ class EnergyGoodsController extends Controller
         'goods_name' => '',
         'goods_img' => '',
         'goods_price' => '',
+        'goods_details' => '',
         'num' => '',
         'add_num' => '',
         'xg_num' => '',
