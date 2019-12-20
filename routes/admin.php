@@ -224,8 +224,12 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::resource('energy_goods', 'EnergyGoodsController', ['names' => ['update' => 'admin.energy_goods.edit', 'store' => 'admin.energy_goods.create']]);
 
     // 能量订单列表
+    Route::get('energy_order', ['as' => 'admin.energy_order.index', 'uses' => 'EnergyOrderController@index']);
     Route::any('energy_order/index', ['as' => 'admin.energy_order.index', 'uses' => 'EnergyOrderController@index']);
-    Route::resource('energy_order', 'EnergyOrderController', ['names' => ['update' => 'admin.energy_order.edit', 'store' => 'admin.energy_order.create']]);
+
+    // 能量兑换列表
+    Route::get('energy_exchange', ['as' => 'admin.energy_exchange.index', 'uses' => 'EnergyExchangeController@index']);
+    Route::any('energy_exchange/index', ['as' => 'admin.energy_exchange.index', 'uses' => 'EnergyExchangeController@index']);
 
 
 });
