@@ -734,7 +734,7 @@
                                   action="{{url('admin/config/update')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>能量兑人民币的比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -746,7 +746,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>能量兑换的手续费</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -758,7 +758,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>能量静态释放比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -770,7 +770,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>能量释放中可用能量的释放比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -782,7 +782,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>能量释放中消费者积分的释放比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -794,7 +794,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>能量释放中公益金的释放比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -806,7 +806,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>团队奖释放比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -818,7 +818,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>第一代代数奖比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -830,7 +830,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>第二代代数奖比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -842,7 +842,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>社区节点奖持币量超50000比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -854,7 +854,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>社区节点奖持币量超40000比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -866,7 +866,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>社区节点奖持币量超30000比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -878,7 +878,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>社区节点奖持币量超20000比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
@@ -890,7 +890,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
+                                    <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>社区节点奖持币量超10000比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
