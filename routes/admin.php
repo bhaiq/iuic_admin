@@ -231,5 +231,9 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('energy_exchange', ['as' => 'admin.energy_exchange.index', 'uses' => 'EnergyExchangeController@index']);
     Route::any('energy_exchange/index', ['as' => 'admin.energy_exchange.index', 'uses' => 'EnergyExchangeController@index']);
 
+    // 能量钱包
+    Route::any('energy_wallet/ajax', ['as' => 'admin.energy_wallet.edit', 'uses' => 'EnergyWalletController@ajax']);
+    Route::get('energy_wallet', ['as' => 'admin.energy_wallet.index', 'uses' => 'EnergyWalletController@index']);
+    Route::any('energy_wallet/index', ['as' => 'admin.energy_wallet.index', 'uses' => 'EnergyWalletController@index']);
 
 });
