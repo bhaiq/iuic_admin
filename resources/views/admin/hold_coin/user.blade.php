@@ -41,12 +41,16 @@
                         type: 'checkbox'
                     }
                     , {
+                        field: 'new_account',
+                        title: '账号',
+                    }
+                    , {
                         field: 'name',
                         title: '真实名称',
                     }
                     , {
                         field: 'mobile',
-                        title: '用户账号',
+                        title: '手机号',
                     }
                     , {
                         field: 'price',

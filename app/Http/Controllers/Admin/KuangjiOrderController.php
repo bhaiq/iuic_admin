@@ -25,7 +25,7 @@ class KuangjiOrderController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = KuangjiOrder::from('kuangji_order as ko')
-                ->select('ko.*', 'u.mobile as u_mobile', 'a.name as realname', 'k.name as kj_name')
+                ->select('ko.*', 'u.mobile as u_mobile', 'u.new_account', 'a.name as realname', 'k.name as kj_name')
                 ->join('user as u', 'u.id', 'ko.uid')
                 ->join('kuangji as k', 'k.id', 'ko.kuangji_id')
                 ->leftJoin('authentication as a', 'a.uid', 'ko.uid');
@@ -33,7 +33,7 @@ class KuangjiOrderController extends Controller
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('a.name', 'like', '%' . $soso . '%')
-                        ->orwhere('u.mobile', 'like', '%' . $soso . '%')
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('k.name', 'like', '%' . $soso . '%');
                 });
             }

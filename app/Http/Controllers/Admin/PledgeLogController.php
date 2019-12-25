@@ -38,6 +38,7 @@ class PledgeLogController extends Controller
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('u.mobile', 'like', '%' . $soso . '%')
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('a.name', 'like', '%' . $soso . '%');
                 });
             }

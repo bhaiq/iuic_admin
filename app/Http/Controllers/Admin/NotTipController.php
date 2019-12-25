@@ -31,13 +31,13 @@ class NotTipController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = NotTip::from('not_tip as nt')
-                ->select('nt.*', 'u.mobile', 'a.name as realname')
+                ->select('nt.*', 'u.mobile', 'u.new_account', 'a.name as realname')
                 ->join('user as u', 'u.id', 'nt.uid')
                 ->leftJoin('authentication as a', 'a.uid', 'u.id');
 
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
-                    $q->where('u.mobile', 'like', '%' . $soso . '%')
+                    $q->where('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('a.name', 'like', '%' . $soso . '%');
                 });
             }

@@ -81,7 +81,7 @@ class HoldCoinController extends Controller
             $sort = $request->get('sort', 'asc') ?? 'asc';
 
             $p = HoldCoin::from('hold_coin as hc')
-                ->select('hc.*', 'u.mobile', 'a.name')
+                ->select('hc.*', 'u.mobile', 'u.new_account', 'a.name')
                 ->join('user as u', 'u.id', 'hc.uid')
                 ->leftJoin('authentication as a', 'a.uid', 'hc.uid')
                 ->where('hc.price', '>', 0)
@@ -90,7 +90,7 @@ class HoldCoinController extends Controller
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('hc.price', 'like', '%' . $soso . '%')
-                        ->orwhere('u.mobile', 'like', '%' . $soso . '%')
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('a.name', 'like', '%' . $soso . '%');
                 });
             }

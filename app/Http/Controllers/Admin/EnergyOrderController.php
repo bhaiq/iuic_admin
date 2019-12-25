@@ -25,7 +25,7 @@ class EnergyOrderController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = EnergyOrder::from('energy_order as eo')
-                ->select('eo.*', 'u.mobile')
+                ->select('eo.*', 'u.new_account')
                 ->join('user as u', 'u.id', 'eo.uid');
 
             if ($soso) {

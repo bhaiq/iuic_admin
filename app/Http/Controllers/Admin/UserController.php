@@ -40,7 +40,7 @@ class UserController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = User::from('user as u')
-                ->select('u.*', 'ui.level', 'ui.buy_total', 'ui.release_total', 'ui.is_bonus', 'ui.is_admin', 'uu.mobile as pid_mobile', 'a.name as realname')
+                ->select('u.*', 'ui.level', 'ui.buy_total', 'ui.release_total', 'ui.is_bonus', 'ui.is_admin', 'uu.new_account as pid_mobile', 'a.name as realname')
                 ->leftJoin('user_info as ui', 'ui.uid', 'u.id')
                 ->leftJoin('authentication as a', 'a.uid', 'u.id')
                 ->leftJoin('user as uu', 'uu.id', 'u.pid');
@@ -48,7 +48,7 @@ class UserController extends Controller
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('a.name', 'like', '%' . $soso . '%')
-                        ->orwhere('uu.mobile', 'like', '%' . $soso . '%')
+                        ->orwhere('uu.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('u.mobile', 'like', '%' . $soso . '%');
                 });
             }

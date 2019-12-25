@@ -30,7 +30,7 @@ class OtcOrderController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = OtcOrder::from('otc_order as o')
-                ->select('o.*', 'u_s.mobile as sell_mobile', 'u_b.mobile as buy_mobile', 'c.name as coin_name', 'u_a.mobile as appeal_mobile', 'a_s.name as sell_name', 'a_b.name as buy_name')
+                ->select('o.*', 'u_s.new_account as sell_mobile', 'u_b.new_account as buy_mobile', 'c.name as coin_name', 'u_a.mobile as appeal_mobile', 'a_s.name as sell_name', 'a_b.name as buy_name')
                 ->join('user as u_s', 'u_s.id', 'o.seller_id')
                 ->join('user as u_b', 'u_b.id', 'o.buyer_id')
                 ->join('coin as c', 'c.id', 'o.coin_id')
@@ -40,8 +40,8 @@ class OtcOrderController extends Controller
 
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
-                    $q->where('u_s.mobile', 'like', '%' . $soso . '%')
-                        ->orwhere('u_b.mobile', 'like', '%' . $soso . '%')
+                    $q->where('u_s.new_account', 'like', '%' . $soso . '%')
+                        ->orwhere('u_b.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('a_s.name', 'like', '%' . $soso . '%')
                         ->orwhere('a_b.name', 'like', '%' . $soso . '%');
                 });

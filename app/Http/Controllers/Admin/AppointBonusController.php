@@ -37,13 +37,14 @@ class AppointBonusController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = AppointBonus::from('appoint_bonus as ab')
-                ->select('ab.*', 'u.mobile as u_mobile', 'a.name as realname')
+                ->select('ab.*', 'u.mobile as u_mobile', 'u.new_account', 'a.name as realname')
                 ->join('user as u', 'u.id', 'ab.uid')
                 ->leftJoin('authentication as a', 'a.uid', 'ab.uid');
 
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('a.name', 'like', '%' . $soso . '%')
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('u.mobile', 'like', '%' . $soso . '%');
                 });
             }

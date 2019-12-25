@@ -50,8 +50,8 @@
                         width: 80
                     }
                     , {
-                        field: 'mobile',
-                        title: '账户',
+                        field: 'new_account',
+                        title: '账号',
                         width: 130
                     }
                     , {

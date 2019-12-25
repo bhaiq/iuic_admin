@@ -28,7 +28,7 @@ class CoinExtractController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = CoinExtract::from('coin_extract as ce')
-                ->select('ce.*', 'u.mobile', 'c.name as coin_name', 'a.name as realname')
+                ->select('ce.*', 'u.mobile', 'u.new_account', 'c.name as coin_name', 'a.name as realname')
                 ->join('user as u', 'u.id', 'ce.uid')
                 ->join('coin as c', 'c.id', 'ce.coin_id')
                 ->leftJoin('authentication as a', 'a.uid', 'ce.uid');
@@ -36,7 +36,7 @@ class CoinExtractController extends Controller
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('c.name', 'like', '%' . $soso . '%')
-                        ->orwhere('u.mobile', 'like', '%' . $soso . '%')
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('a.name', 'like', '%' . $soso . '%');
                 });
             }

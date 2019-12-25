@@ -42,8 +42,13 @@
                         width: 80
                     }
                     , {
+                        field: 'new_account',
+                        title: '账号',
+                        width: 130
+                    }
+                    , {
                         field: 'mobile',
-                        title: '用户账号',
+                        title: '手机号',
                     }
                     , {
                         field: 'realname',

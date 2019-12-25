@@ -27,7 +27,7 @@ class LinghuoOrderController extends Controller
             $limit = $request->get('limit', 10);
 
             $p = UserWalletLog::from('user_wallet_logs as uwl')
-                ->select('uwl.*', 'u.mobile as mobile', 'a.name as realname')
+                ->select('uwl.*', 'u.mobile as mobile', 'u.new_account', 'a.name as realname')
                 ->join('user as u', 'u.id', 'uwl.uid')
                 ->leftJoin('authentication as a', 'a.uid', 'uwl.uid')
                 ->where('exp', '购买灵活矿机');
@@ -35,7 +35,7 @@ class LinghuoOrderController extends Controller
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('a.name', 'like', '%' . $soso . '%')
-                        ->orwhere('u.mobile', 'like', '%' . $soso . '%');
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%');
                 });
             }
 

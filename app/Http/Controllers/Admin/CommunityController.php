@@ -28,7 +28,7 @@ class CommunityController extends Controller
             $soso = $request->get('soso', '');
 
             $p = Community::from('community as c')
-                ->select('c.*', 'u.mobile as u_mobile', 'u.nickname', 'a.name as realname')
+                ->select('c.*', 'u.mobile as u_mobile', 'u.new_account', 'u.nickname', 'a.name as realname')
                 ->join('user as u', 'u.id', 'c.uid')
                 ->leftJoin('authentication as a', 'a.uid', 'c.uid');
 
@@ -36,7 +36,7 @@ class CommunityController extends Controller
                 $p->where(function ($q) use ($soso) {
                     $q->where('u.nickname', 'like', '%' . $soso . '%')
                         ->orwhere('c.address', 'like', '%' . $soso . '%')
-                        ->orwhere('u.mobile', 'like', '%' . $soso . '%');
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%');
                 });
             }
 

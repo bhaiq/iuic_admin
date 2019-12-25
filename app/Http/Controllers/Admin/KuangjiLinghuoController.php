@@ -25,14 +25,14 @@ class KuangjiLinghuoController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = KuangjiLinghuo::from('kuangji_linghuo as kl')
-                ->select('kl.*', 'u.mobile as mobile', 'a.name as realname')
+                ->select('kl.*', 'u.mobile as mobile', 'u.new_account', 'a.name as realname')
                 ->join('user as u', 'u.id', 'kl.uid')
                 ->leftJoin('authentication as a', 'a.uid', 'kl.uid');
 
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('a.name', 'like', '%' . $soso . '%')
-                        ->orwhere('u.mobile', 'like', '%' . $soso . '%');
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%');
                 });
             }
 

@@ -30,14 +30,14 @@ class PartnerController extends Controller
             $soso = $request->get('soso', '');
 
             $p = UserPartner::from('user_partner as up')
-                ->select('up.*', 'u.mobile', 'u.nickname', 'a.name as realname')
+                ->select('up.*', 'u.mobile', 'u.new_account', 'u.nickname', 'a.name as realname')
                 ->join('user as u', 'u.id', 'up.uid')
                 ->leftJoin('authentication as a', 'a.uid', 'up.uid');
 
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('u.nickname', 'like', '%' . $soso . '%')
-                        ->orwhere('u.mobile', 'like', '%' . $soso . '%');
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%');
                 });
             }
 

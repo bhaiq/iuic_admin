@@ -25,12 +25,13 @@ class ShopOrderController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = ShopOrder::from('shop_order as so')
-                ->select('so.*', 'u.mobile')
+                ->select('so.*', 'u.mobile', 'u.new_account')
                 ->join('user as u', 'u.id', 'so.uid');
 
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('goods_name', 'like', '%' . $soso . '%')
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('to_name', 'like', '%' . $soso . '%')
                         ->orwhere('to_mobile', 'like', '%' . $soso . '%')
                         ->orwhere('to_address', 'like', '%' . $soso . '%');

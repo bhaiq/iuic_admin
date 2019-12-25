@@ -36,8 +36,12 @@
                 , defaultToolbar: ['filter', 'exports']
                 , cols: [[ //表头
                     {
+                        field: 'new_account',
+                        title: '账号',
+                    }
+                    , {
                         field: 'mobile',
-                        title: '用户账号',
+                        title: '手机号',
                     }
                     , {
                         field: 'realname',

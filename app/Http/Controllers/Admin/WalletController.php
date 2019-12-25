@@ -30,7 +30,7 @@ class WalletController extends Controller
             $limit = $request->get('limit', 10);
 
             $p = Account::from('account as a')
-                ->select('a.*', 'u.mobile', 'c.name as coin_name', 'aa.name as realname')
+                ->select('a.*', 'u.mobile', 'u.new_account', 'c.name as coin_name', 'aa.name as realname')
                 ->leftJoin('user as u', 'u.id', 'a.uid')
                 ->leftJoin('coin as c', 'c.id', 'a.coin_id')
                 ->leftJoin('authentication as aa', 'aa.uid', 'a.uid');
@@ -39,7 +39,7 @@ class WalletController extends Controller
                 $p->where(function ($q) use ($soso) {
                     $q->where('c.name', 'like', '%' . $soso . '%')
                         ->orwhere('aa.name', 'like', '%' . $soso . '%')
-                        ->orwhere('u.mobile', 'like', '%' . $soso . '%');
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%');
                 });
             }
 

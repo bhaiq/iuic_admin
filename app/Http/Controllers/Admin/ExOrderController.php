@@ -25,14 +25,14 @@ class ExOrderController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = ExOrder::from('ex_order as eo')
-                ->select('eo.*', 'u.mobile', 'et.name as et_name', 'a.name as realname')
+                ->select('eo.*', 'u.mobile', 'u.new_account', 'et.name as et_name', 'a.name as realname')
                 ->join('user as u', 'u.id', 'eo.uid')
                 ->join('ex_team as et', 'et.id', 'eo.team_id')
                 ->leftJoin('authentication as a', 'a.uid', 'eo.uid');
 
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
-                    $q->where('u.mobile', 'like', '%' . $soso . '%')
+                    $q->where('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('a.name', 'like', '%' . $soso . '%');
                 });
             }

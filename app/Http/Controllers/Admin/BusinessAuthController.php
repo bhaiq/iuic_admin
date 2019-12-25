@@ -32,7 +32,7 @@ class BusinessAuthController extends Controller
             $soso = $request->get('soso', '');
 
             $p = Business::from('auth_business as a')
-                ->select('a.*', 'u.mobile', 'u.nickname', 'c.name as coin_name')
+                ->select('a.*', 'u.mobile', 'u.new_account', 'u.nickname', 'c.name as coin_name')
                 ->join('user as u', 'u.id', 'a.uid')
                 ->join('coin as c', 'c.id', 'a.coin_id')
                 ->where('a.status', $isAuth);
@@ -40,7 +40,7 @@ class BusinessAuthController extends Controller
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('u.nickname', 'like', '%' . $soso . '%')
-                        ->orwhere('u.mobile', 'like', '%' . $soso . '%');
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%');
                 });
             }
 

@@ -34,13 +34,14 @@ class UserAuthController extends Controller
             $soso = $request->get('soso', '');
 
             $p = Authentication::from('authentication as a')
-                ->select('a.*', 'u.mobile', 'u.nickname', 'u.is_auth')
+                ->select('a.*', 'u.mobile', 'u.new_account', 'u.nickname', 'u.is_auth')
                 ->join('user as u', 'u.id', 'a.uid')
                 ->where('u.is_auth', $isAuth);
 
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('u.nickname', 'like', '%' . $soso . '%')
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('u.mobile', 'like', '%' . $soso . '%');
                 });
             }

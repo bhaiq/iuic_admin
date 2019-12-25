@@ -51,13 +51,18 @@
                         type: 'checkbox'
                     }
                     , {
+                        field: 'new_account',
+                        title: '账号',
+                        width: 130
+                    }
+                    , {
                         field: 'nickname',
                         title: '昵称',
                         width: 130
                     }
                     , {
                         field: 'mobile',
-                        title: '账户',
+                        title: '手机号',
                         width: 130
                     }
                     , {

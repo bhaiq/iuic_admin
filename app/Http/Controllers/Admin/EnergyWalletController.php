@@ -29,14 +29,14 @@ class EnergyWalletController extends Controller
             $soso = $request->get('soso', '');
 
             $p = UserWallet::from('user_wallet as uw')
-                ->select('uw.*', 'u.mobile', 'aa.name as realname')
+                ->select('uw.*', 'u.mobile', 'u.new_account', 'aa.name as realname')
                 ->leftJoin('user as u', 'u.id', 'uw.uid')
                 ->leftJoin('authentication as aa', 'aa.uid', 'uw.uid');
 
             if ($soso) {
                 $p->where(function ($q) use ($soso) {
                     $q->where('aa.name', 'like', '%' . $soso . '%')
-                        ->orwhere('u.mobile', 'like', '%' . $soso . '%');
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%');
                 });
             }
 
