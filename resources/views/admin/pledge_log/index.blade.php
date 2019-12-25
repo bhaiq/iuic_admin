@@ -69,6 +69,18 @@
                         title: '数量'
                     }
                     , {
+                        field: 'type',
+                        title: '类型',
+                        width: 100,
+                        templet: function (d) {
+                            if(d.type == 1){
+                                return '<span class="layui-btn layui-btn-xs layui-btn-normal">质押</span>';
+                            }else{
+                                return '<span class="layui-btn layui-btn-xs layui-btn-danger">取出</span>';
+                            }
+                        }
+                    }
+                    , {
                         field: 'status',
                         title: '状态',
                         width: 100,
