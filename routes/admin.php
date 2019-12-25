@@ -236,4 +236,13 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('energy_wallet', ['as' => 'admin.energy_wallet.index', 'uses' => 'EnergyWalletController@index']);
     Route::any('energy_wallet/index', ['as' => 'admin.energy_wallet.index', 'uses' => 'EnergyWalletController@index']);
 
+    // 质押级别
+    Route::any('pledge_levels/index', ['as' => 'admin.pledge_levels.index', 'uses' => 'PledgeLevelsController@index']);
+    Route::resource('pledge_levels', 'PledgeLevelsController', ['names' => ['update' => 'admin.pledge_levels.edit', 'store' => 'admin.pledge_levels.create']]);
+
+    // 质押记录
+    Route::post('pledge_log/ajax', ['as' => 'admin.pledge_log.edit', 'uses' => 'PledgeLogController@ajax']);
+    Route::get('pledge_log', ['as' => 'admin.pledge_log.index', 'uses' => 'PledgeLogController@index']);
+    Route::any('pledge_log/index', ['as' => 'admin.pledge_log.index', 'uses' => 'PledgeLogController@index']);
+
 });
