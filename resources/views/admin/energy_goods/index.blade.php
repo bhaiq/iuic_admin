@@ -28,12 +28,12 @@
 
     <script type="text/html" id="barDemo">
         @if(Gate::forUser(auth('admin')->user())->check('admin.energy_goods.edit'))<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>@endif
-        @if(Gate::forUser(auth('admin')->user())->check('admin.energy_goods.destroy'))<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>@endif
+        {{--@if(Gate::forUser(auth('admin')->user())->check('admin.energy_goods.destroy'))<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>@endif--}}
     </script>
 
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container">
-            @if(Gate::forUser(auth('admin')->user())->check('admin.energy_goods.create'))<button class="layui-btn layui-btn-sm" lay-event="create">新增</button>@endif
+            {{--@if(Gate::forUser(auth('admin')->user())->check('admin.energy_goods.create'))<button class="layui-btn layui-btn-sm" lay-event="create">新增</button>@endif--}}
         </div>
     </script>
 
