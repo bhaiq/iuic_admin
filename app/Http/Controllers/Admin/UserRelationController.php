@@ -60,7 +60,7 @@ class UserRelationController extends Controller
         $soso = $request->get('soso');
 
         if($soso){
-            $data = User::with(['user_info', 'user_auth'])->where('mobile', $soso)->get();
+            $data = User::with(['user_info', 'user_auth'])->where('new_account', $soso)->get();
         }else{
             $data = User::with(['user_info', 'user_auth'])->where('pid',0)->get();
         }

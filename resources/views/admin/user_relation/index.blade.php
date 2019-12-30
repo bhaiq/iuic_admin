@@ -136,7 +136,7 @@
                                                                      <i class="layui-icon layui-icon-top"></i>
                                                                      <font class="dj">顶级</font>
                                                                      <b style="color: black">/</b>
-                                                                     <font class="member_id" >{{$v['mobile']}} | {{$v['nickname']}} | {{$v['level_name']}} | {{$v['is_bonus']}} | {{$v['is_admin']}} </font>| {{$v['id']}}
+                                                                     <font class="member_id" >{{$v['new_account']}} | {{$v['nickname']}} | {{$v['level_name']}} | {{$v['is_bonus']}} | {{$v['is_admin']}} </font>| {{$v['id']}} | {{$v['mobile']}}
                                                                 </span>
                                                                 <ul>
 
@@ -209,7 +209,7 @@
                             }
                             info += "<font class='dj'>" + dj + "级</font>";
                             info += "<b style='color: black'>/</b>";
-                            info += '<font class=\'member_id\' >' + i.mobile + ' | ' + i.nickname + ' | ' + i.level_name + ' | '+ i.is_bonus + ' | ' + i.is_admin + ' | ' + '</font>' + i.id ;
+                            info += '<font class=\'member_id\' >' + i.new_account + ' | ' + i.nickname + ' | ' + i.level_name + ' | '+ i.is_bonus + ' | ' + i.is_admin + ' | ' + '</font>' + i.id + ' | ' + i.mobile;
                             info += '</span>';
                             info += '<ul> </ul>';
                             info += "</li>";
