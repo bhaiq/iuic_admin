@@ -32,7 +32,7 @@ class EnergyOrderController extends Controller
                 $p->where(function ($q) use ($soso) {
                     $q->where('goods_name', 'like', '%' . $soso . '%')
                         ->orwhere('to_name', 'like', '%' . $soso . '%')
-                        ->orwhere('to_mobile', 'like', '%' . $soso . '%')
+                        ->orwhere('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('to_address', 'like', '%' . $soso . '%');
                 });
             }
