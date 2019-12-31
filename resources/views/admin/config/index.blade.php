@@ -581,6 +581,17 @@
                                 </div>
 
                                 <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>提现矿池限制开关</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="radio" name="kuangji_cash_switch" value="0" title="关闭" @if($kuangji_cash_switch == 0) checked @endif>
+                                        <input type="radio" name="kuangji_cash_switch" value="1" title="开启" @if($kuangji_cash_switch == 1) checked @endif>
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                 </div>
