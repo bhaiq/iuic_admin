@@ -245,4 +245,8 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('pledge_log', ['as' => 'admin.pledge_log.index', 'uses' => 'PledgeLogController@index']);
     Route::any('pledge_log/index', ['as' => 'admin.pledge_log.index', 'uses' => 'PledgeLogController@index']);
 
+    // 能量日志
+    Route::get('energy_log', ['as' => 'admin.energy_log.index', 'uses' => 'EnergyLogController@index']);
+    Route::any('energy_log/index', ['as' => 'admin.energy_log.index', 'uses' => 'EnergyLogController@index']);
+
 });

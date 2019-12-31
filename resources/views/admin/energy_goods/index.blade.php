@@ -33,7 +33,7 @@
 
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container">
-            {{--@if(Gate::forUser(auth('admin')->user())->check('admin.energy_goods.create'))<button class="layui-btn layui-btn-sm" lay-event="create">新增</button>@endif--}}
+            @if(Gate::forUser(auth('admin')->user())->check('admin.energy_goods.create'))<button class="layui-btn layui-btn-sm" lay-event="create">新增</button>@endif
         </div>
     </script>
 
