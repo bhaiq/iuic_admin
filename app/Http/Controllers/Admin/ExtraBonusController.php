@@ -20,6 +20,7 @@ class ExtraBonusController extends Controller
     protected $fields = [
         'tip' => 0,
         'users' => [],
+        'recommend_bl ' => 0,
     ];
 
     // 额外奖励列表
