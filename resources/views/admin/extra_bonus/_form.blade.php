@@ -13,6 +13,13 @@
 </div>
 
 <div class="layui-form-item">
+    <label class="layui-form-label">推荐分享奖励的占比</label>
+    <div class="layui-input-block">
+        <input type="text" name="recommend_bl" maxlength="10" autocomplete="off" value="{{$recommend_bl}}" class="layui-input" required>
+    </div>
+</div>
+
+<div class="layui-form-item">
     <label class="layui-form-label">指定的用户</label>
     <div class="layui-input-block">
         <select name="ids[]" xm-select="example10_1" xm-select-search="" xm-select-search-type="dl">

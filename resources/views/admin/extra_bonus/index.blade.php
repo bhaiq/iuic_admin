@@ -75,6 +75,11 @@
                         width: 150,
                     }
                     , {
+                        field: 'tip',
+                        title: '推荐分享奖励的占比',
+                        width: 150,
+                    }
+                    , {
                         field: 'users_str',
                         title: '指定的用户'
                     }
