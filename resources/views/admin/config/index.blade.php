@@ -36,6 +36,7 @@
                     <li class="">节点配置</li>
                     <li class="">新商城配置</li>
                     <li class="">能量商城</li>
+                    <li class="">推荐分享配置</li>
                 </ul>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
@@ -910,6 +911,45 @@
                                                value="{{$energy_community_10000_reward_bl}}">
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="layui-tab-item">
+                        <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
+                        推荐分享配置
+                        <div class="layui-card-body">
+                            <form class="layui-form layui-form-pane" method="post"
+                                  action="{{url('admin/config/update')}}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>直推分享奖励比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="recommend_share_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$recommend_share_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>合伙人奖励比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="recommend_partner_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$recommend_partner_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.05表示5%，这里是老报单那里的配置</div>
                                 </div>
 
                                 <div class="layui-form-item">

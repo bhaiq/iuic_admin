@@ -30,6 +30,7 @@ class ConfigController extends Controller
         $url8 = '/www/wwwroot/iuic.too86.com/config/kuangji.php';
         $url9 = '/www/wwwroot/iuic.too86.com/config/node.php';
         $url11 = '/www/wwwroot/iuic.too86.com/config/energy.php';
+        $url12 = '/www/wwwroot/iuic.too86.com/config/recommend.php';
 
         $str1 = file_get_contents($url1);
         $str2 = file_get_contents($url2);
@@ -40,6 +41,7 @@ class ConfigController extends Controller
         $str8 = file_get_contents($url8);
         $str9 = file_get_contents($url9);
         $str11 = file_get_contents($url11);
+        $str12 = file_get_contents($url12);
 
         $arr1 = eval(substr($str1, strpos($str1, 'return')));
         $arr2 = eval(substr($str2, strpos($str2, 'return')));
@@ -50,6 +52,7 @@ class ConfigController extends Controller
         $arr8 = eval(substr($str8, strpos($str8, 'return')));
         $arr9 = eval(substr($str9, strpos($str9, 'return')));
         $arr11 = eval(substr($str11, strpos($str11, 'return')));
+        $arr12 = eval(substr($str12, strpos($str12, 'return')));
 
         $arr6 = config('reward');
         $arr10 = config('admin_mall');
@@ -122,6 +125,12 @@ class ConfigController extends Controller
             }
         }
 
+        if(is_array($arr12)){
+            foreach ($arr12 as $k => $v){
+                $data[$k] = $v;
+            }
+        }
+
         $data['coin_arr'] = Coin::get()->toArray();
         $data['coin_type_arr'] = Business::COIN_TYPE;
 
@@ -142,6 +151,7 @@ class ConfigController extends Controller
         $url8 = '/www/wwwroot/iuic.too86.com/config/kuangji.php';
         $url9 = '/www/wwwroot/iuic.too86.com/config/node.php';
         $url11 = '/www/wwwroot/iuic.too86.com/config/energy.php';
+        $url12 = '/www/wwwroot/iuic.too86.com/config/recommend.php';
 
         $str1 = file_get_contents($url1);
         $str2 = file_get_contents($url2);
@@ -152,6 +162,7 @@ class ConfigController extends Controller
         $str8 = file_get_contents($url8);
         $str9 = file_get_contents($url9);
         $str11 = file_get_contents($url11);
+        $str12 = file_get_contents($url12);
 
         $arr1 = eval(substr($str1, strpos($str1, 'return')));
         $arr2 = eval(substr($str2, strpos($str2, 'return')));
@@ -162,11 +173,12 @@ class ConfigController extends Controller
         $arr8 = eval(substr($str8, strpos($str8, 'return')));
         $arr9 = eval(substr($str9, strpos($str9, 'return')));
         $arr11 = eval(substr($str11, strpos($str11, 'return')));
+        $arr12 = eval(substr($str12, strpos($str12, 'return')));
 
         $arr6 = config('reward');
         $arr10 = config('admin_mall');
 
-        \Log::info('修改前数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9, $arr10, $arr11]);
+        \Log::info('修改前数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9, $arr10, $arr11, $arr12]);
 
         if(is_array($arr1)){
             foreach ($arr1 as $k => $v){
@@ -324,7 +336,21 @@ class ConfigController extends Controller
 
         }
 
-        \Log::info('修改后数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9, $arr10, $arr11]);
+        if(is_array($arr12)){
+            foreach ($arr12 as $k => $v){
+
+                if($request->has($k)){
+                    $arr12[$k] = $request->get($k);
+                }
+
+            }
+
+            $text = "<?php return ".var_export($arr12,true).";";
+            file_put_contents($url12, $text);
+
+        }
+
+        \Log::info('修改后数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9, $arr10, $arr11, $arr12]);
 
         AdminLog::addLog('修改了配置');
 
