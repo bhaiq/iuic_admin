@@ -75,7 +75,7 @@
                         width: 150,
                     }
                     , {
-                        field: 'tip',
+                        field: 'recommend_bl',
                         title: '推荐分享奖励的占比',
                         width: 200,
                     }
