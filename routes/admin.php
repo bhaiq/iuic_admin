@@ -249,4 +249,9 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('energy_log', ['as' => 'admin.energy_log.index', 'uses' => 'EnergyLogController@index']);
     Route::any('energy_log/index', ['as' => 'admin.energy_log.index', 'uses' => 'EnergyLogController@index']);
 
+    // 高级管理奖订单
+    Route::post('senior_admin/ajax', ['as' => 'admin.senior_admin.edit', 'uses' => 'SeniorAdminController@ajax']);
+    Route::get('senior_admin', ['as' => 'admin.senior_admin.index', 'uses' => 'SeniorAdminController@index']);
+    Route::any('senior_admin/index', ['as' => 'admin.senior_admin.index', 'uses' => 'SeniorAdminController@index']);
+
 });
