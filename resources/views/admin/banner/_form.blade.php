@@ -30,7 +30,7 @@
     <div class="layui-input-block">
         <select name="type">
             @foreach($types as $k => $v)
-                <option value="{{$k}}" @if($k == $type) @endif>{{$v}}</option>
+                <option value="{{$k}}" @if($k == $type) selected @endif>{{$v}}</option>
             @endforeach
         </select>
     </div>
