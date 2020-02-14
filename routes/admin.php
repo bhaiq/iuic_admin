@@ -254,4 +254,18 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('senior_admin', ['as' => 'admin.senior_admin.index', 'uses' => 'SeniorAdminController@index']);
     Route::any('senior_admin/index', ['as' => 'admin.senior_admin.index', 'uses' => 'SeniorAdminController@index']);
 
+    // 抽奖商品
+    Route::any('lottery_goods/index', ['as' => 'admin.lottery_goods.index', 'uses' => 'LotteryGoodsController@index']);
+    Route::resource('lottery_goods', 'LotteryGoodsController', ['names' => ['update' => 'admin.lottery_goods.edit', 'store' => 'admin.lottery_goods.create']]);
+
+    // 抽奖日志
+    Route::get('lottery_log', ['as' => 'admin.lottery_log.index', 'uses' => 'LotteryLogController@index']);
+    Route::any('lottery_log/index', ['as' => 'admin.lottery_log.index', 'uses' => 'LotteryLogController@index']);
+
+    // 抽奖配置
+    Route::post('lottery_config/update', ['as' => 'admin.lottery_config.edit', 'uses' => 'LotteryConfigController@update']);
+    Route::get('lottery_config', ['as' => 'admin.lottery_config.index', 'uses' => 'LotteryConfigController@index']);
+    Route::any('lottery_config/index', ['as' => 'admin.lottery_config.index', 'uses' => 'LotteryConfigController@index']);
+
+
 });
