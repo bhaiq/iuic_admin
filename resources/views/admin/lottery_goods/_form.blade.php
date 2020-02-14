@@ -15,7 +15,7 @@
                 <img class="layui-upload-img" style="max-width: 300px;" id="demo1" @if(isset($img)&&!empty($img)) src="{{$img}}" @endif>
             </p>
         </div>
-        <input type="hidden" name="goods_img" value="{{$img}}">
+        <input type="hidden" name="img" value="{{$img}}">
     </div>
 </div>
 
