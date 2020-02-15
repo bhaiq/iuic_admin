@@ -26,7 +26,8 @@ class EnergyOrderController extends Controller
 
             $p = EnergyOrder::from('energy_order as eo')
                 ->select('eo.*', 'u.new_account')
-                ->join('user as u', 'u.id', 'eo.uid');
+                ->join('user as u', 'u.id', 'eo.uid')
+                ->where('eo.type', 1);
 
             if ($soso) {
                 $p->where(function ($q) use ($soso) {

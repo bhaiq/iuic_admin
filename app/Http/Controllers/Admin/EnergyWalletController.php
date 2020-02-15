@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\AdminLog;
 use App\Models\EnergyLog;
+use App\Models\EnergyOrder;
 use App\Models\UserWallet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -141,6 +142,93 @@ class EnergyWalletController extends Controller
         ];
 
         return view('admin.energy_wallet.ajax', $data);
+    }
+
+    // 增加能量矿池
+    public function addFrozen(Request $request)
+    {
+
+        $uid = $request->get('id');
+        $a = UserWallet::where('uid', $uid)->first();
+        if(!$a){
+            return returnJson(0, '数据有误');
+        }
+
+        if($request->isMethod('POST')){
+
+            $validator = Validator::make($request->all(), [
+                'type' => 'required|in:1',
+                'num' => 'required|numeric',
+            ], [
+                'type.required' => '类型不能为空',
+                'type.in' => '类型格式不正确',
+                'num.required' => '数量不能为空',
+                'num.numeric' => '数量格式不正确',
+            ]);
+
+            if ($validator->fails()) {
+                return returnJson(0, $validator->errors()->first());
+            }
+
+            \DB::beginTransaction();
+            try {
+
+                // 用户增加或减少余额
+                if($request->get('type') == 1){
+
+                    // 记录管理日志
+                    AdminLog::addLog('给用户ID'.$a->uid.'的能量矿池资产增加'.$request->get('num'), $a->uid);
+
+                    // 用户能量矿池余额增加
+                    UserWallet::where('uid', $a->uid)->increment('energy_frozen_num', $request->get('num'));
+
+                    // 能量订单增加
+                    $eoData = [
+                        'uid' => $a->uid,
+                        'goods_id' => 0,
+                        'goods_name' => '后台增加',
+                        'goods_img' => '',
+                        'goods_price' => 0,
+                        'goods_num' => 1,
+                        'num' => $request->get('num'),
+                        'add_num' => $request->get('num'),
+                        'to_name' => '',
+                        'to_mobile' => '',
+                        'to_address' => '',
+                        'release_num' => 0,
+                        'status' => 0,
+                        'type' => 2,
+                        'created_at' => now()->toDateTimeString(),
+                    ];
+
+                    EnergyOrder::create($eoData);
+
+                }
+
+                \DB::commit();
+
+            } catch (\Exception $exception) {
+
+                \DB::rollBack();
+
+                \Log::info('用户改变能量余额失败', $request->all());
+
+                return returnJson(0, '操作异常');
+
+            }
+
+            return returnJson(1, '操作成功');
+
+        }
+
+        $data = [
+            'uid' => $uid,
+            'amount' => $a->energy_num,
+            'amount_freeze' => $a->energy_frozen_num,
+        ];
+
+        return view('admin.energy_wallet.addfrozen', $data);
+
     }
 
 }

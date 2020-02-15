@@ -91,9 +91,10 @@
 
                             @if(Gate::forUser(auth('admin')->user())->check('admin.energy_wallet.edit'))
                                 str += '<a class="layui-btn layui-btn-xs layui-btn-warm"  onclick="active(\'/admin/energy_wallet/ajax\','+ d.uid +',\'能量钱包\',\'GET\',\'800px\',\'330px\')">余额操作</a>';
+                            str += '<a class="layui-btn layui-btn-xs"  onclick="active(\'/admin/energy_wallet/addfrozen\','+ d.uid +',\'能量钱包\',\'GET\',\'800px\',\'330px\')">加能量矿池</a>';
                             @endif
 
-                            return str;
+                                return str;
 
                         }
                     }
