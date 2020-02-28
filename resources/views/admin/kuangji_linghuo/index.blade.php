@@ -55,10 +55,7 @@
                     }
                     , {
                         field: 'num',
-                        title: '数量',
-                        templet: function (d) {
-                            return '<span class="layui-btn layui-btn-xs" onclick="gogo(\'soso='+ d.mobile +'\')">详</span> ' + d.num;
-                        }
+                        title: '数量'
                     }
                     , {
                         field: 'start_time',
