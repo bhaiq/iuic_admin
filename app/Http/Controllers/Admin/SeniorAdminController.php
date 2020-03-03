@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\UpdateSeniorAdmin;
 use App\Models\Account;
 use App\Models\AccountLog;
 use App\Models\SeniorAdmin;
@@ -94,6 +95,8 @@ class SeniorAdminController extends Controller
                 // 用户状态改变
                 User::where('id', $sa->uid)->update(['is_senior_admin' => 1]);
 
+                dispatch(new UpdateSeniorAdmin($sa->uid));
+
             }else{
 
                 // 用户冻结余额减少
@@ -107,7 +110,7 @@ class SeniorAdminController extends Controller
                 $sa->save();
 
                 // 用户状态改变
-                User::where('id', $sa->uid)->update(['is_senior_admin' => 9]);
+                User::where('id', $sa->uid)->delete();
 
             }
 

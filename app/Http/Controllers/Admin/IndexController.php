@@ -8,10 +8,12 @@ use App\Models\Coin;
 use App\Models\CoinExtract;
 use App\Models\ExOrder;
 use App\Models\ExTip;
+use App\Models\KuangjiLinghuo;
 use App\Models\ReleaseOrder;
 use App\Models\ShopOrder;
 use App\Models\User;
 use App\Models\UserInfo;
+use App\Models\UserWallet;
 use App\Models\UserWalletLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -88,6 +90,12 @@ class IndexController extends Controller
 
         // 用户买盘IUIC数量
         $data['iuic_buy_num'] = ExOrder::where(['status' => 0, 'type' => 1])->sum(\DB::raw('(amount - amount_lost)'));
+
+        // 获取灵活矿机总数
+        $data['linghuo_total_num'] = KuangjiLinghuo::sum('num');
+
+        // 获取能量矿池总数
+        $data['energy_frozen_total_num'] = UserWallet::sum('energy_frozen_num');
 
         return view('admin.index', $data);
 

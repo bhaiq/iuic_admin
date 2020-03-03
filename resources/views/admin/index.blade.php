@@ -49,6 +49,14 @@
                     </div>
                 </div>
             </div>
+            <div class="layui-col-md2">
+                <div class="layui-card">
+                    <div class="layui-card-header">灵活矿机总数</div>
+                    <div class="layui-card-body">
+                        {{$linghuo_total_num}}
+                    </div>
+                </div>
+            </div>
 
             <div class="layui-row"></div>
 
@@ -89,6 +97,14 @@
                     <div class="layui-card-header">推荐赠送矿池数</div>
                     <div class="layui-card-body">
                         {{$recommend_ore_pool}}
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md2">
+                <div class="layui-card">
+                    <div class="layui-card-header">能量矿池总数</div>
+                    <div class="layui-card-body">
+                        {{$energy_frozen_total_num}}
                     </div>
                 </div>
             </div>
