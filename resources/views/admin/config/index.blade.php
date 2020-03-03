@@ -988,6 +988,66 @@
                                 </div>
 
                                 <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>高级管理奖下级高级用户数</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="senior_admin_lower_user_count" required lay-verify="required"
+                                               placeholder="请输入数量" autocomplete="off" class="layui-input"
+                                               value="{{$senior_admin_lower_user_count}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>高级管理奖质押IUIC数量</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="senior_admin_num" required lay-verify="required"
+                                               placeholder="请输入数量" autocomplete="off" class="layui-input"
+                                               value="{{$senior_admin_num}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>1星高级管理奖拿伞下报单比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="senior_admin_1_reward_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$senior_admin_1_reward_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.15表示15%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>2星高级管理奖拿伞下报单比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="senior_admin_2_reward_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$senior_admin_2_reward_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>3星高级管理奖拿伞下报单比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="senior_admin_3_reward_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$senior_admin_3_reward_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.25表示25%</div>
+                                </div>
+
+                                <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                 </div>

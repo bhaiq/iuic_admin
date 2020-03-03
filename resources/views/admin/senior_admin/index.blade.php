@@ -83,6 +83,14 @@
                         }
                     }
                     , {
+                        field: 'type',
+                        title: '级别',
+                        width: 100,
+                        templet: function (d) {
+                            return d.type + '星';
+                        }
+                    }
+                    , {
                         field: 'created_at',
                         title: '创建时间',
                         sort: true,
