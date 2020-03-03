@@ -106,11 +106,10 @@ class SeniorAdminController extends Controller
                 Account::addAmount($sa->uid, 2, $sa->num, Account::TYPE_LC);
 
                 // 订单状态变化
-                $sa->status = 9;
-                $sa->save();
+                SeniorAdmin::where('id', $sa->uid)->delete();
 
                 // 用户状态改变
-                User::where('id', $sa->uid)->delete();
+                User::where('id', $sa->uid)->update(['is_senior_admin' => 9]);
 
             }
 
