@@ -21,7 +21,7 @@
 
     <script type="text/html" id="barDemo">
         @if(Gate::forUser(auth('admin')->user())->check('admin.kuangji.edit'))<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>@endif
-        {{--@if(Gate::forUser(auth('admin')->user())->check('admin.kuangji.destroy'))<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>@endif--}}
+        @if(Gate::forUser(auth('admin')->user())->check('admin.kuangji.destroy'))<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>@endif
     </script>
 
     <script type="text/html" id="toolbarDemo">
