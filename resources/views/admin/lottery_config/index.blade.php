@@ -69,30 +69,12 @@
             var laydate = layui.laydate;
             form.render();
 
-            //时间选择器
-            laydate.render({
-                elem: '#test4'
-                ,type: 'time'
-            });
-            laydate.render({
-                elem: '#test5'
-                ,type: 'time'
-            });
-            laydate.render({
-                elem: '#test6'
-                ,type: 'time'
-            });
-            laydate.render({
-                elem: '#test7'
-                ,type: 'time'
-            });
-
             //监听提交
             form.on('submit(formDemo)', function (data) {
                 layer.confirm('确认更新配置吗？', {icon: 3, title: '提示'}, function (index) {
                     console.log(data.field);
                     $.post(
-                        '/admin/config/update',
+                        '/admin/lottery_config/update',
                         data.field,
                         function (d) {
                             layer.close();
