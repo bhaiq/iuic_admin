@@ -185,7 +185,7 @@ class ConfigController extends Controller
         $arr9 = eval(substr($str9, strpos($str9, 'return')));
         $arr11 = eval(substr($str11, strpos($str11, 'return')));
         $arr12 = eval(substr($str12, strpos($str12, 'return')));
-        $arr13 = eval(substr($str12, strpos($str13, 'return')));
+        $arr13 = eval(substr($str13, strpos($str13, 'return')));
 
         $arr6 = config('reward');
         $arr10 = config('admin_mall');
