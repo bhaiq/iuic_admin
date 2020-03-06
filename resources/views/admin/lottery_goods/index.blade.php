@@ -79,17 +79,33 @@
                     , {
                         field: 'zj_bl',
                         title: '中奖概率',
-                        sort: true
+                        width: 150,
                     }
                     , {
                         field: 'is_xc',
                         title: '是否宣传',
-                        width: 120,
+                        width: 100,
                         templet: function (d) {
                             if(d.is_xc == 1){
                                 return '<span class="layui-btn layui-btn-xs layui-btn-normal">宣传</span>';
                             }else{
                                 return '<span class="layui-btn layui-btn-xs layui-btn-primary">不宣传</span>';
+                            }
+                        }
+                    }
+                    , {
+                        field: 'info',
+                        title: '商品说明',
+                    }
+                    , {
+                        field: 'is_display',
+                        title: '是否展示',
+                        width: 100,
+                        templet: function (d) {
+                            if(d.is_display == 1){
+                                return '<span class="layui-btn layui-btn-xs layui-btn-normal">展示</span>';
+                            }else{
+                                return '<span class="layui-btn layui-btn-xs layui-btn-primary">不展示</span>';
                             }
                         }
                     }

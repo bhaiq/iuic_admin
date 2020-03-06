@@ -21,6 +21,8 @@ class LotteryGoodsController extends Controller
         'img' => '',
         'zj_bl' => '',
         'is_xc' => 0,
+        'info' => '',
+        'is_display' => 1,
     ];
 
     // 商品列表

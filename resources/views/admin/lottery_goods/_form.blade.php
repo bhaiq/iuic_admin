@@ -32,6 +32,23 @@
         <input type="radio" name="is_xc" value="0" title="关闭" @if($is_xc == 0) checked @endif>
         <input type="radio" name="is_xc" value="1" title="开启" @if($is_xc == 1) checked @endif>
     </div>
+    <div style="font-size: 12px;color:red;">注：这个是控制是否在抽奖实时记录里面宣传</div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">奖品说明</label>
+    <div class="layui-input-block">
+        <textarea placeholder="请输入说明" class="layui-textarea" name="info" maxlength="200">{{$info}}</textarea>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">是否展示</label>
+    <div class="layui-input-block">
+        <input type="radio" name="is_display" value="0" title="不展示" @if($is_display == 0) checked @endif>
+        <input type="radio" name="is_display" value="1" title="展示" @if($is_display == 1) checked @endif>
+    </div>
+    <div style="font-size: 12px;color:red;">注：这个是控制是否在规则里面展示商品说明</div>
 </div>
 
 <div class="layui-form-item">
