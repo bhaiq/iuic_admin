@@ -205,6 +205,26 @@
                                 </div>
 
                                 <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>交易释放开始时间</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="trade_release_min_time" value="{{$trade_release_min_time}}" class="layui-input" id="test8" placeholder="HH:mm:ss">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>交易释放结束时间</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="trade_release_max_time" value="{{$trade_release_max_time}}" class="layui-input" id="test9" placeholder="HH:mm:ss">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                 </div>
@@ -390,26 +410,6 @@
                                         <input type="text" name="cur_trade_min_bl" required lay-verify="required"
                                                placeholder="请输入比例" autocomplete="off" class="layui-input"
                                                value="{{$cur_trade_min_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux"></div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>交易释放开始时间</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="trade_release_min_time" value="{{$trade_release_min_time}}" class="layui-input" id="test8" placeholder="HH:mm:ss">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux"></div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>交易释放结束时间</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="trade_release_max_time" value="{{$trade_release_max_time}}" class="layui-input" id="test9" placeholder="HH:mm:ss">
                                     </div>
                                     <div class="layui-form-mid layui-word-aux"></div>
                                 </div>
