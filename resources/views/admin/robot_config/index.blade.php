@@ -129,7 +129,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>机器人挂单的最小价格</label>
+                                                style="font-size:8px;color:red;"></i>机器人挂单的最小数量</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="robot_min_trade_num" required lay-verify="required"
                                                placeholder="请输入数量" autocomplete="off" class="layui-input"
@@ -141,7 +141,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>机器人挂单的最大价格</label>
+                                                style="font-size:8px;color:red;"></i>机器人挂单的最大数量</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="robot_max_trade_num" required lay-verify="required"
                                                placeholder="请输入数量" autocomplete="off" class="layui-input"
