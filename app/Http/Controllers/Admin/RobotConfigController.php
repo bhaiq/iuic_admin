@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrator
- * Date: 2020/2/13
- * Time: 16:18
+ * User: Asus
+ * Date: 2020/3/10
+ * Time: 11:26
  */
 
 namespace App\Http\Controllers\Admin;
@@ -12,14 +12,15 @@ use App\Models\AdminLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class LotteryConfigController extends Controller
+class RobotConfigController extends Controller
 {
 
     // 配置列表
     public function index()
     {
 
-        $url1 = '/www/wwwroot/iuic.too86.com/config/lottery.php';
+//        $url1 = '/www/wwwroot/iuic.too86.com/config/robot.php';
+        $url1 = '/www/wwwroot/iuic.9dg.com/config/robot.php';
         $str1 = file_get_contents($url1);
         $arr1 = eval(substr($str1, strpos($str1, 'return')));
 
@@ -32,7 +33,7 @@ class LotteryConfigController extends Controller
             }
         }
 
-        return view('admin.lottery_config.index', $data);
+        return view('admin.robot_config.index', $data);
 
     }
 
@@ -40,7 +41,8 @@ class LotteryConfigController extends Controller
     public function update(Request $request)
     {
 
-        $url1 = '/www/wwwroot/iuic.too86.com/config/lottery.php';
+//        $url1 = '/www/wwwroot/iuic.too86.com/config/robot.php';
+        $url1 = '/www/wwwroot/iuic.9dg.com/config/robot.php';
 
         $str1 = file_get_contents($url1);
 
@@ -65,7 +67,7 @@ class LotteryConfigController extends Controller
 
         \Log::info('修改后数据', [$arr1]);
 
-        AdminLog::addLog('修改了抽奖配置');
+        AdminLog::addLog('修改了机器人配置');
 
         \Log::info('修改了配置信息', $request->all());
 

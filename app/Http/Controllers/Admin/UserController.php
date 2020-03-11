@@ -145,6 +145,8 @@ class UserController extends Controller
         foreach (array_keys($this->fields) as $field) {
             $user->$field = $request->get($field);
         }
+
+        $user->new_account = $pidUser->mobile;
         $user->pid = $pidUser->id;
         $user->pid_path = $pidUser->pid_path . $pidUser->id . ',';
         $user->password = password($request->get('password'));

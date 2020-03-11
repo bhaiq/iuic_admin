@@ -268,5 +268,13 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('lottery_config', ['as' => 'admin.lottery_config.index', 'uses' => 'LotteryConfigController@index']);
     Route::any('lottery_config/index', ['as' => 'admin.lottery_config.index', 'uses' => 'LotteryConfigController@index']);
 
+    // 机器人订单
+    Route::get('robot_order', ['as' => 'admin.robot_order.index', 'uses' => 'RobotOrderController@index']);
+    Route::any('robot_order/index', ['as' => 'admin.robot_order.index', 'uses' => 'RobotOrderController@index']);
+
+    // 机器人配置
+    Route::post('robot_config/update', ['as' => 'admin.robot_config.edit', 'uses' => 'RobotConfigController@update']);
+    Route::get('robot_config', ['as' => 'admin.robot_config.index', 'uses' => 'RobotConfigController@index']);
+    Route::any('robot_config/index', ['as' => 'admin.robot_config.index', 'uses' => 'RobotConfigController@index']);
 
 });
