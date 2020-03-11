@@ -25,7 +25,7 @@
         <div class="layui-card-body">
             <div class="layui-tab layui-tab-card">
                 <ul class="layui-tab-title">
-                    <li class="layui-this">抽奖配置</li>
+                    <li class="layui-this">机器人配置</li>
                 </ul>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
