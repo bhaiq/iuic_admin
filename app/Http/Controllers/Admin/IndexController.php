@@ -6,6 +6,7 @@ use App\Models\Account;
 use App\Models\AccountLog;
 use App\Models\Coin;
 use App\Models\CoinExtract;
+use App\Models\EnergyReleaseLog;
 use App\Models\ExOrder;
 use App\Models\ExTip;
 use App\Models\KuangjiLinghuo;
@@ -27,7 +28,75 @@ class IndexController extends Controller
 
         $data = [];
 
-        // 单日交易挖矿释放
+        // 注册用户
+        $data['zc_user'] = User::count();
+
+        // 高级用户
+        $data['gj_user'] = UserInfo::where('level', 2)->count();
+
+        // 普通用户
+        $data['pt_user'] = UserInfo::where('level', 1)->count();
+
+        // 能量会员数
+        $data['nl_user'] = UserWallet::count();
+
+        // 累计交易挖矿释放
+        $data['total_trade_release'] = UserWalletLog::where('exp', '交易释放')->sum('num');
+
+        // 矿池总数
+        $data['total_ore_pool'] = UserInfo::sum('buy_total');
+
+        // 灵活矿机释放总数
+        $data['total_linghuo_release'] = UserWalletLog::where('exp', '灵活矿机释放')->sum('num');
+
+        // 当日释放总数
+        $data['today_release'] = UserWalletLog::where(function ($q){
+            $q->where('exp', '交易释放')->orwhere('exp', '灵活矿机释放')->orwhere('exp', '矿池静态释放');
+        })->whereDate('created_at', now()->toDateString())->sum('num');
+
+        // 释放总数
+        $data['total_release'] = UserWalletLog::where(function ($q){
+            $q->where('exp', '交易释放')->orwhere('exp', '灵活矿机释放')->orwhere('exp', '矿池静态释放');
+        })->sum('num');
+
+        // IUIC剩余矿池总数
+        $data['iuic_surplus_kc_total'] = UserInfo::sum(\DB::raw('(buy_total - release_total)'));
+
+        // 灵活矿机剩余总数
+        $data['linghuo_surplus_total'] = KuangjiLinghuo::sum('num');
+
+        // 能量矿池剩余总数
+        $data['energy_surplus_total'] = UserWallet::sum('energy_frozen_num');
+
+        // 能量矿池当日释放数
+        $data['energy_today_release'] = EnergyReleaseLog::whereDate('created_at', now()->toDateString())->sum('num');
+
+        // 能量释放累计总数
+        $data['energy_total_release'] = EnergyReleaseLog::sum('num');
+
+        // 用户IUIC钱包
+        $data['iuic_bb_num'] = Account::where('type', 0)->where('coin_id', 2)->sum(\DB::raw('amount + amount_freeze'));
+        $data['iuic_fb_num'] = Account::where('type', 1)->where('coin_id', 2)->sum(\DB::raw('amount + amount_freeze'));
+
+        // 用户卖盘IUIC数量
+        $data['iuic_sell_num'] = ExOrder::where(['status' => 0, 'type' => 0])->sum(\DB::raw('(amount - amount_lost)'));
+
+        // 用户买盘IUIC数量
+        $data['iuic_buy_num'] = ExOrder::where(['status' => 0, 'type' => 1])->sum(\DB::raw('(amount - amount_lost)'));
+
+        // 用户USDT钱包
+        $data['usdt_bb_num'] = Account::where('type', 0)->where('coin_id', 1)->sum(\DB::raw('amount + amount_freeze'));
+        $data['usdt_fb_num'] = Account::where('type', 1)->where('coin_id', 1)->sum(\DB::raw('amount + amount_freeze'));
+
+        // 用户卖盘USDT数量
+        $data['usdt_sell_num'] = ExOrder::where(['status' => 0, 'type' => 0])->sum('amount_deal');
+
+        // 用户买盘IUIC数量
+        $data['usdt_buy_num'] = ExOrder::where(['status' => 0, 'type' => 1])->sum('amount_deal');
+
+        return view('admin.index', $data);
+
+        /*// 单日交易挖矿释放
         $data['today_trade_release'] = UserWalletLog::where('exp', '交易释放')->whereDate('created_at', now()->toDateString())->sum('num');
 
         // 累计交易挖矿释放
@@ -97,7 +166,7 @@ class IndexController extends Controller
         // 获取能量矿池总数
         $data['energy_frozen_total_num'] = UserWallet::sum('energy_frozen_num');
 
-        return view('admin.index', $data);
+        return view('admin.index', $data);*/
 
     }
 

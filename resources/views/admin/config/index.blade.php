@@ -25,23 +25,20 @@
         <div class="layui-card-body">
             <div class="layui-tab layui-tab-card">
                 <ul class="layui-tab-title">
-                    <li class="layui-this">商家配置</li>
-                    <li class="">提现配置</li>
-                    <li class="">交易释放</li>
-                    <li class="">商城配置</li>
+                    <li class="layui-this">OTC商家配置</li>
+                    <li class="">会员提现配置</li>
+                    <li class="">交易释放配置</li>
                     <li class="">交易配置</li>
                     <li class="">奖励配置</li>
                     <li class="">合伙人配置</li>
                     <li class="">矿机配置</li>
-                    <li class="">节点配置</li>
-                    <li class="">新商城配置</li>
-                    <li class="">能量商城</li>
-                    <li class="">推荐分享配置</li>
+                    <li class="">网上购物商城配置</li>
+                    <li class="">能量配置</li>
                 </ul>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
                         <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
-                        商家配置
+                        OTC商家配置
                         <div class="layui-card-body">
                             <form class="layui-form layui-form-pane" method="post"
                                   action="{{url('admin/config/update')}}" enctype="multipart/form-data">
@@ -100,7 +97,7 @@
 
                     <div class="layui-tab-item">
                         <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
-                        提现配置
+                        会员提现配置
                         <div class="layui-card-body">
                             <form class="layui-form layui-form-pane" method="post"
                                   action="{{url('admin/config/update')}}" enctype="multipart/form-data">
@@ -130,6 +127,28 @@
                                 </div>
 
                                 <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>手机单一注册开关</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="radio" name="register_mobile_switch" value="0" title="关闭" @if($register_mobile_switch == 0) checked @endif>
+                                        <input type="radio" name="register_mobile_switch" value="1" title="开启" @if($register_mobile_switch == 1) checked @endif>
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：开启以后一个手机只能注册1个账号，关闭的话一个手机可以注册10个账号</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>用户认证开关</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="radio" name="user_auth_switch" value="0" title="关闭" @if($user_auth_switch == 0) checked @endif>
+                                        <input type="radio" name="user_auth_switch" value="1" title="开启" @if($user_auth_switch == 1) checked @endif>
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：开启以后用户提交的身份信息需要认证</div>
+                                </div>
+
+                                <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                 </div>
@@ -139,7 +158,7 @@
 
                     <div class="layui-tab-item">
                         <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
-                        交易释放
+                        交易释放配置
                         <div class="layui-card-body">
                             <form class="layui-form layui-form-pane" method="post"
                                   action="{{url('admin/config/update')}}" enctype="multipart/form-data">
@@ -220,69 +239,6 @@
                                                 style="font-size:8px;color:red;"></i>交易释放结束时间</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="trade_release_max_time" value="{{$trade_release_max_time}}" class="layui-input" id="test9" placeholder="HH:mm:ss">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux"></div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="layui-tab-item">
-                        <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
-                        商城配置
-                        <div class="layui-card-body">
-                            <form class="layui-form layui-form-pane" method="post"
-                                  action="{{url('admin/config/update')}}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>上级奖励矿池比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="pid_reward" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$pid_reward}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux"></div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>管理奖数量</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="number" name="admin_bonus_num" required lay-verify="required"
-                                               placeholder="请输入数量" autocomplete="off" class="layui-input"
-                                               value="{{$admin_bonus_num}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux"></div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>手续费分红奖比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="bonus_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$bonus_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux"></div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>手续费管理奖比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="admin_bonus_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$admin_bonus_bl}}">
                                     </div>
                                     <div class="layui-form-mid layui-word-aux"></div>
                                 </div>
@@ -429,6 +385,7 @@
                             <form class="layui-form layui-form-pane" method="post"
                                   action="{{url('admin/config/update')}}" enctype="multipart/form-data">
                                 @csrf
+
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
@@ -439,6 +396,162 @@
                                                value="{{$auth_reward}}">
                                     </div>
                                     <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>直推分享奖励比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="recommend_share_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$recommend_share_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>上级奖励矿池比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="pid_reward" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$pid_reward}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>管理奖数量</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="number" name="admin_bonus_num" required lay-verify="required"
+                                               placeholder="请输入数量" autocomplete="off" class="layui-input"
+                                               value="{{$admin_bonus_num}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>手续费分红奖比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="bonus_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$bonus_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>手续费管理奖比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="admin_bonus_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$admin_bonus_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>小节点奖分红比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="small_node" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$small_node}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.05表示5%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>大节点奖分红比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="big_node" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$big_node}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.04表示4%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>超级节点奖分红比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="super_node" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$super_node}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.03表示3%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>高级管理奖下级高级用户数</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="senior_admin_lower_user_count" required lay-verify="required"
+                                               placeholder="请输入数量" autocomplete="off" class="layui-input"
+                                               value="{{$senior_admin_lower_user_count}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>高级管理奖质押IUIC数量</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="senior_admin_num" required lay-verify="required"
+                                               placeholder="请输入数量" autocomplete="off" class="layui-input"
+                                               value="{{$senior_admin_num}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>1星高级管理奖拿伞下报单比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="senior_admin_1_reward_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$senior_admin_1_reward_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.15表示15%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>2星高级管理奖拿伞下报单比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="senior_admin_2_reward_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$senior_admin_2_reward_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>3星高级管理奖拿伞下报单比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="senior_admin_3_reward_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$senior_admin_3_reward_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.25表示25%</div>
                                 </div>
 
                                 <div class="layui-form-item">
@@ -483,13 +596,25 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>合伙人分红比例</label>
+                                                style="font-size:8px;color:red;"></i>合伙人分红比例(奖励I)</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="tip_partner" required lay-verify="required"
                                                placeholder="请输入比例" autocomplete="off" class="layui-input"
                                                value="{{$tip_partner}}">
                                     </div>
                                     <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>合伙人奖励比例(奖励U)</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="recommend_partner_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$recommend_partner_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.05表示5%，这里是老报单那里的配置</div>
                                 </div>
 
                                 <div class="layui-form-item">
@@ -657,58 +782,7 @@
 
                     <div class="layui-tab-item">
                         <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
-                        节点配置
-                        <div class="layui-card-body">
-                            <form class="layui-form layui-form-pane" method="post"
-                                  action="{{url('admin/config/update')}}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>小节点奖分红比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="small_node" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$small_node}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.05表示5%</div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>大节点奖分红比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="big_node" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$big_node}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.04表示4%</div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>超级节点奖分红比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="super_node" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$super_node}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.03表示3%</div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="layui-tab-item">
-                        <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
-                        新商城配置
+                        网上购物商城配置
                         <div class="layui-card-body">
                             <form class="layui-form layui-form-pane" method="post"
                                   action="{{url('admin/config/update')}}" enctype="multipart/form-data">
@@ -792,7 +866,7 @@
                             </form>
                         </div>
                     </div>
-
+                    
                     <div class="layui-tab-item">
                         <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
                         能量商城
@@ -978,105 +1052,6 @@
                                                value="{{$energy_zk_bl}}">
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">注：0.5表示50%</div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="layui-tab-item">
-                        <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
-                        推荐分享配置
-                        <div class="layui-card-body">
-                            <form class="layui-form layui-form-pane" method="post"
-                                  action="{{url('admin/config/update')}}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>直推分享奖励比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="recommend_share_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$recommend_share_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%</div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>合伙人奖励比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="recommend_partner_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$recommend_partner_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.05表示5%，这里是老报单那里的配置</div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>高级管理奖下级高级用户数</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="senior_admin_lower_user_count" required lay-verify="required"
-                                               placeholder="请输入数量" autocomplete="off" class="layui-input"
-                                               value="{{$senior_admin_lower_user_count}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux"></div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>高级管理奖质押IUIC数量</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="senior_admin_num" required lay-verify="required"
-                                               placeholder="请输入数量" autocomplete="off" class="layui-input"
-                                               value="{{$senior_admin_num}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux"></div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>1星高级管理奖拿伞下报单比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="senior_admin_1_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$senior_admin_1_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.15表示15%</div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>2星高级管理奖拿伞下报单比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="senior_admin_2_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$senior_admin_2_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 200px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>3星高级管理奖拿伞下报单比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="senior_admin_3_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$senior_admin_3_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.25表示25%</div>
                                 </div>
 
                                 <div class="layui-form-item">
