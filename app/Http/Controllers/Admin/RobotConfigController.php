@@ -19,8 +19,8 @@ class RobotConfigController extends Controller
     public function index()
     {
 
-//        $url1 = '/www/wwwroot/iuic.too86.com/config/robot.php';
-        $url1 = '/www/wwwroot/iuic.9dg.com/config/robot.php';
+        $url1 = '/www/wwwroot/iuic.too86.com/config/robot.php';
+//        $url1 = '/www/wwwroot/iuic.9dg.com/config/robot.php';
         $str1 = file_get_contents($url1);
         $arr1 = eval(substr($str1, strpos($str1, 'return')));
 
@@ -41,8 +41,8 @@ class RobotConfigController extends Controller
     public function update(Request $request)
     {
 
-//        $url1 = '/www/wwwroot/iuic.too86.com/config/robot.php';
-        $url1 = '/www/wwwroot/iuic.9dg.com/config/robot.php';
+        $url1 = '/www/wwwroot/iuic.too86.com/config/robot.php';
+//        $url1 = '/www/wwwroot/iuic.9dg.com/config/robot.php';
 
         $str1 = file_get_contents($url1);
 
