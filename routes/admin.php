@@ -281,5 +281,8 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('energy_appoint_user/index', ['as' => 'admin.energy_appoint_user.index', 'uses' => 'EnergyAppointUserController@index']);
     Route::resource('energy_appoint_user', 'EnergyAppointUserController', ['names' => ['update' => 'admin.energy_appoint_user.edit', 'store' => 'admin.energy_appoint_user.create']]);
 
+    // 锁仓能量转账
+    Route::get('energy_lock_transfer', ['as' => 'admin.energy_lock_transfer.index', 'uses' => 'EnergyLockTransferController@index']);
+    Route::any('energy_lock_transfer/index', ['as' => 'admin.energy_lock_transfer.index', 'uses' => 'EnergyLockTransferController@index']);
 
 });
