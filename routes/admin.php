@@ -277,4 +277,9 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('robot_config', ['as' => 'admin.robot_config.index', 'uses' => 'RobotConfigController@index']);
     Route::any('robot_config/index', ['as' => 'admin.robot_config.index', 'uses' => 'RobotConfigController@index']);
 
+    // 指定锁仓用户
+    Route::any('energy_appoint_user/index', ['as' => 'admin.energy_appoint_user.index', 'uses' => 'EnergyAppointUserController@index']);
+    Route::resource('energy_appoint_user', 'EnergyAppointUserController', ['names' => ['update' => 'admin.energy_appoint_user.edit', 'store' => 'admin.energy_appoint_user.create']]);
+
+
 });
