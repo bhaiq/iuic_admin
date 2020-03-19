@@ -158,12 +158,13 @@ class EnergyWalletController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'type' => 'required|in:1',
-                'num' => 'required|numeric',
+                'num' => 'required|numeric|min:1',
             ], [
                 'type.required' => '类型不能为空',
                 'type.in' => '类型格式不正确',
                 'num.required' => '数量不能为空',
                 'num.numeric' => '数量格式不正确',
+                'num.min' => '数量不能小于1',
             ]);
 
             if ($validator->fails()) {

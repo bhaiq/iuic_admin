@@ -77,6 +77,10 @@
                         title: '冻结余额'
                     }
                     , {
+                        field: 'energy_lock_num',
+                        title: '锁仓能量余额'
+                    }
+                    , {
                         field: 'created_at',
                         title: '创建时间',
                         sort: true,
