@@ -32,9 +32,9 @@ class AuthAdmin
         $routeName = starts_with(Route::currentRouteName(), 'admin.') ? Route::currentRouteName() : 'admin.' . Route::currentRouteName();
 
         // 首页不需要权限
-        if($routeName == 'admin.index.index'){
-            return $next($request);
-        }
+        // if($routeName == 'admin.index.index'){
+        //     return $next($request);
+        // }
 
         if (!Gate::forUser(auth('admin')->user())->check($routeName)) {
             if ($request->ajax() && ($request->getMethod() != 'GET')) {

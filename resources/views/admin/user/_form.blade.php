@@ -45,6 +45,36 @@
 </div>
 @endif
 
+@if(isset($id))
+<div class="layui-form-item">
+    <label class="layui-form-label">星级社群</label>
+    <div class="layui-input-block">
+        <select name="star_community">
+
+                @foreach($star as $k => $v)
+                    <option value="{{$k}}" @if($k == $star_community) selected @endif>{{$v}}</option>
+                @endforeach
+
+        </select>
+    </div>
+</div>
+@endif
+
+@if(isset($id))
+<div class="layui-form-item">
+    <label class="layui-form-label">是否开启能量团队长奖</label>
+    <div class="layui-input-block">
+        <select name="energy_captain_award">
+
+                @foreach($energy_captain as $k => $v)
+                    <option value="{{$k}}" @if($k == $energy_captain_award) selected @endif>{{$v}}</option>
+                @endforeach
+
+        </select>
+    </div>
+</div>
+@endif
+
 @if(!isset($id))
 <div class="layui-form-item">
     <label class="layui-form-label">邀请码</label>

@@ -43,9 +43,26 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     // 用户管理
     Route::any('user/status', ['as' => 'admin.user.edit', 'uses' => 'UserController@setStatus']);
     Route::any('user/add_ore_pool', ['as' => 'admin.user.edit', 'uses' => 'UserController@addOrePool']);
+  	Route::any('user/minus_ore_pool', ['as' => 'admin.user.edit', 'uses' => 'UserController@minusOrePool']);
     Route::any('user/ajax', ['as' => 'admin.user.edit', 'uses' => 'UserController@ajax']);
     Route::any('user/index', ['as' => 'admin.user.index', 'uses' => 'UserController@index']);
+  
+  	Route::any('user/opspeed', ['as' => 'admin.user.edit', 'uses' => 'UserController@openSpeed']);
+    Route::any('user/ophead', ['as' => 'admin.user.edit', 'uses' => 'UserController@openHead']);
+    Route::any('user/opmana', ['as' => 'admin.user.edit', 'uses' => 'UserController@openMana']);
+  
+  	Route::any('user/enery_head_lv', ['as' => 'admin.user.edit', 'uses' => 'UserController@eneryHeadLv']);
+    Route::any('user/enery_head_lv_adjust', ['as' => 'admin.user.edit', 'uses' => 'UserController@eneryHeadLvAdjust']);
+  
+  	Route::any('user/independent_management', ['as' => 'admin.user.edit', 'uses' => 'UserController@independentManagement']);
+    Route::any('user/independent_management_adjust', ['as' => 'admin.user.edit', 'uses' => 'UserController@independentManagementAdjust']);
+  
+  	Route::any('user/community_sanxia', ['as' => 'admin.user.edit', 'uses' => 'UserController@communitySanxia']);
+    Route::any('user/community_sanxia_adjust', ['as' => 'admin.user.edit', 'uses' => 'UserController@communitySanxiaAdjust']);
+  
     Route::resource('user', 'UserController', ['names' => ['update' => 'admin.user.edit', 'store' => 'admin.user.create']]);
+  
+  	
 
     // 钱包列表
     Route::any('wallet/ajax', ['as' => 'admin.wallet.edit', 'uses' => 'WalletController@ajax']);
@@ -284,5 +301,16 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     // 锁仓能量转账
     Route::get('energy_lock_transfer', ['as' => 'admin.energy_lock_transfer.index', 'uses' => 'EnergyLockTransferController@index']);
     Route::any('energy_lock_transfer/index', ['as' => 'admin.energy_lock_transfer.index', 'uses' => 'EnergyLockTransferController@index']);
+  
+  	// 星级社群
+    Route::any('star_community/index', ['as' => 'admin.star_community.index', 'uses' => 'StarCommunityController@index']);
+    Route::resource('star_community', 'StarCommunityController', ['names' => ['update' => 'admin.star_community.edit', 'store' => 'admin.star_community.create']]);
+
+    //免责协议
+    Route::any('agreement/index', ['as' => 'admin.agreement.index', 'uses' => 'AgreementController@index']);
+    Route::resource('agreement', 'AgreementController', ['names' => ['update' => 'admin.agreement.edit', 'store' => 'admin.agreement.create']]);
+  
+  	Route::any('ceshi', ['as' => 'admin.energy_lock_transfer.index', 'uses' => 'EnergyLockTransferController@index']);
+ 
 
 });

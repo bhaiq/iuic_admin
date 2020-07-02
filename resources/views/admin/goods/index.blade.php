@@ -86,7 +86,15 @@
                         sort: true,
                         width: 120
                     }
-                    , {
+                    , 
+                  	{
+                        field: 'bonus_coefficient',
+                        title: '奖励系数',
+                        sort: true,
+                        width: 120
+                    },
+                  	
+                  	{
                         field: 'coin_type',
                         title: '币种类型',
                         sort: true,
@@ -101,6 +109,18 @@
                         field: 'buy_count',
                         title: '商品价值',
                         width: 100,
+                    }
+                  , {
+                        field: 'is_show',
+                        title: '是否在前台展示',
+                        width: 100,
+                        templet: function (d) {
+                            if(d.is_show == 0){
+                                return '<span class="layui-btn layui-btn-normal layui-btn-xs">不显示</span>';
+                            }else if(d.is_show == 1){
+                                return '<span class="layui-btn layui-btn-xs">显示</span>';
+                            }
+                        }
                     }
                     , {
                         field: 'created_at',

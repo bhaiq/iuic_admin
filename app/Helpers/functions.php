@@ -52,5 +52,6 @@ function getRandCode($num = 40)
 // 密码加密
 function password($string)
 {
-    return sha1(md5($string) . env('APP_KEY'));
+  	return sha1(md5($string) . 'base64:8T5mkadsS9rj9Umi2Js+JxxqeNoPfqqsriBdaXzwzTU=');
+    // return sha1(md5($string) . env('APP_KEY'));
 }

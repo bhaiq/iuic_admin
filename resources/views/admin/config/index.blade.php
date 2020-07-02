@@ -554,6 +554,132 @@
                                     <div class="layui-form-mid layui-word-aux">注：0.25表示25%</div>
                                 </div>
 
+                              	<!-- iuic独立团队长奖 -->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>iuic独立团队长奖比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="admin_mall_head_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$admin_mall_head_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%，这个比例是伞下新增报单中扣除</div>
+                                </div>
+
+                                <!-- iuic独立管理奖 -->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>iuic独立管理奖比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="admin_mall_mana_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$admin_mall_mana_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.05表示5%，这个比例是全网新增报单中扣除</div>
+                                </div>
+                              
+                              
+                              
+                              	                              
+                              	<!-- iuic社群分红配置 -->
+                              
+                              
+                              	<div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第一级</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="community_lv1" required lay-verify="required"
+                                               placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
+                                               value="{{$community_lv1}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：7200表示报单累计达到7200U</div>
+                                </div>
+                              
+                              	<div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第二级</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="community_lv2" required lay-verify="required"
+                                               placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
+                                               value="{{$community_lv2}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：100000表示报单累计达到100000U</div>
+                                </div>
+                              	<div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第三级</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="community_lv3" required lay-verify="required"
+                                               placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
+                                               value="{{$community_lv3}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：500000表示报单累计达到500000U</div>
+                                </div>
+								
+                              	<div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第四级</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="community_lv4" required lay-verify="required"
+                                               placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
+                                               value="{{$community_lv4}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：1500000表示报单累计达到1500000U</div>
+                                </div>
+                              
+                              	<div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第一级比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="community_bl_lv1" required lay-verify="required"
+                                               placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
+                                               value="{{$community_bl_lv1}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月社群分红第一级比例</div>
+                                </div>
+                              	<div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第二级比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="community_bl_lv2" required lay-verify="required"
+                                               placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
+                                               value="{{$community_bl_lv2}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月社群分红第二级比例</div>
+                                </div>
+                              	<div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第三级比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="community_bl_lv3" required lay-verify="required"
+                                               placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
+                                               value="{{$community_bl_lv3}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月社群分红第三级比例</div>
+                                </div>
+                              
+                              	<div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第四级比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="community_bl_lv4" required lay-verify="required"
+                                               placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
+                                               value="{{$community_bl_lv4}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月社群分红第四级比例</div>
+                                </div>
+                              
+                              
                                 <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -617,6 +743,19 @@
                                     <div class="layui-form-mid layui-word-aux">注：0.05表示5%，这里是老报单那里的配置</div>
                                 </div>
 
+                              
+                              	<!-- 全网首次报单合伙人奖励比例 -->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>全网首次报单合伙人奖励比例(奖励U)</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="recommend_all_first_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$recommend_all_first_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.05表示5%</div>
+                                </div>
                                 <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -1053,7 +1192,80 @@
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">注：0.5表示50%</div>
                                 </div>
+								
+                              	<!-- 加速比例设置 -->
+                               <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 300px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>能量报单加速比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="energy_jiasu_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$energy_jiasu_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
+                               </div>
+                              
+                              <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 300px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>能量团队长奖</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="energy_captain_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$energy_captain_bl}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
+                                </div>
+                              <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 300px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>社群分享奖</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="share_star_reward" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$share_star_reward}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
+                                </div>
+                              
+                              
+                              	<!-- 能量独立团队长分红设置 -->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 300px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>能量独立团队长分红一级</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="energy_head_lv1" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$energy_head_lv1}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
+                                </div>
 
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 300px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>能量独立团队长分红二级</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="energy_head_lv2" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$energy_head_lv2}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 300px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>能量独立团队长分红三级</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="energy_head_lv3" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$energy_head_lv3}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
+                                </div>
+                              
                                 <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>

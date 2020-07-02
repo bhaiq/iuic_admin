@@ -25,6 +25,8 @@ class GoodsController extends Controller
         'ore_pool' => '',
         'buy_count' => 1,
         'goods_details' => '',
+      	'bonus_coefficient' => '',
+      	'is_show'=>'',
     ];
 
     // 商品列表

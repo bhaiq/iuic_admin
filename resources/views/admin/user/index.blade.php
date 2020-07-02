@@ -146,8 +146,87 @@
                                 return '<span class="layui-btn layui-btn-primary layui-btn-xs">无</span>';
                             }
                         }
+                    },
+                  	{
+                        field: 'is_open_speedup',
+                        title: '额外一代加速',
+                        width: 75,
+                        templet: function (d) {
+                            if(d.is_open_speedup == 1){
+                                return '<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="openspeed">开通</a>';
+                            }else{
+                                return '<a class="layui-btn layui-btn-danger layui-btn-xs"  lay-event="downspeed">关闭</a>';
+                            }
+                        }
                     }
-                    , {
+                  	, {
+                        field: 'independent_head',
+                        title: 'iuic独立团队长奖',
+                        width: 75,
+                        templet: function (d) {
+                            if(d.is_independent_head == 1){
+                                return '<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="openhead">开通</a>';
+                            }else{
+                                return '<a class="layui-btn layui-btn-danger layui-btn-xs"  lay-event="downhead">关闭</a>';
+                            }
+                        }
+                    }
+                  	, {
+                        field: 'is_independent_management',
+                        title: 'iuic独立管理奖',
+                        width: 75,
+                        templet: function (d) {
+                            if(d.is_independent_management == 1){
+                                return '<span style="color:green">已开通</span>';
+                              	
+                            }else{
+                                return '<span style="color:red">已关闭</span>';
+                            }
+                        }
+                    }
+                  	, {
+                        field: 'independent_management_bl',
+                        title: 'iuic独立管理奖比例',
+                        width: 75
+                    }
+                  
+                  	, {
+                        field: 'is_independent_management',
+                        title: '社群分享奖-伞下',
+                        width: 75,
+                        templet: function (d) {
+                            if(d.is_community_sanxia == 1){
+                                return '<span style="color:green">已开通</span>';
+                              	
+                            }else{
+                                return '<span style="color:red">已关闭</span>';
+                            }
+                        }
+                    }
+                  	, {
+                        field: 'community_sanxia_bl',
+                        title: '社群分享奖比例-伞下',
+                        width: 75
+                    }
+                  	, {
+                        field: 'star_community',
+                        title: '社群等级',
+                        width: 90,
+                        templet: function (d) {
+                            if(d.star_community == 1){
+                                return '<span>一星社群</span>';
+                            }else if(d.star_community == 2){
+                                return '<span>二星社群</span>';
+                            }else if(d.star_community == 3){
+                                return '<span>三星社群</span>';
+                            }else{
+                                return '<span>没有社群</span>';
+                            }	
+                        }
+                    }
+                  	
+                  	
+                    ,{
                         field: 'status',
                         title: '状态',
                         width: 60,
@@ -180,11 +259,28 @@
                             @if(Gate::forUser(auth('admin')->user())->check('admin.wallet.index'))
                                 str += '<a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="wallet">钱包</a>';
                             @endif
-
+                            
                             @if(Gate::forUser(auth('admin')->user())->check('admin.user.edit'))
                                 str += '<a class="layui-btn layui-btn-xs"  onclick="active(\'/admin/user/add_ore_pool\','+ d.id +',\'增加矿池\',\'GET\',\'800px\',\'330px\')">加矿</a>';
                             @endif
-
+                            
+                            @if(Gate::forUser(auth('admin')->user())->check('admin.user.edit'))
+                                str += '<a class="layui-btn layui-btn-xs"  onclick="active(\'/admin/user/minus_ore_pool\','+ d.id +',\'减少矿池\',\'GET\',\'800px\',\'330px\')">减矿</a>';
+                            @endif
+                            
+                            @if(Gate::forUser(auth('admin')->user())->check('admin.user.edit'))
+                                str += '<a class="layui-btn layui-btn-xs"  onclick="active(\'/admin/user/enery_head_lv\','+ d.id +',\'调整能量独立团长等级\',\'GET\',\'800px\',\'330px\')">调整能量独立团长等级</a>';
+                            @endif
+							
+                            
+                            @if(Gate::forUser(auth('admin')->user())->check('admin.user.edit'))
+                                str += '<a class="layui-btn layui-btn-xs"  onclick="active(\'/admin/user/independent_management\','+ d.id +',\'开通iuic独立管理奖\',\'GET\',\'800px\',\'330px\')">开通iuic独立管理奖</a>';
+                            @endif
+							
+                            @if(Gate::forUser(auth('admin')->user())->check('admin.user.edit'))
+                                str += '<a class="layui-btn layui-btn-xs"  onclick="active(\'/admin/user/community_sanxia\','+ d.id +',\'社群分享奖-伞下\',\'GET\',\'800px\',\'330px\')">社群分享奖-伞下</a>';
+                            @endif
+                            
                             if(d.p_status == 1){
                                 @if(Gate::forUser(auth('admin')->user())->check('admin.user.edit'))
                                     str += '<a class="layui-btn layui-btn-xs layui-btn-normal"  onclick="active(\'/admin/user/ajax\','+ d.id +',\'换上级\',\'GET\',\'800px\',\'330px\')">换上级</a>';
@@ -282,6 +378,177 @@
                     });
 
 
+                }else if(obj.event === 'downspeed'){
+                    that = $(this);
+                    layer.confirm('开通么', function (index) {
+                        $.ajax({
+                            url: "/admin/user/opspeed",
+                            type: "POST",
+                            data: {
+                                'id': data.id,
+                                'type': 1,
+                                '_token': "{{ csrf_token() }}"
+                            },
+                            success: function (d) {
+                                if (d.code == 1) {
+                                     // alert(d.data);
+                                    // obj.del();
+                                    // layer.close(index);
+                                    layer.msg(d.msg, {icon: 6});
+
+                                    // that.addClass('layui-btn-danger');
+                                    // that.removeClass('layui-btn-normal');
+                                    // that.html('开通');
+                                    parent.location.reload();
+
+                                } else {
+                                    layer.msg(d.msg, {icon: 5})
+                                }
+                            }
+                        });
+                    });
+                }else if(obj.event === 'openspeed'){
+                    that = $(this);
+                    layer.confirm('关闭么', function (index) {
+                        $.ajax({
+                            url: "/admin/user/opspeed",
+                            type: "POST",
+                            data: {
+                                'id': data.id,
+                                'type': 0,
+                                '_token': "{{ csrf_token() }}"
+                            },
+                            success: function (d) {
+                                if (d.code == 1) {
+                                    // alert(d.data);
+                                    // obj.del();
+                                    // layer.close(index);
+                                    layer.msg(d.msg, {icon: 6})
+                                    parent.location.reload();
+                                    // that.removeClass('layui-btn-danger');
+                                    // that.addClass('layui-btn-normal');
+                                    // that.html('关闭');
+
+                                } else {
+                                    layer.msg(d.msg, {icon: 5})
+                                }
+                            }
+                        });
+                    })
+                }else if(obj.event === 'downhead'){
+                    that = $(this);
+                    layer.confirm('开通独立团队长奖么', function (index) {
+                        $.ajax({
+                            url: "/admin/user/ophead",
+                            type: "POST",
+                            data: {
+                                'id': data.id,
+                                'type': 1,
+                                '_token': "{{ csrf_token() }}"
+                            },
+                            success: function (d) {
+                                if (d.code == 1) {
+                                     // alert(d.data);
+                                    // obj.del();
+                                    // layer.close(index);
+                                    layer.msg(d.msg, {icon: 6});
+
+                                    // that.addClass('layui-btn-danger');
+                                    // that.removeClass('layui-btn-normal');
+                                    // that.html('开通');
+                                    parent.location.reload();
+
+                                } else {
+                                    layer.msg(d.msg, {icon: 5})
+                                }
+                            }
+                        });
+                    });
+                }else if(obj.event === 'openhead'){
+                    that = $(this);
+                    layer.confirm('关闭独立团队长奖么', function (index) {
+                        $.ajax({
+                            url: "/admin/user/ophead",
+                            type: "POST",
+                            data: {
+                                'id': data.id,
+                                'type': 0,
+                                '_token': "{{ csrf_token() }}"
+                            },
+                            success: function (d) {
+                                if (d.code == 1) {
+                                    // alert(d.data);
+                                    // obj.del();
+                                    // layer.close(index);
+                                    layer.msg(d.msg, {icon: 6})
+                                    parent.location.reload();
+                                    // that.removeClass('layui-btn-danger');
+                                    // that.addClass('layui-btn-normal');
+                                    // that.html('关闭');
+
+                                } else {
+                                    layer.msg(d.msg, {icon: 5})
+                                }
+                            }
+                        });
+                    })
+                }else if(obj.event === 'downmana'){
+                    that = $(this);
+                    layer.confirm('开通独立管理奖么', function (index) {
+                        $.ajax({
+                            url: "/admin/user/opmana",
+                            type: "POST",
+                            data: {
+                                'id': data.id,
+                                'type': 1,
+                                '_token': "{{ csrf_token() }}"
+                            },
+                            success: function (d) {
+                                if (d.code == 1) {
+                                     // alert(d.data);
+                                    // obj.del();
+                                    // layer.close(index);
+                                    layer.msg(d.msg, {icon: 6});
+
+                                    // that.addClass('layui-btn-danger');
+                                    // that.removeClass('layui-btn-normal');
+                                    // that.html('开通');
+                                    parent.location.reload();
+
+                                } else {
+                                    layer.msg(d.msg, {icon: 5})
+                                }
+                            }
+                        });
+                    });
+                }else if(obj.event === 'openmana'){
+                    that = $(this);
+                    layer.confirm('关闭独立管理奖么', function (index) {
+                        $.ajax({
+                            url: "/admin/user/opmana",
+                            type: "POST",
+                            data: {
+                                'id': data.id,
+                                'type': 0,
+                                '_token': "{{ csrf_token() }}"
+                            },
+                            success: function (d) {
+                                if (d.code == 1) {
+                                    // alert(d.data);
+                                    // obj.del();
+                                    // layer.close(index);
+                                    layer.msg(d.msg, {icon: 6})
+                                    parent.location.reload();
+                                    // that.removeClass('layui-btn-danger');
+                                    // that.addClass('layui-btn-normal');
+                                    // that.html('关闭');
+
+                                } else {
+                                    layer.msg(d.msg, {icon: 5})
+                                }
+                            }
+                        });
+                    })
                 }
             });
 

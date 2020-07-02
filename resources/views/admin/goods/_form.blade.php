@@ -26,7 +26,12 @@
         <input type="text" name="goods_info" maxlength="120" autocomplete="off" value="{{$goods_info}}" class="layui-input" required>
     </div>
 </div>
-
+<div class="layui-form-item">
+    <label class="layui-form-label">奖励系数</label>
+    <div class="layui-input-block">
+        <input type="number" name="bonus_coefficient" autocomplete="off" value="{{ $bonus_coefficient }}" class="layui-input" required>
+    </div>
+</div>
 <div class="layui-form-item">
     <label class="layui-form-label">商品价格</label>
     <div class="layui-input-block">
@@ -63,6 +68,16 @@
     <label class="layui-form-label">商品详情</label>
     <div class="layui-input-block">
         <textarea id="editor" type="text/plain" name="goods_details" style="width:1024px;height:500px;">{!! htmlspecialchars_decode($goods_details) !!}</textarea>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">前台是否显示</label>
+    <div class="layui-input-block">
+        <select name="is_show">
+                    <option value="0" @if($is_show == 0) selected @endif>不显示</option>
+                    <option value="1" @if($is_show == 1) selected @endif>显示</option>
+        </select>
     </div>
 </div>
 

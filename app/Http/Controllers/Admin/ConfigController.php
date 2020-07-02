@@ -33,6 +33,9 @@ class ConfigController extends Controller
         $url12 = '/www/wwwroot/iuic.too86.com/config/recommend.php';
         $url13 = '/www/wwwroot/iuic.too86.com/config/senior_admin.php';
 
+        // $url14 = '/www/wwwroot/iuic.too86.com/config/reward.php';
+
+
         $str1 = file_get_contents($url1);
         $str2 = file_get_contents($url2);
         $str3 = file_get_contents($url3);
@@ -45,6 +48,8 @@ class ConfigController extends Controller
         $str12 = file_get_contents($url12);
         $str13 = file_get_contents($url13);
 
+        // $str14 = file_get_contents($url14);
+
         $arr1 = eval(substr($str1, strpos($str1, 'return')));
         $arr2 = eval(substr($str2, strpos($str2, 'return')));
         $arr3 = eval(substr($str3, strpos($str3, 'return')));
@@ -56,6 +61,8 @@ class ConfigController extends Controller
         $arr11 = eval(substr($str11, strpos($str11, 'return')));
         $arr12 = eval(substr($str12, strpos($str12, 'return')));
         $arr13 = eval(substr($str13, strpos($str13, 'return')));
+
+        // $arr14 = eval(substr($str14, strpos($str14, 'return')));
 
         $arr6 = config('reward');
         $arr10 = config('admin_mall');
@@ -163,6 +170,9 @@ class ConfigController extends Controller
         $url12 = '/www/wwwroot/iuic.too86.com/config/recommend.php';
         $url13 = '/www/wwwroot/iuic.too86.com/config/senior_admin.php';
 
+        $url14 = '/www/wwwroot/iuic.too86.com/config/reward.php';
+
+
         $str1 = file_get_contents($url1);
         $str2 = file_get_contents($url2);
         $str3 = file_get_contents($url3);
@@ -175,6 +185,8 @@ class ConfigController extends Controller
         $str12 = file_get_contents($url12);
         $str13 = file_get_contents($url13);
 
+        $str14 = file_get_contents($url14);
+
         $arr1 = eval(substr($str1, strpos($str1, 'return')));
         $arr2 = eval(substr($str2, strpos($str2, 'return')));
         $arr3 = eval(substr($str3, strpos($str3, 'return')));
@@ -186,6 +198,8 @@ class ConfigController extends Controller
         $arr11 = eval(substr($str11, strpos($str11, 'return')));
         $arr12 = eval(substr($str12, strpos($str12, 'return')));
         $arr13 = eval(substr($str13, strpos($str13, 'return')));
+
+        $arr14 = eval(substr($str14, strpos($str14, 'return')));
 
         $arr6 = config('reward');
         $arr10 = config('admin_mall');
@@ -268,13 +282,22 @@ class ConfigController extends Controller
                 if($request->has($k)){
                     $arr6[$k] = $request->get($k);
                 }
-
             }
 
             $url6 = config_path('reward').".php";//路径
             $text = "<?php return ".var_export($arr6,true).";";
             file_put_contents($url6, $text);
 
+            // 前端
+            foreach ($arr14 as $k => $v){
+
+                if($request->has($k)){
+                    $arr14[$k] = $request->get($k);
+                }
+            }
+
+            $text = "<?php return ".var_export($arr14,true).";";
+            file_put_contents($url14, $text);
         }
 
         if(is_array($arr7)){

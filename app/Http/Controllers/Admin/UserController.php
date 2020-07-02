@@ -27,12 +27,13 @@ class UserController extends Controller
         'password' => '',
         'transaction_password' => '',
         'invite_code' => '',
+      	'star_community' => '',
+        'energy_captain_award' => ''
     ];
 
     // 用户列表
     public function index(Request $request)
     {
-
         if ($request->ajax()) {
 
             $page = $request->get('page', 1);
@@ -175,7 +176,12 @@ class UserController extends Controller
         $data['levels'] = [
             '无', '普通会员', '高级会员'
         ];
-
+		$data['star'] = [
+            '无', '一星社群', '二星社群','三星社群'
+        ];
+        $data['energy_captain'] = [
+            '关闭', '开启'
+        ];
         // 获取用户级别信息
         $ui = UserInfo::where('uid', $id)->first();
         if($ui){
@@ -209,9 +215,9 @@ class UserController extends Controller
         }
 
         // 判断手机号是否重复
-        if (User::where('id', '!=', $user->id)->where('mobile', $request->get('mobile'))->exists()) {
-            return returnJson(0, '手机号已被注册');
-        }
+        //if (User::where('id', '!=', $user->id)->where('mobile', $request->get('mobile'))->exists()) {
+            //return returnJson(0, '手机号已被注册');
+        //}
 
         if ($request->has('password') && !empty($request->get('password'))) {
 
@@ -244,7 +250,8 @@ class UserController extends Controller
         }
         $user->nickname = $request->get('nickname');
         $user->mobile = $request->get('mobile');
-
+		$user->star_community = $request->get('star_community');
+        $user->energy_captain_award = $request->get('energy_captain_award');
         $user->save();
 
         // 获取用户级别信息
@@ -418,6 +425,91 @@ class UserController extends Controller
         return view('admin.user.add_ore_pool', $data);
 
     }
+  
+   // 用户减少矿池
+    public function minusOrePool(Request $request)
+    {
+
+        $id = $request->get('id');
+        $u = User::with('user_info')->find($id);
+        if(!$u){
+            return returnJson(0, '数据有误');
+        }
+
+        if($request->isMethod('POST')){
+
+            $validator = Validator::make($request->all(), [
+                'good_id' => 'required',
+            ], [
+                'good_id.required' => '矿池数量不能为空',
+            ]);
+
+            if ($validator->fails()) {
+                return returnJson(0, $validator->errors()->first());
+            }
+
+            // 获取商品信息是否有误
+            $sg = ShopGood::find($request->get('good_id'));
+            if(!$sg){
+                return returnJson(0, '矿池信息有误');
+            }
+
+            \DB::beginTransaction();
+            try {
+
+                // 增加用户矿池余额记录
+                UserWalletLog::addLog($u->id, 0, 0, '后台减少矿池', '-', $sg->ore_pool, 2, 1);
+                //用户矿池数量
+                $jlbuy_total = UserInfo::where('uid', $u->id)->value('buy_total');
+                //所有未释放订单数量
+                $jlall_release = ReleaseOrder::where('uid',$u->id)->where('status',0)->sum('total_num');
+                if($sg->ore_pool>$jlbuy_total && $sg->ore_pool>$jlall_release){
+                    return returnJson(0, '剩余数量不足');
+                }
+                //用户减矿
+                UserInfo::where('uid', $u->id)->decrement('buy_total',$sg->ore_pool);
+                $jl_all_release = ReleaseOrder::where('uid',$u->id)->where('status',0)->orderBy('id','desc')->get();
+                //要减去数额
+                $jl_minus = $sg->ore_pool;
+                foreach ($jl_all_release as $k => $v) {
+                    //订单足够减去,//不够减再去减下一个订单,将目前订单修改为0,$jl_minus相应减少
+                    if($v['total_num']>=$jl_minus){
+                        ReleaseOrder::where('id',$v->id)->decrement('total_num',$jl_minus);
+                        break;
+                    }else{
+                        $jl_minus = bcsub($jl_minus,$v['total_num'],2);
+                        ReleaseOrder::where('id',$v->id)->update(['total_num'=>'0']);
+                    }
+                }
+               
+
+                \DB::commit();
+
+            } catch (\Exception $exception) {
+
+                \DB::rollBack();
+
+                \Log::info('给用户减矿失败', $request->all());
+
+                return returnJson(0, '操作异常'.$exception);
+
+            }
+
+            return returnJson(1, '操作成功');
+
+        }
+
+        $goods = ShopGood::get()->toArray();
+
+        $data = [
+            'id' => $id,
+            'num' => $u->user_info ? $u->user_info->buy_total : 0,
+            'goods' => $goods,
+        ];
+
+        return view('admin.user.minus_ore_pool', $data);
+
+    }
 
     // 更新用户级别
     private function updateUserLevel($uid, $pid, $buyCount, $num, $pidPath)
@@ -487,6 +579,156 @@ class UserController extends Controller
 
         return returnJson(1, '操作成功');
 
+    }
+  
+      //额外开通一代加速
+    public function openSpeed(Request $request)
+    {
+       $validator = Validator::make($request->all(), [
+           'id' => 'required',
+           'type' => 'required|in:0,1',
+       ], [
+           'id.required' => '用户信息不能为空',
+           'type.required' => '操作类型不能为空',
+           'type.in' => '操作类型不正确',
+       ]);
+
+       $m=User::where('id',$request->id)->update(['is_open_speedup'=>$request->type]);
+       if($m){
+           return returnJson(1, '操作成功');
+       }else{
+           return returnJson(0, '操作失败');
+       }
+
+    }
+  
+  	//独立团队长奖
+    public function openHead(Request $request)
+    {
+       $validator = Validator::make($request->all(), [
+           'id' => 'required',
+           'type' => 'required|in:0,1',
+       ], [
+           'id.required' => '用户信息不能为空',
+           'type.required' => '操作类型不能为空',
+           'type.in' => '操作类型不正确',
+       ]);
+
+       $m=User::where('id',$request->id)->update(['is_independent_head'=>$request->type]);
+       if($m){
+           return returnJson(1, '操作成功');
+       }else{
+           return returnJson(0, '操作失败');
+       }
+
+    }
+    //独立管理奖
+    public function openMana(Request $request)
+    {
+       $validator = Validator::make($request->all(), [
+           'id' => 'required',
+           'type' => 'required|in:0,1',
+       ], [
+           'id.required' => '用户信息不能为空',
+           'type.required' => '操作类型不能为空',
+           'type.in' => '操作类型不正确',
+       ]);
+
+       $m=User::where('id',$request->id)->update(['is_independent_management'=>$request->type]);
+       if($m){
+           return returnJson(1, '操作成功');
+       }else{
+           return returnJson(0, '操作失败');
+       }
+
+    }
+  
+  
+  	//能量队团长等级展示
+  	public function eneryHeadLv(Request $request)
+    {
+       $id = $request->get('id');
+       $u = User::find($id);
+       if(!$u){
+           return returnJson(0, '数据有误');
+       }
+       $data=[
+           'id' => $u->id,
+           'new_account' => $u->new_account,
+           'energy_head_lv' => $u->energy_head_lv,
+       ];
+        // dd($data);
+        return view('admin.user.enery_head_lv',$data);
+    }
+	//能量队团长等级调整
+    public function eneryHeadLvAdjust(Request $request)
+    {
+        $m=User::where('id',$request->id)->update(['energy_head_lv'=>$request->energy_head_lv]);
+        if($m){
+            return returnJson(1, '操作成功');
+        }else{
+            return returnJson(0, '操作失败');
+        }
+    }
+  
+  
+  	  
+  	//开通iuic独立管理奖页面
+  	public function independentManagement(Request $request)
+    {
+       $id = $request->get('id');
+       $u = User::find($id);
+       if(!$u){
+           return returnJson(0, '数据有误');
+       }
+       $data=[
+           'id' => $u->id,
+           'new_account' => $u->new_account,
+           'is_independent_management' => $u->is_independent_management,
+           'independent_management_bl' => $u->independent_management_bl,
+       ];
+        // dd($data);
+        return view('admin.user.independent_management',$data);
+    }
+	//能量队团长等级调整
+    public function independentManagementAdjust(Request $request)
+    {
+        $m=User::where('id',$request->id)->update(['is_independent_management'=>$request->is_independent_management,'independent_management_bl'=>$request->independent_management_bl]);
+        if($m){
+            return returnJson(1, '操作成功');
+        }else{
+            return returnJson(0, '操作失败');
+        }
+    }
+  
+  	//社群分享奖-伞下 页面
+  	public function communitySanxia(Request $request)
+    {	
+      
+       $id = $request->get('id');
+       $u = User::find($id);
+       if(!$u){
+           return returnJson(0, '数据有误');
+       }
+       $data=[
+           'id' => $u->id,
+           'new_account' => $u->new_account,
+           'is_community_sanxia' => $u->is_community_sanxia,
+           'community_sanxia_bl' => $u->community_sanxia_bl,
+       ];
+       //dd($data);
+        return view('admin.user.community_sanxia',$data);
+    }
+  
+	//社群分享奖-伞下 比例
+    public function communitySanxiaAdjust(Request $request)
+    {
+        $m=User::where('id',$request->id)->update(['is_community_sanxia'=>$request->is_community_sanxia,'community_sanxia_bl'=>$request->community_sanxia_bl]);
+        if($m){
+            return returnJson(1, '操作成功');
+        }else{
+            return returnJson(0, '操作失败');
+        }
     }
 
 }

@@ -1,3 +1,3 @@
 <?php return array (
-  'auth_reward' => '0',
+  'auth_reward' => '50',
 );

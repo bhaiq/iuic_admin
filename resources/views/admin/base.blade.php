@@ -86,11 +86,11 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <?php $comData = Request::get('comData_menu');?>
-                <li class="layui-nav-item">
-                    <a href="/admin/index"  @if(count($comData['openarr']) <= 0) class="layui-this" @endif><i class="layui-icon layui-icon-home">
-                        </i>&nbsp;
-                        <span>首页</span></a>
-                </li>
+                <!--<li class="layui-nav-item">-->
+                <!--    <a href="/admin/index"  @if(count($comData['openarr']) <= 0) class="layui-this" @endif><i class="layui-icon layui-icon-home">-->
+                <!--        </i>&nbsp;-->
+                <!--        <span>首页</span></a>-->
+                <!--</li>-->
                 @foreach($comData['top'] as $v)
                     <li class="layui-nav-item @if(in_array($v['id'],$comData['openarr'])) layui-nav-itemed @endif">
                         <a href="#"><i class="layui-icon {{ $v['icon'] }}"></i>&nbsp;
