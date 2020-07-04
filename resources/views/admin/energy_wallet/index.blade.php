@@ -74,7 +74,7 @@
                     }
                     , {
                         field: 'consumer_num',
-                        title: '冻结余额'
+                        title: '消费积分'
                     }
                     , {
                         field: 'energy_lock_num',
