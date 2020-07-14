@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
   	Route::any('user/independent_management', ['as' => 'admin.user.edit', 'uses' => 'UserController@independentManagement']);
     Route::any('user/independent_management_adjust', ['as' => 'admin.user.edit', 'uses' => 'UserController@independentManagementAdjust']);
   
-  	Route::any('user/community_sanxia', ['as' => 'admin.user.edit', 'uses' => 'UserController@communitySanxia']);
+  	Route::any('user/community_sanxia', ['as' => 'adpartnermin.user.edit', 'uses' => 'UserController@communitySanxia']);
     Route::any('user/community_sanxia_adjust', ['as' => 'admin.user.edit', 'uses' => 'UserController@communitySanxiaAdjust']);
   
     Route::resource('user', 'UserController', ['names' => ['update' => 'admin.user.edit', 'store' => 'admin.user.create']]);

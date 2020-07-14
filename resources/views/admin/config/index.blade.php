@@ -910,6 +910,17 @@
                                     </div>
                                     <div class="layui-form-mid layui-word-aux"></div>
                                 </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>矿机释放手续费比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="kuangji_release_service_rate" required lay-verify="required"
+                                               placeholder="请输入最大值" autocomplete="off" class="layui-input"
+                                               value="{{$kuangji_release_service_rate}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
 
                                 <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
