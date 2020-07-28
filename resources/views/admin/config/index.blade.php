@@ -911,6 +911,19 @@
                                     <div class="layui-form-mid layui-word-aux"></div>
                                 </div>
 
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>质机将比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="kuangji_flexible_suanli_bl" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$kuangji_zhiji_rate}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.03表示3%</div>
+                                </div>
+
+
 
                                 <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
