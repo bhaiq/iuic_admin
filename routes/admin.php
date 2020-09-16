@@ -306,6 +306,14 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('star_community/index', ['as' => 'admin.star_community.index', 'uses' => 'StarCommunityController@index']);
     Route::resource('star_community', 'StarCommunityController', ['names' => ['update' => 'admin.star_community.edit', 'store' => 'admin.star_community.create']]);
 
+    //iuic矿池信息
+    Route::any('iuic_info/index', ['as' => 'admin.iuic_info.index', 'uses' => 'IuicInfoController@index']);
+    Route::resource('iuic_info', 'IuicInfoController', ['names' => ['update' => 'admin.iuic_info.edit', 'store' => 'admin.iuic_info.create']]);
+
+    //回购销毁记录
+    Route::any('buy_back/index', ['as' => 'admin.buy_back.index', 'uses' => 'BuyBackController@index']);
+    Route::resource('buy_back', 'BuyBackController', ['names' => ['update' => 'admin.buy_back.edit', 'store' => 'admin.buy_back.create']]);
+
     //免责协议
     Route::any('agreement/index', ['as' => 'admin.agreement.index', 'uses' => 'AgreementController@index']);
     Route::resource('agreement', 'AgreementController', ['names' => ['update' => 'admin.agreement.edit', 'store' => 'admin.agreement.create']]);
