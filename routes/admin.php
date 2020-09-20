@@ -94,6 +94,12 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('coin/index', ['as' => 'admin.coin.index', 'uses' => 'CoinController@index']);
     Route::resource('coin', 'CoinController', ['names' => ['update' => 'admin.coin.edit', 'store' => 'admin.coin.create']]);
 
+    // 交易手续费
+    Route::post('ex_service/ajax', ['as' => 'admin.ex_service.index', 'uses' => 'ExServiceController@ajax']);
+    Route::get('ex_service', ['as' => 'admin.ex_service.index', 'uses' => 'ExServiceController@index']);
+    Route::any('ex_service/index', ['as' => 'admin.ex_service.index', 'uses' => 'ExServiceController@index']);
+
+
     // 提现订单
     Route::post('coin_extract/ajax', ['as' => 'admin.coin_extract.edit', 'uses' => 'CoinExtractController@ajax']);
     Route::get('coin_extract', ['as' => 'admin.coin_extract.index', 'uses' => 'CoinExtractController@index']);
