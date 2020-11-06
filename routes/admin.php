@@ -180,6 +180,7 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('partner/ajax', ['as' => 'admin.partner.edit', 'uses' => 'PartnerController@ajax']);
     Route::get('partner', ['as' => 'admin.partner.index', 'uses' => 'PartnerController@index']);
     Route::any('partner/index', ['as' => 'admin.partner.index', 'uses' => 'PartnerController@index']);
+    Route::resource('partner', 'PartnerController', ['names' => ['update' => 'admin.partner.edit', 'store' => 'admin.partner.create']]);
 
     // 社区列表
     Route::any('community/ajax', ['as' => 'admin.community.edit', 'uses' => 'CommunityController@ajax']);
@@ -325,6 +326,11 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::resource('agreement', 'AgreementController', ['names' => ['update' => 'admin.agreement.edit', 'store' => 'admin.agreement.create']]);
   
   	Route::any('ceshi', ['as' => 'admin.energy_lock_transfer.index', 'uses' => 'EnergyLockTransferController@index']);
+  	
+  	
+  	//交易手续费抵扣记录
+    Route::any('deducion_logs/index', ['as' => 'admin.deducion_logs.index', 'uses' => 'DeducionLogController@index']);
+    Route::resource('deducion_logs', 'DeducionLogController', ['names' => ['update' => 'admin.deducion_logs.edit', 'store' => 'admin.deducion_logs.create']]);
  
 
 });

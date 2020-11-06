@@ -1030,6 +1030,17 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 300px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>能量释放开关</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="radio" name="energy_switch" value="0" title="关闭" @if($energy_switch == 0) checked @endif>
+                                        <input type="radio" name="energy_switch" value="1" title="开启" @if($energy_switch == 1) checked @endif>
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux"></div>
+                                </div>
+                                
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 300px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>能量兑人民币的比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="energy_cny" required lay-verify="required"

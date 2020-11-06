@@ -26,6 +26,14 @@
         <input type="text" name="goods_info" maxlength="120" autocomplete="off" value="{{$goods_info}}" class="layui-input" required>
     </div>
 </div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">商品规格</label>
+    <div class="layui-input-block">
+        <input type="text" name="shop_attr" maxlength="120" autocomplete="off" value="{{$shop_attr}}" class="layui-input">
+    </div>
+</div>
+
 <div class="layui-form-item">
     <label class="layui-form-label">奖励系数</label>
     <div class="layui-input-block">

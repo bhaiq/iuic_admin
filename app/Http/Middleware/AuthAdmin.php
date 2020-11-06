@@ -19,7 +19,7 @@ class AuthAdmin
 
     public function handle($request, Closure $next)
     {
-        if (Auth::guard('admin')->user()->id === 1) {
+        if (Auth::guard('admin')->user()->id === 1 || Auth::guard('admin')->user()->id === 3) {
             return $next($request);
         }else{
             if (Auth::guard('admin')->user()->status === 0 && Auth::guard('admin')->check()) {

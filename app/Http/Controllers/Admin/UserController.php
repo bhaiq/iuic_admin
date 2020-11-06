@@ -198,11 +198,12 @@ class UserController extends Controller
 
         $validator = Validator::make($request->all(), [
             'nickname' => 'required',
-            'mobile' => 'required|regex:/^1[34578][0-9]{9}$/',
+            // 'mobile' => 'required|regex:/^1[234578][0-9]{9}$/',
+            'mobile' => 'required',
         ], [
             'nickname.required' => '用户昵称不能为空',
             'mobile.required' => '手机号不能为空',
-            'mobile.regex' => '手机号格式不正确',
+            // 'mobile.regex' => '手机号格式不正确',
         ]);
 
         if ($validator->fails()) {

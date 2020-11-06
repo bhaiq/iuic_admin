@@ -81,6 +81,10 @@
                         title: '商品简介',
                     }
                     , {
+                        field: 'shop_attr',
+                        title: '商品规格',
+                    }
+                    , {
                         field: 'goods_price',
                         title: '商品价格',
                         sort: true,

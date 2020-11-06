@@ -15,9 +15,17 @@ use App\Models\UserPartner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Models\AdminLog;
 
 class PartnerController extends Controller
 {
+     protected $fields = [
+        'uid' => "",
+        'count' => '',
+        'num' => '',
+        'coin_id'=>'',
+        'status'=>'',
+    ];
 
     // 合伙人列表
     public function index(Request $request)
@@ -125,6 +133,76 @@ class PartnerController extends Controller
 
         return returnJson(1, '操作成功');
 
+    }
+    
+     // 新增合伙人
+    public function create(Request $request)
+    {
+        $data = [];
+        foreach ($this->fields as $field => $default) {
+            $data[$field] = old($field, $default);
+        }
+
+        return view('admin.partner.create', $data);
+    }
+
+    // 添加合伙人
+    public function store(Request $request)
+    {
+
+        $ver = new UserPartner();
+        foreach (array_keys($this->fields) as $field) {
+            $ver->$field = $request->get($field);
+        }
+
+        $ver->save();
+
+        AdminLog::addLog('新增一个合伙人');
+
+        return redirect('/admin/partner/index');
+    }
+    //删除合伙人
+    public function destroy($id)
+    {
+
+        if (UserPartner::where('id', $id)->delete()) {
+
+            AdminLog::addLog('删除了ID为' . $id . '的公告');
+
+            return returnJson(1, '删除成功');
+        }
+
+        return returnJson(0, '删除失败');
+    }
+    
+    // 修改公告
+    public function edit($id)
+    {
+        $ver =UserPartner::find((int)$id);
+        if (!$ver) return redirect('/admin/partner/index')->with('fail', '数据有误');
+
+        foreach (array_keys($this->fields) as $field) {
+            $data[$field] = old($field, $ver->$field);
+        }
+
+        $data['id'] = (int)$id;
+        return view('admin.partner.edit', $data);
+    }
+
+    // 更新公告
+    public function update(Request $request, $id)
+    {
+
+        $ver = UserPartner::find((int)$id);
+        foreach (array_keys($this->fields) as $field) {
+            $ver->$field = $request->get($field);
+        }
+
+        $ver->save();
+
+        AdminLog::addLog('修改了ID为' . $id . '的合伙人');
+
+        return redirect('/admin/partner/index');
     }
 
 }

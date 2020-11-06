@@ -9,7 +9,7 @@
     @include('admin.partials.fail')
     @include('admin.partials.success')
 
-    <div class="demoTable">
+    <div class="demoTable">                                                                                                     
         搜索关键字：
         <div class="layui-inline">
             <input class="layui-input" name="ID" id="demoReload" autocomplete="off">
@@ -19,7 +19,12 @@
     </div>
 
     <table id="demo" lay-filter="test"></table>
-
+    
+    <script type="text/html" id="toolbarDemo">
+        <div class="layui-btn-container">
+            @if(Gate::forUser(auth('admin')->user())->check('admin.partner.create'))<button class="layui-btn layui-btn-sm" lay-event="create">新增</button>@endif
+        </div>
+    </script>
 @stop
 
 @section('js')
@@ -107,8 +112,10 @@
                                     str += '<a class="layui-btn layui-btn-xs" lay-event="edit">通过</a>';
                                     str += '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">拒绝</a>';
                                 @endif
+                                
                             }
-
+                                str += '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="alter">编辑</a>';
+                                str += '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="cut">删除</a>';
                             return str;
                         }
                     }
@@ -161,6 +168,37 @@
                             }
                         });
                     })
+                }else if (obj.event === 'cut') {
+                    layer.confirm('真的删除行么', function (index) {
+                        $.ajax({
+                            url: "/admin/partner/" + data.id,
+                            type: "POST",
+                            data: {
+                                '_method': "DELETE",
+                                '_token': "{{ csrf_token() }}"
+                            },
+                            success: function (d) {
+                                if (d.code == 1) {
+                                    obj.del();
+                                    layer.close(index);
+                                    layer.msg(d.msg, {icon: 6})
+                                } else {
+                                    layer.msg(d.msg, {icon: 5})
+                                }
+                            }
+                        });
+                    })
+                }else if (obj.event === 'alter') {
+                    location.href = '/admin/partner/' + data.id + '/edit';
+                }
+            });
+            
+            //头工具栏事件
+            table.on('toolbar(test)', function (obj) {
+                switch (obj.event) {
+                    case 'create':
+                        location.href = '/admin/partner/create';
+                        break;
                 }
             });
 

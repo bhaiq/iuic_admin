@@ -27,6 +27,7 @@ class GoodsController extends Controller
         'goods_details' => '',
       	'bonus_coefficient' => '',
       	'is_show'=>'',
+      	'shop_attr'=>'',
     ];
 
     // 商品列表

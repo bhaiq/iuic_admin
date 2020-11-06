@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\AdminLog;
 use App\Models\BuyBack;
+use App\Models\Account;
+use App\Models\AccountLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -51,17 +53,21 @@ class BuyBackController extends Controller
         return view('admin.buy_back.create', $data);
     }
 
-    // 添加公告
+    // 添加回购记录
     public function store(Request $request)
     {
-
+        \Log::info('数据',['num'=>$request]);
         $ver = new BuyBack();
-        foreach (array_keys($this->fields) as $field) {
-            $ver->$field = $request->get($field);
-        }
-
+        // foreach (array_keys($this->fields) as $field) {
+        //     $ver->$field = $request->get($field);
+        // }
+        $ver->num = $request->get('num');
+        $ver->uid = $request->get('uid');
         $ver->save();
-
+        //减去uid的法币iuic
+        Account::where('uid', $request->get('uid'))->where('coin_id',2)->where('type',1)->decrement('amount',$request->get('num'));
+        // 记录用户余额日志(uid,coin_id,num,sence(情景),0减,1法币,描述)
+        AccountLog::addLog($request->get('uid'),2,$request->get('num'), 200, 0, 1, '回购销毁');
         AdminLog::addLog('新增一条回购销毁记录');
 
         return redirect('/admin/buy_back/index');
