@@ -331,6 +331,11 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
   	//交易手续费抵扣记录
     Route::any('deducion_logs/index', ['as' => 'admin.deducion_logs.index', 'uses' => 'DeducionLogController@index']);
     Route::resource('deducion_logs', 'DeducionLogController', ['names' => ['update' => 'admin.deducion_logs.edit', 'store' => 'admin.deducion_logs.create']]);
+
+    //用户业绩记录
+    Route::any('community_div/ajax', ['as' => 'admin.community_div.edit', 'uses' => 'CommunityDivController@ajax']);
+    Route::any('community_div/index', ['as' => 'admin.community_div.index', 'uses' => 'CommunityDivController@index']);
+    Route::resource('community_div', 'CommunityDivController', ['names' => ['update' => 'admin.community_div.edit', 'store' => 'admin.community_div.create']]);
  
 
 });
