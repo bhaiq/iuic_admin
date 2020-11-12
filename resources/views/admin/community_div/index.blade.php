@@ -63,6 +63,11 @@
                         // width: 100
                     }
                     , {
+                        field: 'this_month',
+                        title: '当月业绩',
+                        // width: 100
+                    }
+                    , {
                         field: 'created_at',
                         title: '创建时间',
                         sort: true,
