@@ -58,14 +58,9 @@
                         // width: 120
                     }
                     , {
-                        field: 'this_month',
-                        title: '虚拟业绩',
+                        field: 'total',
+                        title: '累计业绩',
                         // width: 100
-                    }
-                    , {
-                        field: 'true_num',
-                        title: '真实业绩',
-                        // width: 120
                     }
                     , {
                         field: 'created_at',
