@@ -4,7 +4,7 @@
     <input type="hidden" name="type" value="1">
 
     <div class="layui-form-item">
-        <label class="layui-form-label">虚拟余额</label>
+        <label class="layui-form-label">累计业绩</label>
         <div class="layui-input-inline" style="width:80%;">
             <div style="padding: 10px;">{{$this_month}}</div>
         </div>
