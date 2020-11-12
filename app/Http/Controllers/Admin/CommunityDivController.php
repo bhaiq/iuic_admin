@@ -32,6 +32,7 @@ class CommunityDivController extends Controller
 
             $p = CommunityDividend::from('community_dividends as c')
                 ->select('c.*', 'u.new_account')
+                ->orderby('id','desc')
                 ->leftJoin('user as u', 'u.id', 'c.uid');
 
             if ($soso) {
