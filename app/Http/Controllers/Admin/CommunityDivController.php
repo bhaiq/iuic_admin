@@ -173,7 +173,7 @@ class CommunityDivController extends Controller
 
         $data = [
             'id' => $id,
-            'this_month' => $a->this_month,
+            'total' => $a->total,
         ];
 
         return view('admin.community_div.ajax', $data);
