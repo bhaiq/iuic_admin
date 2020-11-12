@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Account;
 use App\Models\AccountLog;
+use App\Models\CommunityDividend;
 use App\Models\User;
 use App\Models\UserPartner;
 use Illuminate\Http\Request;
