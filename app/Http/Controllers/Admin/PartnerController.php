@@ -114,6 +114,26 @@ class PartnerController extends Controller
                 // 用户冻结余额减少
                 Account::reduceFrozen($up->uid, $up->coin_id, $up->num);
 
+                //给上级加业绩
+                $pid_path=trim(User::where('id',$up->uid)->value('pid_path'), ',');
+                $pid_arrs = explode(',',$pid_path);
+                $pid_arr = array_diff($pid_arrs, ["0"]);
+
+                foreach($pid_arr as $v){
+                    $ucomm=CommunityDividend::where('uid',$v)->first();
+                    if($ucomm){
+                        CommunityDividend::where('uid',$v)->update(['this_month'=>$ucomm->this_month + $up->num,
+                            'total'=>$ucomm->total + $up->num,'true_num'=>$ucomm->true_num + $up->num]);
+                    }else{
+                        $data['uid']=$v;
+                        $data['this_month']=$up->num;
+                        $data['true_num']=$up->num;
+                        $data['total']=$up->num;
+                        $data['created_at']=date('Y-m-d H:i:s',time());
+                        $data['updated_at']=date('Y-m-d H:i:s',time());
+                        \DB::table('community_dividends')->insert($data);
+                    }
+                }
                 // 订单状态改变
                 $up->delete();
 
