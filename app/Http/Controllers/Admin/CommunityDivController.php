@@ -140,6 +140,7 @@ class CommunityDivController extends Controller
 
                     // 用户业绩增加
                     CommunityDividend::where('id', $id)->increment('total', $request->get('num'));
+                    CommunityDividend::where('id', $id)->increment('this_month', $request->get('num'));
                 }else{
 
                     // 判断业绩是否充足
@@ -152,6 +153,7 @@ class CommunityDivController extends Controller
 
                     // 用户余额减少
                     CommunityDividend::where('id', $id)->decrement('total', $request->get('num'));
+                    CommunityDividend::where('id', $id)->increment('this_month', $request->get('num'));
 
                 }
 
