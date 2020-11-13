@@ -95,7 +95,7 @@ class CommunityDivController extends Controller
         }
         $com->uid = $user->id;
         $com->last_month = "0";
-        $com->this_month = $request->get('this_month');
+        $com->this_month = "0";
         $com->true_num = "0";
         $com->total = $request->get('this_month');
         $com->save();
@@ -140,7 +140,7 @@ class CommunityDivController extends Controller
 
                     // 用户业绩增加
                     CommunityDividend::where('id', $id)->increment('total', $request->get('num'));
-                    CommunityDividend::where('id', $id)->increment('this_month', $request->get('num'));
+//                    CommunityDividend::where('id', $id)->increment('this_month', $request->get('num'));
                 }else{
 
                     // 判断业绩是否充足
@@ -153,7 +153,7 @@ class CommunityDivController extends Controller
 
                     // 用户余额减少
                     CommunityDividend::where('id', $id)->decrement('total', $request->get('num'));
-                    CommunityDividend::where('id', $id)->increment('this_month', $request->get('num'));
+//                    CommunityDividend::where('id', $id)->increment('this_month', $request->get('num'));
 
                 }
 
