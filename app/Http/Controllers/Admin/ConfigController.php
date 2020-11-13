@@ -171,20 +171,36 @@ class ConfigController extends Controller
     // 更新配置
     public function update(Request $request)
     {
+        if(app()->environment('test')){
+            $url1 = '/www/wwwroot/iuic_test/config/extract.php';
+            $url2 = '/www/wwwroot/iuic_test/config/release.php';
+            $url3 = '/www/wwwroot/iuic_test/config/shop.php';
+            $url4 = '/www/wwwroot/iuic_test/config/trade.php';
+            $url5 = '/www/wwwroot/iuic_test/config/business.php';
+            $url7 = '/www/wwwroot/iuic_test/config/user_partner.php';
+            $url8 = '/www/wwwroot/iuic_test/config/kuangji.php';
+            $url9 = '/www/wwwroot/iuic_test/config/node.php';
+            $url11 = '/www/wwwroot/iuic_test/config/energy.php';
+            $url12 = '/www/wwwroot/iuic_test/config/recommend.php';
+            $url13 = '/www/wwwroot/iuic_test/config/senior_admin.php';
 
-        $url1 = '/www/wwwroot/iuic.too86.com/config/extract.php';
-        $url2 = '/www/wwwroot/iuic.too86.com/config/release.php';
-        $url3 = '/www/wwwroot/iuic.too86.com/config/shop.php';
-        $url4 = '/www/wwwroot/iuic.too86.com/config/trade.php';
-        $url5 = '/www/wwwroot/iuic.too86.com/config/business.php';
-        $url7 = '/www/wwwroot/iuic.too86.com/config/user_partner.php';
-        $url8 = '/www/wwwroot/iuic.too86.com/config/kuangji.php';
-        $url9 = '/www/wwwroot/iuic.too86.com/config/node.php';
-        $url11 = '/www/wwwroot/iuic.too86.com/config/energy.php';
-        $url12 = '/www/wwwroot/iuic.too86.com/config/recommend.php';
-        $url13 = '/www/wwwroot/iuic.too86.com/config/senior_admin.php';
+            $url14 = '/www/wwwroot/iuic_test/config/reward.php';
+        }else{
+            $url1 = '/www/wwwroot/iuic.too86.com/config/extract.php';
+            $url2 = '/www/wwwroot/iuic.too86.com/config/release.php';
+            $url3 = '/www/wwwroot/iuic.too86.com/config/shop.php';
+            $url4 = '/www/wwwroot/iuic.too86.com/config/trade.php';
+            $url5 = '/www/wwwroot/iuic.too86.com/config/business.php';
+            $url7 = '/www/wwwroot/iuic.too86.com/config/user_partner.php';
+            $url8 = '/www/wwwroot/iuic.too86.com/config/kuangji.php';
+            $url9 = '/www/wwwroot/iuic.too86.com/config/node.php';
+            $url11 = '/www/wwwroot/iuic.too86.com/config/energy.php';
+            $url12 = '/www/wwwroot/iuic.too86.com/config/recommend.php';
+            $url13 = '/www/wwwroot/iuic.too86.com/config/senior_admin.php';
 
-        $url14 = '/www/wwwroot/iuic.too86.com/config/reward.php';
+            $url14 = '/www/wwwroot/iuic.too86.com/config/reward.php';
+        }
+
 
 
         $str1 = file_get_contents($url1);
