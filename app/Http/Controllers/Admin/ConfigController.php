@@ -172,19 +172,19 @@ class ConfigController extends Controller
     public function update(Request $request)
     {
         if(app()->environment('test')){
-            $url1 = '/www/wwwroot/iuic_test/config/extract.php';
-            $url2 = '/www/wwwroot/iuic_test/config/release.php';
-            $url3 = '/www/wwwroot/iuic_test/config/shop.php';
-            $url4 = '/www/wwwroot/iuic_test/config/trade.php';
-            $url5 = '/www/wwwroot/iuic_test/config/business.php';
-            $url7 = '/www/wwwroot/iuic_test/config/user_partner.php';
-            $url8 = '/www/wwwroot/iuic_test/config/kuangji.php';
-            $url9 = '/www/wwwroot/iuic_test/config/node.php';
-            $url11 = '/www/wwwroot/iuic_test/config/energy.php';
-            $url12 = '/www/wwwroot/iuic_test/config/recommend.php';
-            $url13 = '/www/wwwroot/iuic_test/config/senior_admin.php';
+            $url1 = '/www/wwwroot/test_iuic/config/extract.php';
+            $url2 = '/www/wwwroot/test_iuic/config/release.php';
+            $url3 = '/www/wwwroot/test_iuic/config/shop.php';
+            $url4 = '/www/wwwroot/test_iuic/config/trade.php';
+            $url5 = '/www/wwwroot/test_iuic/config/business.php';
+            $url7 = '/www/wwwroot/test_iuic/config/user_partner.php';
+            $url8 = '/www/wwwroot/test_iuic/config/kuangji.php';
+            $url9 = '/www/wwwroot/test_iuic/config/node.php';
+            $url11 = '/www/wwwroot/test_iuic/config/energy.php';
+            $url12 = '/www/wwwroot/test_iuic/config/recommend.php';
+            $url13 = '/www/wwwroot/test_iuic/config/senior_admin.php';
 
-            $url14 = '/www/wwwroot/iuic_test/config/reward.php';
+            $url14 = '/www/wwwroot/test_iuic/config/reward.php';
         }else{
             $url1 = '/www/wwwroot/iuic.too86.com/config/extract.php';
             $url2 = '/www/wwwroot/iuic.too86.com/config/release.php';
