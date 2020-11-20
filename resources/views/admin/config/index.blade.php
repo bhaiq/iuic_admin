@@ -33,7 +33,7 @@
                     <li class="">合伙人配置</li>
                     <li class="">矿机配置</li>
                     <li class="">网上购物商城配置</li>
-                    <li class="">能量配置</li>
+                    {{--<li class="">能量配置</li>--}}
                 </ul>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
@@ -1020,284 +1020,284 @@
                         </div>
                     </div>
                     
-                    <div class="layui-tab-item">
-                        <hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">
-                        能量商城
-                        <div class="layui-card-body">
-                            <form class="layui-form layui-form-pane" method="post"
-                                  action="{{url('admin/config/update')}}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量释放开关</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="radio" name="energy_switch" value="0" title="关闭" @if($energy_switch == 0) checked @endif>
-                                        <input type="radio" name="energy_switch" value="1" title="开启" @if($energy_switch == 1) checked @endif>
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux"></div>
-                                </div>
-                                
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量兑人民币的比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_cny" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_cny}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：1表示一个能量等于1人民币，2表示一个能量等于2个人民币</div>
-                                </div>
+                    {{--<div class="layui-tab-item">--}}
+                        {{--<hr style="margin-top:0px;margin-bottom:0px;border-top: 1px solid #d2d2d2;">--}}
+                        {{--能量商城--}}
+                        {{--<div class="layui-card-body">--}}
+                            {{--<form class="layui-form layui-form-pane" method="post"--}}
+                                  {{--action="{{url('admin/config/update')}}" enctype="multipart/form-data">--}}
+                                {{--@csrf--}}
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量释放开关</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="radio" name="energy_switch" value="0" title="关闭" @if($energy_switch == 0) checked @endif>--}}
+                                        {{--<input type="radio" name="energy_switch" value="1" title="开启" @if($energy_switch == 1) checked @endif>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux"></div>--}}
+                                {{--</div>--}}
+                                {{----}}
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量兑人民币的比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_cny" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_cny}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：1表示一个能量等于1人民币，2表示一个能量等于2个人民币</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量兑换的手续费</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_exchange_tip" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_exchange_tip}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量兑换的手续费</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_exchange_tip" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_exchange_tip}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.02表示2%</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量静态释放比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_static_release_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_static_release_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.01表示1%，每天静态释放本金的比例</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量静态释放比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_static_release_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_static_release_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.01表示1%，每天静态释放本金的比例</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量释放中可用能量的释放比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_ky_release_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_ky_release_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.8表示80%，这个比例是从释放的能量中占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量释放中可用能量的释放比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_ky_release_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_ky_release_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.8表示80%，这个比例是从释放的能量中占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量释放中消费者积分的释放比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_xfjf_release_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_xfjf_release_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个比例是从释放的能量中占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量释放中消费者积分的释放比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_xfjf_release_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_xfjf_release_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个比例是从释放的能量中占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量释放中公益金的释放比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_gyjjf_release_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_gyjjf_release_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个比例是从释放的能量中占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量释放中公益金的释放比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_gyjjf_release_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_gyjjf_release_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个比例是从释放的能量中占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>团队奖释放比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_team_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_team_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个比例是每日静态收益中占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>团队奖释放比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_team_reward_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_team_reward_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个比例是每日静态收益中占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>第一代代数奖比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_recommend_1_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_recommend_1_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>第一代代数奖比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_recommend_1_reward_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_recommend_1_reward_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>第二代代数奖比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_recommend_2_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_recommend_2_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>第二代代数奖比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_recommend_2_reward_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_recommend_2_reward_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>社区节点奖持币量超50000比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_community_50000_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_community_50000_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>社区节点奖持币量超50000比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_community_50000_reward_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_community_50000_reward_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>社区节点奖持币量超40000比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_community_40000_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_community_40000_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>社区节点奖持币量超40000比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_community_40000_reward_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_community_40000_reward_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>社区节点奖持币量超30000比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_community_30000_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_community_30000_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>社区节点奖持币量超30000比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_community_30000_reward_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_community_30000_reward_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>社区节点奖持币量超20000比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_community_20000_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_community_20000_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>社区节点奖持币量超20000比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_community_20000_reward_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_community_20000_reward_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>社区节点奖持币量超10000比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_community_10000_reward_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_community_10000_reward_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>社区节点奖持币量超10000比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_community_10000_reward_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_community_10000_reward_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.1表示10%，这个是报单时本金的占比</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量兑换转矿比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_zk_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_zk_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.5表示50%</div>
-                                </div>
-								
-                              	<!-- 加速比例设置 -->
-                               <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量报单加速比例</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_jiasu_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_jiasu_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
-                               </div>
-                              
-                              <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量团队长奖</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_captain_bl" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_captain_bl}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
-                                </div>
-                              <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>社群分享奖</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="share_star_reward" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$share_star_reward}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
-                                </div>
-                              
-                              
-                              	<!-- 能量独立团队长分红设置 -->
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量独立团队长分红一级</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_head_lv1" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_head_lv1}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
-                                </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量兑换转矿比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_zk_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_zk_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.5表示50%</div>--}}
+                                {{--</div>--}}
+								{{----}}
+                              	{{--<!-- 加速比例设置 -->--}}
+                               {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量报单加速比例</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_jiasu_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_jiasu_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>--}}
+                               {{--</div>--}}
+                              {{----}}
+                              {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量团队长奖</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_captain_bl" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_captain_bl}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>--}}
+                                {{--</div>--}}
+                              {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>社群分享奖</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="share_star_reward" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$share_star_reward}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>--}}
+                                {{--</div>--}}
+                              {{----}}
+                              {{----}}
+                              	{{--<!-- 能量独立团队长分红设置 -->--}}
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量独立团队长分红一级</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_head_lv1" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_head_lv1}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>--}}
+                                {{--</div>--}}
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量独立团队长分红二级</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_head_lv2" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_head_lv2}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 300px;"><i
-                                                class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>能量独立团队长分红三级</label>
-                                    <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="energy_head_lv3" required lay-verify="required"
-                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
-                                               value="{{$energy_head_lv3}}">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>
-                                </div>
-                              
-                                <div class="layui-form-item">
-                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量独立团队长分红二级</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_head_lv2" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_head_lv2}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<label class="layui-form-label" style="width: 300px;"><i--}}
+                                                {{--class="layui-icon layui-icon-rate-solid"--}}
+                                                {{--style="font-size:8px;color:red;"></i>能量独立团队长分红三级</label>--}}
+                                    {{--<div class="layui-input-inline" style="width:500px;">--}}
+                                        {{--<input type="text" name="energy_head_lv3" required lay-verify="required"--}}
+                                               {{--placeholder="请输入比例" autocomplete="off" class="layui-input"--}}
+                                               {{--value="{{$energy_head_lv3}}">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">注：0.2表示20%</div>--}}
+                                {{--</div>--}}
+                              {{----}}
+                                {{--<div class="layui-form-item">--}}
+                                    {{--<button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>--}}
+                                    {{--<button type="reset" class="layui-btn layui-btn-primary">重置</button>--}}
+                                {{--</div>--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
                 </div>
             </div>
