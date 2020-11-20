@@ -41,6 +41,7 @@ class GetMenu
         //查找出所有的地址
         $table = Cache::store('file')->rememberForever('menus', function () {
             return \App\Models\Permission::where('name', 'LIKE', '%index')
+                ->where('display',1)
                 ->orWhere('cid', 0)
                 ->orderBy('sort','desc')
                 ->get();
