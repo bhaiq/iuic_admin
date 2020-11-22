@@ -144,7 +144,7 @@ class CommunityDivController extends Controller
                 }else{
 
                     // 判断业绩是否充足
-                    if($a->this_month < $request->get('num')){
+                    if($a->total < $request->get('num')){
                         return returnJson(0, '用户业绩不足');
                     }
 
