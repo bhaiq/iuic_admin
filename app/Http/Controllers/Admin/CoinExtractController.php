@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Account;
 use App\Models\AccountLog;
+use App\Models\AdminLog;
 use App\Models\CoinExtract;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -91,7 +92,7 @@ class CoinExtractController extends Controller
                 // 订单状态变化
                 $ce->status = 1;
                 $ce->save();
-
+                AdminLog::addLog('更新用户提现状态:同意,订单id'.$request->get('id'));
             }else{
 
                 // 用户冻结余额减少
@@ -103,7 +104,7 @@ class CoinExtractController extends Controller
                 // 订单状态变化
                 $ce->status = 9;
                 $ce->save();
-
+                AdminLog::addLog('更新用户提现状态:拒绝,订单id'.$request->get('id'));
             }
 
             \DB::commit();
@@ -118,6 +119,7 @@ class CoinExtractController extends Controller
 
         }
 
+        \Log::info('更新用户提现状态', $request->all());
         return returnJson(1, '操作成功');
 
     }
