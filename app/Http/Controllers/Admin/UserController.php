@@ -577,7 +577,7 @@ class UserController extends Controller
 
         $user->status = $request->get('type');
         $user->save();
-        AdminLog::addLog('更改用户状态(禁用或启用)');
+        AdminLog::addLog('更改id'.$user['id'].'用户状态(禁用或启用)');
 
         return returnJson(1, '操作成功');
 
