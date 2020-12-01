@@ -199,6 +199,14 @@
                     </div>
                 </div>
             </div>
+            <div class="layui-col-md3">
+                <div class="layui-card">
+                    <div class="layui-card-header">用户矿池手续费数量</div>
+                    <div class="layui-card-body">
+                        {{$service_charge}}
+                    </div>
+                </div>
+            </div>
 
         </div>
 

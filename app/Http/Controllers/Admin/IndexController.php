@@ -9,6 +9,7 @@ use App\Models\CoinExtract;
 use App\Models\EnergyReleaseLog;
 use App\Models\ExOrder;
 use App\Models\ExTip;
+use App\Models\KuangchiServiceCharge;
 use App\Models\KuangjiLinghuo;
 use App\Models\ReleaseOrder;
 use App\Models\ShopOrder;
@@ -93,6 +94,9 @@ class IndexController extends Controller
 
         // 用户买盘IUIC数量
         $data['usdt_buy_num'] = ExOrder::where(['status' => 0, 'type' => 1])->sum('amount_deal');
+
+        //用户矿池手续费数量
+        $data['service_charge'] = KuangchiServiceCharge::where('id','>',0)->sum('all_num');
 
         return view('admin.index', $data);
 
