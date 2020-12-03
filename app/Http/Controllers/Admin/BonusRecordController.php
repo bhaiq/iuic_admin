@@ -21,6 +21,7 @@ class BonusRecordController extends Controller
                 ->join('user as u', 'u.id', 'al.uid')
                 ->join('coin as c', 'c.id', 'al.coin_id')
                 ->leftJoin('authentication as a', 'a.uid', 'al.uid')
+                ->where('al.remark','like','%分红%')
                 ->take($limit);
 
             // 筛选条件
@@ -28,8 +29,7 @@ class BonusRecordController extends Controller
                 $p->where(function ($query) use ($soso) {
                     $query->where('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('c.name', 'like', '%' . $soso . '%')
-                        ->orwhere('a.name', 'like', '%' . $soso . '%')
-                        ->orwhere('al.remark', 'like', '%分红%');
+                        ->orwhere('a.name', 'like', '%' . $soso . '%');
                 });
             }
 
