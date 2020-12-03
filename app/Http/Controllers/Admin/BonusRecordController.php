@@ -24,7 +24,8 @@ class BonusRecordController extends Controller
                 ->leftjoin('user as u', 'u.id', 'al.uid')
                 ->leftjoin('coin as c', 'c.id', 'al.coin_id')
 //                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
-                ->where('al.remark','like','%'.'分红'.'%');
+                ->where('al.remark','like','%'.'分红'.'%')
+                ->where('al.created_at','>','2020-01-01');
 
             // 筛选条件
             if ($soso) {
