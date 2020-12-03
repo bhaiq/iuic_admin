@@ -44,7 +44,7 @@ class BonusRecordController extends Controller
 
 //            $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
 //            $p->latest('al.created_at')->paginate($limit);
-            $data['data'] = $p->get()->toArray();
+            $data['data'] = $p;
 
             return response()->json($data);
         }
