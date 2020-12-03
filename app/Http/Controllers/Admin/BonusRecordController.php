@@ -42,7 +42,7 @@ class BonusRecordController extends Controller
             $data['count'] = $p->count();
 
 //            $p->orderBy('created_at','desc')->skip(($page - 1) * $limit);
-            $p->orderBy('created_at','desc');
+            $p->orderBy('created_at','desc')->paginate($limit);
             $data['data'] = $p->get()->toArray();
 
             return response()->json($data);
