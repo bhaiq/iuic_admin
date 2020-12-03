@@ -45,6 +45,6 @@ class BonusRecordController extends Controller
             return response()->json($data);
         }
 
-        return view('admin.wallet_log.index');
+        return view('admin.bonus_record.index');
     }
 }
