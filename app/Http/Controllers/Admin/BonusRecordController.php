@@ -18,7 +18,7 @@ class BonusRecordController extends Controller
             $soso = $request->get('soso', 0);
 
             $p = AccountLog::from('account_log as al')
-                ->select('al.*', 'u.new_account as mobile', 'c.name as coin_name', 'a.name as realname')
+//                ->select('al.*', 'u.new_account as mobile', 'c.name as coin_name', 'a.name as realname')
 //                ->join('user as u', 'u.id', 'al.uid')
 //                ->join('coin as c', 'c.id', 'al.coin_id')
 //                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
