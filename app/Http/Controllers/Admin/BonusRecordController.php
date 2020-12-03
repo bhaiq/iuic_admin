@@ -24,26 +24,27 @@ class BonusRecordController extends Controller
                 ->join('user as u', 'u.id', 'al.uid')
                 ->join('coin as c', 'c.id', 'al.coin_id')
 //                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
-                ->where('al.remark','like','%'.'分红'.'%')
-                ->where('al.created_at','>','2020-01-01');
-
+                ->where('al.remark','like','%'.'分红'.'%');
+            $p = AccountLog::with('user')
+                ->with('coin')
+                ->get();
             // 筛选条件
-            if ($soso) {
-                $p->where(function ($query) use ($soso) {
-                    $query->where('u.new_account', 'like', '%' . $soso . '%')
-                        ->orwhere('c.name', 'like', '%' . $soso . '%')
-                        ->orwhere('a.name', 'like', '%' . $soso . '%')
-                        ->orwhere('al.remark', 'like', '%' . $soso . '%');
-                });
-            }
-
+//            if ($soso) {
+//                $p->where(function ($query) use ($soso) {
+//                    $query->where('u.new_account', 'like', '%' . $soso . '%')
+//                        ->orwhere('c.name', 'like', '%' . $soso . '%')
+//                        ->orwhere('a.name', 'like', '%' . $soso . '%')
+//                        ->orwhere('al.remark', 'like', '%' . $soso . '%');
+//                });
+//            }
+            dd($p);
             $data['code'] = 0;
             $data['msg'] = '查询成功';
             $data['count'] = $p->count();
 
 //            $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
-            $p->latest('al.created_at')->paginate($limit);
-            $data['data'] = $p->get()->toArray();
+//            $p->latest('al.created_at')->paginate($limit);
+//            $data['data'] = $p->get()->toArray();
 
             return response()->json($data);
         }
