@@ -32,7 +32,10 @@ class BonusRecordController extends Controller
 //                ->where('remark','like','%'.'分红'.'%')
 //                ->paginate($limit);
                $p = AccountLog::with(['user' => function($q) use ($soso){
-                   $q->where('mobile', $soso);
+                   if(!empty($soso)){
+                       $q->where('mobile', $soso);
+                   }
+
                },
                    'coin',
                    'authentication'])
