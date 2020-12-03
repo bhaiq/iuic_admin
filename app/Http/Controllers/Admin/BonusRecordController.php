@@ -33,14 +33,14 @@ class BonusRecordController extends Controller
                     left join user as u on u.id = al.uid
                     left join coin as c on c.id = al.coin_id
                     left join authentication as a on a.uid = al.uid
-                    where al.remark like '分红'%";
+                    where al.remark like '分红%'";
 
             $countSql = "select 1 
                     from account_log as al 
                     left join user as u on u.id = al.uid
                     left join coin as c on c.id = al.coin_id
                     left join authentication as a on a.uid = al.uid
-                    where al.remark like '分红'%";
+                    where al.remark like '分红%'";
 
             // 筛选条件
             if ($soso) {
@@ -49,10 +49,9 @@ class BonusRecordController extends Controller
 //                        ->orwhere('c.name', 'like', '%' . $soso . '%')
 //                        ->orwhere('a.name', 'like', '%' . $soso . '%');
 //                });
-                $sql .= " and (u.new_account like  $soso% or c.name like $soso% or a.name like $soso%) and al.id >  $start";
-                $countSql .= " and (u.new_account like  $soso% or c.name like $soso% or a.name like $soso%)";
+                $sql .= " and (u.new_account like  $soso'%' or c.name like $soso'%' or a.name like $soso'%') and al.id >  $start";
+                $countSql .= " and (u.new_account like  $soso'%' or c.name like $soso'%' or a.name like $soso'%')";
             }
-            echo $sql;die;
 //            dd($p);
             $data['code'] = 0;
             $data['msg'] = '查询成功';
