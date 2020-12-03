@@ -41,7 +41,8 @@ class BonusRecordController extends Controller
             $data['msg'] = '查询成功';
             $data['count'] = $p->count();
 
-            $p->orderBy('created_at','desc')->skip(($page - 1) * $limit);
+//            $p->orderBy('created_at','desc')->skip(($page - 1) * $limit);
+            $p->orderBy('created_at','desc');
             $data['data'] = $p->get()->toArray();
 
             return response()->json($data);
