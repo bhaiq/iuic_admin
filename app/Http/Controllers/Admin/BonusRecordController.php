@@ -15,7 +15,7 @@ class BonusRecordController extends Controller
         if ($request->ajax()) {
 
             $page = $request->get('page', 1);
-            $limit = $request->get('limit', 5);
+            $limit = $request->get('limit', 10);
             $soso = $request->get('soso', 0);
 
 //            $p = AccountLog::from('account_log as al')
@@ -25,11 +25,20 @@ class BonusRecordController extends Controller
 //                ->join('coin as c', 'c.id', 'al.coin_id')
 ////                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
 ////                ->where('al.remark','like','%'.'分红'.'%');
-            $p = AccountLog::with('user')
-                ->with('coin')
-                ->with('authentication')
-                ->orderBy('created_at','desc')
-                ->paginate($limit);
+//            $p = AccountLog::with('user')
+//                ->with('coin')
+//                ->with('authentication')
+//                ->orderBy('created_at','desc')
+//                ->where('remark','like','%'.'分红'.'%')
+//                ->paginate($limit);
+               $p = AccountLog::with(['user' => function($q) use ($soso){
+                   $q->where('mobile', $soso);
+               },
+                   'coin',
+                   'authentication'])
+                   ->orderBy('created_at','desc')
+                   ->where('remark','like','%'.'分红'.'%')
+                   ->paginate($limit);
             $data = [];
 
             // 筛选条件
