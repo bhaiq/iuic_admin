@@ -23,7 +23,8 @@ class BonusRecordController extends Controller
                 ->join('user as u', 'u.id', 'al.uid')
                 ->join('coin as c', 'c.id', 'al.coin_id')
                 ->leftJoin('authentication as a', 'a.uid', 'al.uid')
-                ->where('al.remark','like','%'.'分红'.'%');
+                ->where('al.remark','like','%'.'分红'.'%')
+                ->paginate($limit);
 //            $p = AccountLog::with('user')
 //                ->with('coin')
 //                ->where('remark','like','%'.'分红'.'%');
@@ -61,7 +62,7 @@ class BonusRecordController extends Controller
 //            $sql .= " order by al.created_at desc limit $limit";
 //            echo $sql;die;
 //            $p->orderBy('created_at','desc')->skip(($page - 1) * $limit);
-            $data['data'] = $p->orderBy('created_at','desc')->paginate($limit);
+            $data['data'] = $p->orderBy('created_at','desc');
 //            $data['data'] = DB::query($sql);
 
             return response()->json($data);
