@@ -36,12 +36,12 @@ class BonusRecordController extends Controller
 //                        ->orwhere('a.name', 'like', '%' . $soso . '%');
 //                });
 //            }
-            dd($p);
+//            dd($p);
             $data['code'] = 0;
             $data['msg'] = '查询成功';
             $data['count'] = $p->count();
 
-            $p->latest('created_at')->skip(($page - 1) * $limit);
+            $p->orderBy('created_at','desc')->skip(($page - 1) * $limit);
             $data['data'] = $p->get()->toArray();
 
             return response()->json($data);
