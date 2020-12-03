@@ -44,15 +44,15 @@ class BonusRecordController extends Controller
 //                    where al.remark like '分红%' and al.id >  $start";
 
             // 筛选条件
-            if ($soso) {
-                $p->where(function ($query) use ($soso) {
-                    $query->where('u.new_account', 'like', '%' . $soso . '%')
-                        ->orwhere('c.name', 'like', '%' . $soso . '%')
-                        ->orwhere('a.name', 'like', '%' . $soso . '%');
-                });
-//                $sql .= " and (u.new_account like  '$soso%' or c.name like '$soso%' or a.name like '$soso%')";
-//                $countSql .= " and (u.new_account like  '$soso%' or c.name like '$soso%' or a.name like '$soso%')";
-            }
+//            if ($soso) {
+//                $p->where(function ($query) use ($soso) {
+//                    $query->where('u.new_account', 'like', '%' . $soso . '%')
+//                        ->orwhere('c.name', 'like', '%' . $soso . '%')
+//                        ->orwhere('a.name', 'like', '%' . $soso . '%');
+//                });
+////                $sql .= " and (u.new_account like  '$soso%' or c.name like '$soso%' or a.name like '$soso%')";
+////                $countSql .= " and (u.new_account like  '$soso%' or c.name like '$soso%' or a.name like '$soso%')";
+//            }
 //            dd($p);
             $data['code'] = 0;
             $data['msg'] = '查询成功';
