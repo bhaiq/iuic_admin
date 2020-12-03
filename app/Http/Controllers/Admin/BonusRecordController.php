@@ -36,7 +36,7 @@ class BonusRecordController extends Controller
 //                        ->orwhere('a.name', 'like', '%' . $soso . '%');
 //                });
 //            }
-
+            dd($p);
             $data['code'] = 0;
             $data['msg'] = '查询成功';
             $data['count'] = $p->count();
