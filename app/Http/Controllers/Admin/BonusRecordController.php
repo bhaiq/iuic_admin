@@ -11,6 +11,7 @@ class BonusRecordController extends Controller
     //
     public function index(Request $request)
     {
+        return 1;
         if ($request->ajax()) {
 
             $page = $request->get('page', 1);
