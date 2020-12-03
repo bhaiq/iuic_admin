@@ -24,11 +24,13 @@ class BonusRecordController extends Controller
 //                ->join('user as u', 'u.id', 'al.uid')
 //                ->join('coin as c', 'c.id', 'al.coin_id')
 ////                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
-//                ->where('al.remark','like','%'.'分红'.'%');
+////                ->where('al.remark','like','%'.'分红'.'%');
             $p = AccountLog::with('user')
                 ->with('coin')
                 ->orderBy('created_at','desc')
                 ->paginate($limit);
+            $data = [];
+
             // 筛选条件
 //            if ($soso) {
 //                $p->where(function ($query) use ($soso) {
@@ -42,10 +44,14 @@ class BonusRecordController extends Controller
             $data['code'] = 0;
             $data['msg'] = '查询成功';
             $data['count'] = $p->lastPage();
-
+            $data['data'] = [];
 //            $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
 //            $p->latest('al.created_at')->paginate($limit);
-            $data['data'] = $p;
+            foreach ($p as $k => $v){
+                $data['data'][$k]['mobile'] = $v->user->mobile;
+            }
+
+
 
             return response()->json($data);
         }
