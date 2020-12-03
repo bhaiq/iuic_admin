@@ -49,4 +49,9 @@ class AccountLog extends Model
         return $this->belongsTo('App\Models\Coin','coin_id','id');
     }
 
+    public function authentication()
+    {
+        return $this->belongsTo('App\Models\Authentication','uid','uid');
+    }
+
 }

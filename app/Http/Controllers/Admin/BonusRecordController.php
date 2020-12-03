@@ -15,7 +15,7 @@ class BonusRecordController extends Controller
         if ($request->ajax()) {
 
             $page = $request->get('page', 1);
-            $limit = $request->get('limit', 10);
+            $limit = $request->get('limit', 5);
             $soso = $request->get('soso', 0);
 
 //            $p = AccountLog::from('account_log as al')
