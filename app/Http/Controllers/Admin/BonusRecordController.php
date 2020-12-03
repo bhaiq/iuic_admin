@@ -35,7 +35,6 @@ class BonusRecordController extends Controller
                    if(!empty($soso)){
                        $q->where('mobile', $soso);
                    }
-
                },
                    'coin',
                    'authentication'])
@@ -43,6 +42,7 @@ class BonusRecordController extends Controller
                    ->where('remark','like','%'.'分红'.'%')
                    ->paginate($limit);
             $data = [];
+            dd($p);
 
             // 筛选条件
 //            if ($soso) {
