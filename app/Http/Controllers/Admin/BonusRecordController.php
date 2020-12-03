@@ -29,7 +29,7 @@ class BonusRecordController extends Controller
                     $query->where('u.new_account', 'like', '%' . $soso . '%')
                         ->orwhere('c.name', 'like', '%' . $soso . '%')
                         ->orwhere('a.name', 'like', '%' . $soso . '%')
-                        ->orwhere('al.remark', 'like', '%' . $soso . '%');
+                        ->orwhere('al.remark', 'like', '%分红%');
                 });
             }
 
