@@ -40,7 +40,7 @@ class BonusRecordController extends Controller
                    ->where('remark','like','%'.'分红'.'%')
                    ->paginate($limit);
                if(!empty($soso)){
-                   $uid = User::where('mobile',$soso)->value('uid');
+                   $uid = User::where('mobile',$soso)->value('id');
                    $p->where('uid',$uid);
                }
             $data = [];
