@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\AccountLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -43,6 +44,6 @@ class BonusRecordController extends Controller
             return response()->json($data);
         }
 
-        return view('admin.wallet_log.index');
+        return view('admin.bonus_record.index');
     }
 }
