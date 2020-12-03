@@ -2,7 +2,7 @@
 
 @section('pageHeaderOne', '用户管理')
 @section('pageHeaderTwo', '钱包日志')
-@section('pageHeaderTwoUrl', '/admin/wallet_log/index')
+@section('pageHeaderTwoUrl', '/admin/bonus_record/index')
 
 @section('body')
 
@@ -36,7 +36,7 @@
             table.render({
                 elem: '#demo'
                 , toolbar: '#toolbarDemo'
-                , url: '/admin/wallet_log/index'
+                , url: '/admin/bonus_record/index'
                 , method: 'POST'
                 , where: {
                     "_token":"{{csrf_token()}}"

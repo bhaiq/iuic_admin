@@ -22,7 +22,7 @@ class BonusRecordController extends Controller
                 ->join('user as u', 'u.id', 'al.uid')
                 ->join('coin as c', 'c.id', 'al.coin_id')
                 ->leftJoin('authentication as a', 'a.uid', 'al.uid')
-                ->where('al.remark','like','%'.'月度分红'.'%')
+                ->where('al.remark','like','%'.'分红'.'%')
                 ->take($limit);
 
             // 筛选条件
