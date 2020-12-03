@@ -336,6 +336,10 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('community_div/ajax', ['as' => 'admin.community_div.edit', 'uses' => 'CommunityDivController@ajax']);
     Route::any('community_div/index', ['as' => 'admin.community_div.index', 'uses' => 'CommunityDivController@index']);
     Route::resource('community_div', 'CommunityDivController', ['names' => ['update' => 'admin.community_div.edit', 'store' => 'admin.community_div.create']]);
- 
+
+
+    // 月度分红日志
+    Route::get('bonus_record', ['as' => 'admin.bonus_record.index', 'uses' => 'BonusRecordController@index']);
+    Route::any('bonus_record/index', ['as' => 'admin.bonus_record.index', 'uses' => 'BonusRecordController@index']);
 
 });
