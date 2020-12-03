@@ -28,14 +28,14 @@ class BonusRecordController extends Controller
                 ->where('al.created_at','>','2020-01-01');
 
             // 筛选条件
-//            if ($soso) {
-//                $p->where(function ($query) use ($soso) {
-//                    $query->where('u.new_account', 'like', '%' . $soso . '%')
-//                        ->orwhere('c.name', 'like', '%' . $soso . '%')
-//                        ->orwhere('a.name', 'like', '%' . $soso . '%')
-//                        ->orwhere('al.remark', 'like', '%' . $soso . '%');
-//                });
-//            }
+            if ($soso) {
+                $p->where(function ($query) use ($soso) {
+                    $query->where('u.new_account', 'like', '%' . $soso . '%')
+                        ->orwhere('c.name', 'like', '%' . $soso . '%')
+                        ->orwhere('a.name', 'like', '%' . $soso . '%')
+                        ->orwhere('al.remark', 'like', '%' . $soso . '%');
+                });
+            }
 
             $data['code'] = 0;
             $data['msg'] = '查询成功';
