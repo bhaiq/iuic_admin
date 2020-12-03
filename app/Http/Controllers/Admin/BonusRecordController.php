@@ -31,16 +31,15 @@ class BonusRecordController extends Controller
 //                ->orderBy('created_at','desc')
 //                ->where('remark','like','%'.'分红'.'%')
 //                ->paginate($limit);
-               $p = AccountLog::with(['user' => function($q) use ($soso){
-                   if(!empty($soso)){
-                       $q->where('mobile', $soso);
-                   }
-               }])
+               $p = AccountLog::with('user')
                    ->with('coin')
                    ->with('authentication')
                    ->orderBy('created_at','desc')
                    ->where('remark','like','%'.'分红'.'%')
                    ->paginate($limit);
+               if(!empty($soso)){
+                   $p->where('user.mobile',$soso);
+               }
             $data = [];
             dd($p);
 
