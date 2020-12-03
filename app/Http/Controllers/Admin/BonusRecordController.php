@@ -41,7 +41,7 @@ class BonusRecordController extends Controller
                    $p->where('user.mobile',$soso);
                }
             $data = [];
-            dd($p);
+//            dd($p);
 
             // 筛选条件
 //            if ($soso) {
