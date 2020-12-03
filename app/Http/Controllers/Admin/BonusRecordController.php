@@ -29,19 +29,19 @@ class BonusRecordController extends Controller
                 ->where('remark','like','%'.'分红'.'%');
 
             // 筛选条件
-            if ($soso) {
-                $p->where(function ($query) use ($soso) {
-                    $query->where('u.new_account', 'like', '%' . $soso . '%')
-                        ->orwhere('c.name', 'like', '%' . $soso . '%')
-                        ->orwhere('a.name', 'like', '%' . $soso . '%');
-                });
-            }
+//            if ($soso) {
+//                $p->where(function ($query) use ($soso) {
+//                    $query->where('u.new_account', 'like', '%' . $soso . '%')
+//                        ->orwhere('c.name', 'like', '%' . $soso . '%')
+//                        ->orwhere('a.name', 'like', '%' . $soso . '%');
+//                });
+//            }
 
             $data['code'] = 0;
             $data['msg'] = '查询成功';
             $data['count'] = $p->count();
 
-            $p->latest('al.created_at')->skip(($page - 1) * $limit);
+            $p->latest('created_at')->skip(($page - 1) * $limit);
             $data['data'] = $p->get()->toArray();
 
             return response()->json($data);
