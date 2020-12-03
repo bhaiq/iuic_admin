@@ -53,11 +53,11 @@
                         title: '账户',
                         width: 130
                     }
-                    // ,{
-                    //     field: 'realname',
-                    //     title: '真实姓名',
-                    //     width: 120
-                    // }
+                    ,{
+                        field: 'realname',
+                        title: '真实姓名',
+                        width: 120
+                    }
                     , {
                         field: 'coin_name',
                         title: '币种名称',
