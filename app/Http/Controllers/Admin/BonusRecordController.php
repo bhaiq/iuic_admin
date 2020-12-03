@@ -38,11 +38,14 @@ class BonusRecordController extends Controller
                    ->with('authentication')
                    ->orderBy('created_at','desc')
                    ->where('remark','like','%'.'分红'.'%')
+                   ->where(function($query) use($soso){
+                       if(!empty($soso)){
+                           $uid = User::where('mobile',$soso)->value('id');
+                           $query->where('uid',$uid);
+                       }
+                   })
                    ->paginate($limit);
-               if(!empty($soso)){
-                   $uid = User::where('mobile',$soso)->value('id');
-                   $p->where('uid',$uid);
-               }
+
             $data = [];
 //            dd($p);
 
