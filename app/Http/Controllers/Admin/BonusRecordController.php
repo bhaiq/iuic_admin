@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\AccountLog;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,7 @@ class BonusRecordController extends Controller
             $page = $request->get('page', 1);
             $limit = $request->get('limit', 10);
             $soso = $request->get('soso', 0);
+
 
 //            $p = AccountLog::from('account_log as al')
 //                ->select('al.uid','al.coin_id','al.remark', 'al.amount','al.created_at',
@@ -38,7 +40,8 @@ class BonusRecordController extends Controller
                    ->where('remark','like','%'.'分红'.'%')
                    ->paginate($limit);
                if(!empty($soso)){
-                   $p->where('user.mobile',$soso);
+                   $uid = User::where('mobile',$soso)->value('uid');
+                   $p->where('uid',$uid);
                }
             $data = [];
 //            dd($p);
