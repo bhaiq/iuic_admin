@@ -41,7 +41,7 @@ class BonusRecordController extends Controller
 //            dd($p);
             $data['code'] = 0;
             $data['msg'] = '查询成功';
-            $data['count'] = $p->last_page();
+            $data['count'] = $p->lastPage();
 
 //            $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
 //            $p->latest('al.created_at')->paginate($limit);
