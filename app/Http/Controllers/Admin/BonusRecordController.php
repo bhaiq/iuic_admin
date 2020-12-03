@@ -36,6 +36,15 @@ class BonusRecordController extends Controller
 //                        ->orwhere('a.name', 'like', '%' . $soso . '%');
 //                });
 //            }
+            if($soso){
+                $p = AccountLog::where(function ($query) use($soso){
+                    $query->wherHas('user',function ($query) use ($soso){
+                        $query->where('new_account',$soso);
+                    });
+                })
+                    ->with('coin')
+                    ->where('remark','like','%'.'分红'.'%');
+            }
 //            dd($p);
             $data['code'] = 0;
             $data['msg'] = '查询成功';

@@ -59,7 +59,7 @@
                         width: 120
                     }
                     , {
-                        field: 'coin_name',
+                        field: 'coin->coin_name',
                         title: '币种名称',
                         width: 90
                     }
