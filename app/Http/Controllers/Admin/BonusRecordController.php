@@ -49,8 +49,8 @@ class BonusRecordController extends Controller
 //                        ->orwhere('c.name', 'like', '%' . $soso . '%')
 //                        ->orwhere('a.name', 'like', '%' . $soso . '%');
 //                });
-                $sql .= " and (u.new_account like  $soso'%' or c.name like $soso'%' or a.name like $soso'%') and al.id >  $start";
-                $countSql .= " and (u.new_account like  $soso'%' or c.name like $soso'%' or a.name like $soso'%')";
+                $sql .= " and (u.new_account like  '$soso%' or c.name like '$soso%' or a.name like '$soso%') and al.id >  $start";
+                $countSql .= " and (u.new_account like  '$soso%' or c.name like '$soso%' or a.name like '$soso%')";
             }
             echo $sql;die;
 //            dd($p);
