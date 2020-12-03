@@ -41,12 +41,12 @@ class AccountLog extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Model\User','uid','id');
+        return $this->belongsTo('App\Models\User','uid','id');
     }
 
     public function coin()
     {
-        return $this->belongsTo('App\Model\Coin','coin_id','id');
+        return $this->belongsTo('App\Models\Coin','coin_id','id');
     }
 
 }
