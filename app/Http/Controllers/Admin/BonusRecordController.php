@@ -55,7 +55,7 @@ class BonusRecordController extends Controller
                 $data['data'][$k]['amount'] = $v->amount;
                 $data['data'][$k]['type'] = $v->type;
                 $data['data'][$k]['remark'] = $v->remark;
-                $data['data'][$k]['created_at'] = $v->created_at;
+                $data['data'][$k]['created_at'] = $v->created_at->format('Y-m-d h:i:s');
             }
 
 
