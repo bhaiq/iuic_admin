@@ -27,8 +27,8 @@ class BonusRecordController extends Controller
 //                ->where('al.remark','like','%'.'分红'.'%');
             $p = AccountLog::with('user')
                 ->with('coin')
-                ->paginate($limit)
-                ->toArray();
+                ->orderBy('created_at','desc')
+                ->paginate($limit);
             // 筛选条件
 //            if ($soso) {
 //                $p->where(function ($query) use ($soso) {
