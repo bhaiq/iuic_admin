@@ -21,8 +21,8 @@ class BonusRecordController extends Controller
             $p = AccountLog::from('account_log as al')
                 ->select('al.uid','al.coin_id','al.remark', 'al.amount','al.created_at',
                     'u.new_account as mobile', 'c.name as coin_name')
-                ->leftjoin('user as u', 'u.id', 'al.uid')
-                ->leftjoin('coin as c', 'c.id', 'al.coin_id')
+                ->join('user as u', 'u.id', 'al.uid')
+                ->join('coin as c', 'c.id', 'al.coin_id')
 //                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
                 ->where('al.remark','like','%'.'分红'.'%')
                 ->where('al.created_at','>','2020-01-01');
