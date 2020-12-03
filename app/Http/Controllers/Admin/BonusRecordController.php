@@ -42,7 +42,7 @@ class BonusRecordController extends Controller
                    ->where('remark','like','%'.'分红'.'%')
                    ->paginate($limit);
             $data = [];
-            dd($p);
+//            dd($p);
 
             // 筛选条件
 //            if ($soso) {
