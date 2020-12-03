@@ -19,12 +19,11 @@ class BonusRecordController extends Controller
 
             $p = AccountLog::from('account_log as al')
                 ->select('al.*', 'u.new_account as mobile', 'c.name as coin_name', 'a.name as realname')
-                ->where('al.remark','1')
                 ->join('user as u', 'u.id', 'al.uid')
                 ->join('coin as c', 'c.id', 'al.coin_id')
-                ->leftJoin('authentication as a', 'a.uid', 'al.uid');
-//                ->where('al.remark','like','%'.'分红'.'%')
-
+                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
+                ->where('al.remark','like','%'.'月度分红'.'%')
+                ->take($limit);
 
             // 筛选条件
             if ($soso) {
@@ -39,7 +38,7 @@ class BonusRecordController extends Controller
             $data['msg'] = '查询成功';
             $data['count'] = $p->count();
 
-            $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
+            $p->latest('al.created_at')->skip(($page - 1) * $limit);
             $data['data'] = $p->get()->toArray();
 
             return response()->json($data);
