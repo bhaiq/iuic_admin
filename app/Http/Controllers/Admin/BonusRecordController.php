@@ -62,7 +62,8 @@ class BonusRecordController extends Controller
 //            $sql .= " order by al.created_at desc limit $limit";
 //            echo $sql;die;
 //            $p->orderBy('created_at','desc')->skip(($page - 1) * $limit);
-            $data['data'] = $p->orderBy('created_at','desc')->paginate($limit);
+            $p->orderBy('created_at','desc')->paginate($limit);
+            $data['data'] = $p->get()->toArray();
 //            $data['data'] = DB::query($sql);
 
             return response()->json($data);
