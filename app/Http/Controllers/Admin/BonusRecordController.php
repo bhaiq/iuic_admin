@@ -49,6 +49,11 @@ class BonusRecordController extends Controller
 //            $p->latest('al.created_at')->paginate($limit);
             foreach ($p as $k => $v){
                 $data['data'][$k]['mobile'] = $v->user->mobile;
+                $data['data'][$k]['coin_name'] = $v->coin->coin_name;
+                $data['data'][$k]['amount'] = $v->amount;
+                $data['data'][$k]['type'] = $v->type;
+                $data['data'][$k]['remark'] = $v->remark;
+                $data['data'][$k]['created_at'] = $v->created_at;
             }
 
 
