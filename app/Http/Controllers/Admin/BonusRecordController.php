@@ -52,6 +52,7 @@ class BonusRecordController extends Controller
                 $sql .= " and (u.new_account like  $soso'%' or c.name like $soso'%' or a.name like $soso'%') and al.id >  $start";
                 $countSql .= " and (u.new_account like  $soso'%' or c.name like $soso'%' or a.name like $soso'%')";
             }
+            echo $sql;die;
 //            dd($p);
             $data['code'] = 0;
             $data['msg'] = '查询成功';
