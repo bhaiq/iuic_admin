@@ -35,9 +35,9 @@ class BonusRecordController extends Controller
                    if(!empty($soso)){
                        $q->where('mobile', $soso);
                    }
-               },
-                   'coin',
-                   'authentication'])
+               }])
+                   ->with('coin')
+                   ->with('authentication')
                    ->orderBy('created_at','desc')
                    ->where('remark','like','%'.'分红'.'%')
                    ->paginate($limit);
