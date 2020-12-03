@@ -18,16 +18,17 @@ class BonusRecordController extends Controller
             $limit = $request->get('limit', 10);
             $soso = $request->get('soso', 0);
 
-            $p = AccountLog::from('account_log as al')
-                ->select('al.uid','al.coin_id','al.remark', 'al.amount','al.created_at',
-                    'u.new_account as mobile', 'c.name as coin_name')
-                ->join('user as u', 'u.id', 'al.uid')
-                ->join('coin as c', 'c.id', 'al.coin_id')
-//                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
-                ->where('al.remark','like','%'.'分红'.'%');
+//            $p = AccountLog::from('account_log as al')
+//                ->select('al.uid','al.coin_id','al.remark', 'al.amount','al.created_at',
+//                    'u.new_account as mobile', 'c.name as coin_name')
+//                ->join('user as u', 'u.id', 'al.uid')
+//                ->join('coin as c', 'c.id', 'al.coin_id')
+////                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
+//                ->where('al.remark','like','%'.'分红'.'%');
             $p = AccountLog::with('user')
                 ->with('coin')
-                ->paginate($limit);
+                ->paginate($limit)
+                ->toArray();
             // 筛选条件
 //            if ($soso) {
 //                $p->where(function ($query) use ($soso) {
@@ -40,7 +41,7 @@ class BonusRecordController extends Controller
 //            dd($p);
             $data['code'] = 0;
             $data['msg'] = '查询成功';
-            $data['count'] = $p->count();
+            $data['count'] = $p->lastPage();
 
 //            $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
 //            $p->latest('al.created_at')->paginate($limit);
