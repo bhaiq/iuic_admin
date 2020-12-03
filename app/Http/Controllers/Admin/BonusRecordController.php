@@ -17,13 +17,16 @@ class BonusRecordController extends Controller
             $limit = $request->get('limit', 10);
             $soso = $request->get('soso', 0);
 
-            $p = AccountLog::from('account_log as al')
-                ->select('al.*', 'u.new_account as mobile', 'c.name as coin_name', 'a.name as realname')
-                ->join('user as u', 'u.id', 'al.uid')
-                ->join('coin as c', 'c.id', 'al.coin_id')
-                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
-                ->where('al.remark','like','%'.'分红'.'%')
-                ->take($limit);
+//            $p = AccountLog::from('account_log as al')
+//                ->select('al.*', 'u.new_account as mobile', 'c.name as coin_name', 'a.name as realname')
+//                ->join('user as u', 'u.id', 'al.uid')
+//                ->join('coin as c', 'c.id', 'al.coin_id')
+//                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
+//                ->where('al.remark','like','%'.'分红'.'%')
+//                ->take($limit);
+            $p = AccountLog::with('user')
+                ->with('coin')
+                ->where('remark','like','%'.'分红'.'%');
 
             // 筛选条件
             if ($soso) {

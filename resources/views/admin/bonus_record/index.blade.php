@@ -1,7 +1,7 @@
 @extends('admin.base')
 
 @section('pageHeaderOne', '用户管理')
-@section('pageHeaderTwo', '钱包日志')
+@section('pageHeaderTwo', '分红记录')
 @section('pageHeaderTwoUrl', '/admin/bonus_record/index')
 
 @section('body')
