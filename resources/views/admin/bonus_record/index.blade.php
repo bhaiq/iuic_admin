@@ -10,9 +10,13 @@
     @include('admin.partials.success')
 
     <div class="demoTable">
-        搜索关键字：
+        搜索账户：
         <div class="layui-inline">
             <input class="layui-input" name="ID" id="demoReload" value="" autocomplete="off">
+        </div>
+        搜索记录：
+        <div class="layui-inline">
+            <input class="layui-input" name="remark" id="demoReloads" value="" autocomplete="off">
         </div>
         <button class="layui-btn" data-type="reload">搜索</button>
     </div>
@@ -98,6 +102,7 @@
             var $ = layui.$, active = {
                 reload: function(){
                     var demoReload = $('#demoReload');
+                    var demoReloads = $('#demoReloads');
 
                     //执行重载
                     table.reload('testReload', {
@@ -105,7 +110,8 @@
                             curr: 1 //重新从第 1 页开始
                         }
                         ,where: {
-                            soso: demoReload.val()
+                            soso: demoReload.val(),
+                            remark: demoReloads.val()
                         }
                     });
                 }

@@ -18,6 +18,7 @@ class BonusRecordController extends Controller
             $page = $request->get('page', 1);
             $limit = $request->get('limit', 10);
             $soso = $request->get('soso', 0);
+            $remarks = $request->get('remark', 0);
 
 
 //            $p = AccountLog::from('account_log as al')
@@ -37,7 +38,14 @@ class BonusRecordController extends Controller
                    ->with('coin')
                    ->with('authentication')
                    ->orderBy('created_at','desc')
-                   ->where('remark','like','%'.'分红'.'%')
+//                   ->where('remark','like','%'.'分红'.'%')
+                   ->where(function($query) use ($remarks){
+                        if(!empty($remarks)){
+                            $query->where('remark','like','%'.'月度分红'.'%');
+                        }else{
+                            $query->where('remark','like','%'.'分红'.'%');
+                        }
+                   })
                    ->where(function($query) use($soso){
                        if(!empty($soso)){
                            $uid = User::where('mobile',$soso)->value('id');
