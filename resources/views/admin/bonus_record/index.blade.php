@@ -53,7 +53,7 @@
                         type: 'checkbox'
                     }
                     , {
-                        field: 'mobile',
+                        field: 'new_account',
                         title: '账户',
                         width: 130
                     }

@@ -48,7 +48,7 @@ class BonusRecordController extends Controller
                    })
                    ->where(function($query) use($soso){
                        if(!empty($soso)){
-                           $uid = User::where('mobile',$soso)->value('id');
+                           $uid = User::where('new_account',$soso)->value('id');
                            $query->where('uid',$uid);
                        }
                    })
@@ -74,7 +74,7 @@ class BonusRecordController extends Controller
 //            $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
 //            $p->latest('al.created_at')->paginate($limit);
             foreach ($p as $k => $v){
-                $data['data'][$k]['mobile'] = $v->user->mobile;
+                $data['data'][$k]['mobile'] = $v->user->new_account;
                 $data['data'][$k]['realname'] = $v->authentication->name;
                 $data['data'][$k]['coin_name'] = $v->coin->name;
                 $data['data'][$k]['amount'] = $v->amount;
