@@ -41,7 +41,7 @@ class BonusRecordController extends Controller
 //                   ->where('remark','like','%'.'分红'.'%')
                    ->where(function($query) use ($remarks){
                         if(!empty($remarks)){
-                            $query->where('remark','like','%'.$remarks.'%');
+                            $query->where('remark','like','%'.'IUIC社群月度分红奖'.'%');
                         }else{
                             $query->where('remark','like','%'.'分红'.'%');
                         }
