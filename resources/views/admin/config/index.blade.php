@@ -923,6 +923,54 @@
                                     <div class="layui-form-mid layui-word-aux">注：0.03表示3%</div>
                                 </div>
 
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>直推矿池加速释放比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="kuangji_zhiji_rate" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$zhitui_kuangji_release_rate}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.03表示3%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>一星社群矿池加速释放比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="kuangji_zhiji_rate" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$one_star_kuangji_release_rate}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.03表示3%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>二星社群矿池加速释放比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="kuangji_zhiji_rate" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$two_star_kuangji_release_rate}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.03表示3%</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>三星社群矿池加速释放比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="kuangji_zhiji_rate" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$three_star_kuangji_release_rate}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.03表示3%</div>
+                                </div>
+
 
 
                                 <div class="layui-form-item">
