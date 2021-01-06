@@ -20,6 +20,7 @@ class ConfigController extends Controller
     // 配置列表
     public function index()
     {
+        return 1;
         if(app()->environment('test')){
             $url1 = '/www/wwwroot/test_iuic/config/extract.php';
             $url2 = '/www/wwwroot/test_iuic/config/release.php';
