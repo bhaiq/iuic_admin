@@ -357,7 +357,7 @@ class ConfigController extends Controller
             file_put_contents($url8, $text);
 
         }
-        dd($arr8);
+//        dd($arr8);
         if(is_array($arr9)){
             foreach ($arr9 as $k => $v){
 
