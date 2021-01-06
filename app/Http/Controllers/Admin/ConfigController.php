@@ -171,7 +171,6 @@ class ConfigController extends Controller
     // 更新配置
     public function update(Request $request)
     {
-
         if(app()->environment('test')){
             $url1 = '/www/wwwroot/test_iuic/config/extract.php';
             $url2 = '/www/wwwroot/test_iuic/config/release.php';
@@ -235,7 +234,7 @@ class ConfigController extends Controller
         $arr6 = config('reward');
         $arr10 = config('admin_mall');
 
-        \Log::info('修改前数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9, $arr10, $arr11, $arr12, $arr13,$arr14]);
+        \Log::info('修改前数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9, $arr10, $arr11, $arr12, $arr13]);
 
         if(is_array($arr1)){
             foreach ($arr1 as $k => $v){
@@ -429,21 +428,8 @@ class ConfigController extends Controller
             file_put_contents($url13, $text);
 
         }
-        if(is_array($arr14)){
-            foreach ($arr14 as $k => $v){
 
-                if($request->has($k)){
-                    $arr14[$k] = $request->get($k);
-                }
-
-            }
-
-            $text = "<?php return ".var_export($arr13,true).";";
-            file_put_contents($url14, $text);
-
-        }
-
-        \Log::info('修改后数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9, $arr10, $arr11, $arr12, $arr13,$arr14]);
+        \Log::info('修改后数据', [$arr1, $arr2, $arr3, $arr4, $arr5, $arr6, $arr7, $arr8, $arr9, $arr10, $arr11, $arr12, $arr13]);
 
         AdminLog::addLog('修改了配置');
 
