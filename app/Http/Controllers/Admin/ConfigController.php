@@ -357,7 +357,7 @@ class ConfigController extends Controller
             file_put_contents($url8, $text);
 
         }
-
+        return 1;
         if(is_array($arr9)){
             foreach ($arr9 as $k => $v){
 
@@ -371,7 +371,7 @@ class ConfigController extends Controller
             file_put_contents($url9, $text);
 
         }
-        return 1;
+
         if(is_array($arr10)){
             foreach ($arr10 as $k => $v){
 
