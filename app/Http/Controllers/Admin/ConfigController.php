@@ -354,6 +354,7 @@ class ConfigController extends Controller
             }
 
             $text = "<?php return ".var_export($arr8,true).";";
+            dd($text);
             file_put_contents($url8, $text);
 
         }
