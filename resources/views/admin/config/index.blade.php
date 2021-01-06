@@ -823,7 +823,7 @@
                                                 class="layui-icon layui-icon-rate-solid"
                                                 style="font-size:8px;color:red;"></i>矿机90天内赎回比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
-                                        <input type="text" name="kuangji_redeem_30_bl" required lay-verify="required"
+                                        <input type="text" name="kuangji_redeem_90_bl" required lay-verify="required"
                                                placeholder="请输入比例" autocomplete="off" class="layui-input"
                                                value="{{$kuangji_redeem_90_bl}}">
                                     </div>
