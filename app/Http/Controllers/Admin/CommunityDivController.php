@@ -144,12 +144,12 @@ class CommunityDivController extends Controller
                     //业绩足够升星
                     $user = User::where('id',$a->uid)->first();
                     $ucomm_jl =  CommunityDividend::where('uid',$a->uid)->first();
-                    if($ucomm_jl->total > 100000){
+                    if($ucomm_jl->total >= 100000){
                         //升2星
                         if($user->star_community < 2){
                             User::where('id',$a->uid)->update(['star_community'=>2]);
                         }
-                    }else if($ucomm_jl->total > 10000){
+                    }else if($ucomm_jl->total >= 10000){
                         if($user->star_community < 1){
                             User::where('id',$a->uid)->update(['star_community'=>1]);
                         }
