@@ -180,7 +180,7 @@ class CommunityDivController extends Controller
                         if($user->star_community >= 2){
                             User::where('id',$a->uid)->update(['star_community'=>1]);
                         }
-                    }else if($ucomm_jl->total > 10000){
+                    }else if($ucomm_jl->total < 10000){
                         if($user->star_community >= 1){
                             User::where('id',$a->uid)->update(['star_community'=>0]);
                         }
