@@ -7,6 +7,7 @@ use App\Models\CommunityDividend;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class CommunityDivController extends Controller
@@ -145,12 +146,16 @@ class CommunityDivController extends Controller
                     $user = User::where('id',$a->uid)->first();
                     $ucomm_jl =  CommunityDividend::where('uid',$a->uid)->first();
                     if($ucomm_jl->total >= 100000){
+                        Log::info('d1');
                         //升2星
                         if($user->star_community < 2){
+                            Log::info('d2');
                             User::where('id',$a->uid)->update(['star_community'=>2]);
                         }
                     }else if($ucomm_jl->total >= 10000){
+                        Log::info('d3');
                         if($user->star_community < 1){
+                            Log::info('d4');
                             User::where('id',$a->uid)->update(['star_community'=>1]);
                         }
                     }
