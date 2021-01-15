@@ -146,16 +146,12 @@ class CommunityDivController extends Controller
                     $user = User::where('id',$a->uid)->first();
                     $ucomm_jl =  CommunityDividend::where('uid',$a->uid)->first();
                     if($ucomm_jl->total >= 100000){
-                        Log::info('d1');
                         //升2星
                         if($user->star_community < 2){
-                            Log::info('d2');
                             User::where('id',$a->uid)->update(['star_community'=>2]);
                         }
                     }else if($ucomm_jl->total >= 10000){
-                        Log::info('d3');
                         if($user->star_community < 1){
-                            Log::info('d4');
                             User::where('id',$a->uid)->update(['star_community'=>1]);
                         }
                     }
@@ -175,7 +171,7 @@ class CommunityDivController extends Controller
                     //业绩不足够降星
                     $user = User::where('id',$a->uid)->first();
                     $ucomm_jl =  CommunityDividend::where('uid',$a->uid)->first();
-                    if($ucomm_jl->total < 100000){
+                    if($ucomm_jl->total < 100000 && $ucomm_jl->total >10000){
                         //升2星
                         if($user->star_community >= 2){
                             User::where('id',$a->uid)->update(['star_community'=>1]);
