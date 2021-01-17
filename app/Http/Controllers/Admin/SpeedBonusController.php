@@ -12,10 +12,7 @@ class SpeedBonusController extends Controller
     //
     protected $fields = [
         'uid' => "",
-        'count' => '',
         'num' => '',
-        'coin_id'=>'',
-        'status'=>'',
     ];
 
     // 团队长加速分红奖用户列表
