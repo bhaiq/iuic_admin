@@ -57,7 +57,7 @@ class SpeedBonusController extends Controller
             $data[$field] = old($field, $default);
         }
 
-        return view('admin.speed_bonus.create');
+        return view('admin.speed_bonus.create',$data);
     }
 
     // 添加新增团队长分红用户
