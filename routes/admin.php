@@ -347,6 +347,6 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('speed_bonus/ajax', ['as' => 'admin.speed_bonus.edit', 'uses' => 'SpeedBonusController@ajax']);
     Route::get('speed_bonus', ['as' => 'admin.speed_bonus.index', 'uses' => 'SpeedBonusController@index']);
     Route::any('speed_bonus/index', ['as' => 'admin.speed_bonus.index', 'uses' => 'SpeedBonusController@index']);
-    Route::resource('speed_bonus', 'SpeedBonusController', ['names' => ['update' => 'admin.partner.edit', 'store' => 'admin.partner.create']]);
+    Route::resource('speed_bonus', 'SpeedBonusController', ['names' => ['update' => 'admin.speed_bonus.edit', 'store' => 'admin.speed_bonus.create']]);
 
 });
