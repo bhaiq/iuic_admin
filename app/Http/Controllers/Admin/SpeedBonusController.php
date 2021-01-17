@@ -65,7 +65,7 @@ class SpeedBonusController extends Controller
     {
 //        dd($request->get('uid'));
 
-        $ver = new SpeedBounus();
+        $ver = new SpeedBounus;
 //        foreach (array_keys($this->fields) as $field) {
 //            $ver->$field = $request->get($field);
 //        }
