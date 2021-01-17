@@ -12,7 +12,7 @@ class SpeedBonusController extends Controller
     //
     protected $fields = [
         'uid' => "",
-        'num' => '',
+        'num' => "",
     ];
 
     // 团队长加速分红奖用户列表

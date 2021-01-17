@@ -3,7 +3,7 @@
 @section('pageHeaderOne', '用户管理')
 @section('pageHeaderTwo', '团队长加速分红列表')
 @section('pageHeaderTwoUrl', '/admin/speed_bonus/index')
-@section('pageHeaderThree', '添加合伙人')
+@section('pageHeaderThree', '添加团队长加速分红')
 
 @section('body')
 
