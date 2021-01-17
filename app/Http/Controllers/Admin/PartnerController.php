@@ -161,7 +161,7 @@ class PartnerController extends Controller
     // 添加合伙人
     public function store(Request $request)
     {
-
+        dd($this->fields);
         $ver = new UserPartner();
         foreach (array_keys($this->fields) as $field) {
             $ver->$field = $request->get($field);
