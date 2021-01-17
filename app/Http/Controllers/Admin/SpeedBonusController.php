@@ -63,6 +63,7 @@ class SpeedBonusController extends Controller
     // 添加新增团队长分红用户
     public function store(Request $request)
     {
+        dd($request->get('uid'));
 
         $ver = new SpeedBounus();
         foreach (array_keys($this->fields) as $field) {
