@@ -52,12 +52,12 @@ class SpeedBonusController extends Controller
     // 新增团队长分红用户
     public function create(Request $request)
     {
-        $data = [];
-        foreach ($this->fields as $field => $default) {
-            $data[$field] = old($field, $default);
-        }
+//        $data = [];
+//        foreach ($this->fields as $field => $default) {
+//            $data[$field] = old($field, $default);
+//        }
 
-        return view('admin.speed_bonus.create', $data);
+        return view('admin.speed_bonus.create');
     }
 
     // 添加新增团队长分红用户
