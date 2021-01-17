@@ -351,9 +351,9 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
 
 
     // 团队长业绩分红奖
-    Route::any('performance_bonus/ajax', ['as' => 'admin.performance_bonus.edit', 'uses' => 'PerformanceBonusController@ajax']);
-    Route::get('performance_bonus', ['as' => 'admin.performance_bonus.index', 'uses' => 'PerformanceBonusController@index']);
-    Route::any('performance_bonus/index', ['as' => 'admin.performance_bonus.index', 'uses' => 'PerformanceBonusController@index']);
-    Route::resource('performance_bonus', 'PerformanceBonusController', ['names' => ['update' => 'admin.performance_bonus.edit', 'store' => 'admin.performance_bonus.create']]);
+    Route::any('performance_bonus/ajax', ['as' => 'admin.performance_bonus.edit', 'uses' => 'PerformanceController@ajax']);
+    Route::get('performance_bonus', ['as' => 'admin.performance_bonus.index', 'uses' => 'PerformanceController@index']);
+    Route::any('performance_bonus/index', ['as' => 'admin.performance_bonus.index', 'uses' => 'PerformanceController@index']);
+    Route::resource('performance_bonus', 'PerformanceController', ['names' => ['update' => 'admin.performance_bonus.edit', 'store' => 'admin.performance_bonus.create']]);
 
 });
