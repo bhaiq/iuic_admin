@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\AdminLog;
 use App\Models\SpeedBounus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,7 @@ class SpeedBonusController extends Controller
         'status'=>'',
     ];
 
-    // 合伙人列表
+    // 团队长加速分红奖用户列表
     public function index(Request $request)
     {
 
@@ -50,5 +51,74 @@ class SpeedBonusController extends Controller
         }
         return view('admin.speed_bonus.index');
 
+    }
+    // 新增团队长分红用户
+    public function create(Request $request)
+    {
+        $data = [];
+        foreach ($this->fields as $field => $default) {
+            $data[$field] = old($field, $default);
+        }
+
+        return view('admin.speed_bonus.create', $data);
+    }
+
+    // 添加新增团队长分红用户
+    public function store(Request $request)
+    {
+
+        $ver = new SpeedBounus();
+        foreach (array_keys($this->fields) as $field) {
+            $ver->$field = $request->get($field);
+        }
+
+        $ver->save();
+
+        AdminLog::addLog('新增一个团队长加速分红用户');
+
+        return redirect('/admin/speed_bonus/index');
+    }
+    //删除新增团队长分红用户
+    public function destroy($id)
+    {
+
+        if (SpeedBounus::where('id', $id)->delete()) {
+
+            AdminLog::addLog('删除了ID为' . $id . '的删除新增团队长加速分红用户');
+
+            return returnJson(1, '删除成功');
+        }
+
+        return returnJson(0, '删除失败');
+    }
+
+    // 修改新增团队长分红用户
+    public function edit($id)
+    {
+        $ver =SpeedBounus::find((int)$id);
+        if (!$ver) return redirect('/admin/speed_bonus/index')->with('fail', '数据有误');
+
+        foreach (array_keys($this->fields) as $field) {
+            $data[$field] = old($field, $ver->$field);
+        }
+
+        $data['id'] = (int)$id;
+        return view('admin.speed_bonus.edit', $data);
+    }
+
+    // 更新团队长分红用户
+    public function update(Request $request, $id)
+    {
+
+        $ver = SpeedBounus::find((int)$id);
+        foreach (array_keys($this->fields) as $field) {
+            $ver->$field = $request->get($field);
+        }
+
+        $ver->save();
+
+        AdminLog::addLog('修改了ID为' . $id . '的团队长加速分红奖用户');
+
+        return redirect('/admin/speed_bonus/index');
     }
 }

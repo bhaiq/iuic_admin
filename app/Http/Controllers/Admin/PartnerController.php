@@ -179,7 +179,7 @@ class PartnerController extends Controller
 
         if (UserPartner::where('id', $id)->delete()) {
 
-            AdminLog::addLog('删除了ID为' . $id . '的公告');
+            AdminLog::addLog('删除了ID为' . $id . '的合伙人');
 
             return returnJson(1, '删除成功');
         }
@@ -187,7 +187,7 @@ class PartnerController extends Controller
         return returnJson(0, '删除失败');
     }
     
-    // 修改公告
+    // 修改合伙人
     public function edit($id)
     {
         $ver =UserPartner::find((int)$id);
@@ -201,7 +201,7 @@ class PartnerController extends Controller
         return view('admin.partner.edit', $data);
     }
 
-    // 更新公告
+    // 更新合伙人
     public function update(Request $request, $id)
     {
 
