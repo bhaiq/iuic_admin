@@ -69,8 +69,8 @@ class SpeedBonusController extends Controller
 //        foreach (array_keys($this->fields) as $field) {
 //            $ver->$field = $request->get($field);
 //        }
-        $ver->uid = $request->get('uid');
-        $ver->num = $request->get('num');
+        $ver->uid = 1;
+        $ver->num = 2;
         $ver->save();
 
         AdminLog::addLog('新增一个团队长加速分红用户');
