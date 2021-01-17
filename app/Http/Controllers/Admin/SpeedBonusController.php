@@ -63,14 +63,13 @@ class SpeedBonusController extends Controller
     // 添加新增团队长分红用户
     public function store(Request $request)
     {
-        dd($this->fields);
+
         $ver = new SpeedBounus();
         foreach (array_keys($this->fields) as $field) {
             $ver->$field = $request->get($field);
         }
 
         $ver->save();
-        return 1;
         AdminLog::addLog('新增一个团队长加速分红用户');
 
         return redirect('/admin/speed_bonus/index');
