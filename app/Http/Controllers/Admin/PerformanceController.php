@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\AdminLog;
 use App\Models\Performance;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -64,7 +65,7 @@ class PerformanceController extends Controller
     {
 //        dd($request->get('uid'));
 
-        $ver = new SpeedBounus();
+        $ver = new Performance();
         foreach (array_keys($this->fields) as $field) {
             $ver->$field = $request->get($field);
         }
@@ -72,7 +73,7 @@ class PerformanceController extends Controller
 //        $ver->num = 2;
         $ver->save();
 
-        AdminLog::addLog('新增一个团队长加速分红用户');
+        AdminLog::addLog('新增一个团队长业绩分红奖用户');
 
         return redirect('/admin/performance_bonus/index');
     }
@@ -80,7 +81,7 @@ class PerformanceController extends Controller
     public function destroy($id)
     {
 
-        if (SpeedBounus::where('id', $id)->delete()) {
+        if (Performance::where('id', $id)->delete()) {
 
             AdminLog::addLog('删除了ID为' . $id . '的删除新增团队长加速分红用户');
 
@@ -93,7 +94,7 @@ class PerformanceController extends Controller
     // 修改团队长业绩分红用户
     public function edit($id)
     {
-        $ver =SpeedBounus::find((int)$id);
+        $ver =Performance::find((int)$id);
         if (!$ver) return redirect('/admin/performance_bonus/index')->with('fail', '数据有误');
 
         foreach (array_keys($this->fields) as $field) {
@@ -108,7 +109,7 @@ class PerformanceController extends Controller
     public function update(Request $request, $id)
     {
 
-        $ver = SpeedBounus::find((int)$id);
+        $ver = Performance::find((int)$id);
         foreach (array_keys($this->fields) as $field) {
             $ver->$field = $request->get($field);
         }
