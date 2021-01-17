@@ -342,4 +342,11 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::get('bonus_record', ['as' => 'admin.bonus_record.index', 'uses' => 'BonusRecordController@index']);
     Route::any('bonus_record/index', ['as' => 'admin.bonus_record.index', 'uses' => 'BonusRecordController@index']);
 
+
+    // 团队长加速分红列表
+    Route::any('speed_bonus/ajax', ['as' => 'admin.speed_bonus.edit', 'uses' => 'SpeedBonusController@ajax']);
+    Route::get('speed_bonus', ['as' => 'admin.speed_bonus.index', 'uses' => 'SpeedBonusController@index']);
+    Route::any('speed_bonus/index', ['as' => 'admin.speed_bonus.index', 'uses' => 'SpeedBonusController@index']);
+    Route::resource('speed_bonus', 'SpeedBonusController', ['names' => ['update' => 'admin.partner.edit', 'store' => 'admin.partner.create']]);
+
 });
