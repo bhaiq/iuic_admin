@@ -8,14 +8,14 @@
 @section('body')
 
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>添加合伙人</legend>
+        <legend>添加团队长加速分红</legend>
     </fieldset>
 
     <form class="layui-form" method="POST" action="/admin/speed_bonus">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="coin_id" value="1">
-        <input type="hidden" name="status" value="1">
+        {{--<input type="hidden" name="coin_id" value="1">--}}
+        {{--<input type="hidden" name="status" value="1">--}}
         @include('admin.speed_bonus._form')
         <div class="layui-form-item">
             <div class="layui-input-block">
