@@ -678,6 +678,30 @@
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月社群分红第四级比例</div>
                                 </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>团队长加速分红奖比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="speed_rate" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$speed_rate}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,团队长加速分红奖比例</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;"><i
+                                                class="layui-icon layui-icon-rate-solid"
+                                                style="font-size:8px;color:red;"></i>团队长业绩分红奖比例</label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="text" name="performance_rate" required lay-verify="required"
+                                               placeholder="请输入比例" autocomplete="off" class="layui-input"
+                                               value="{{$performance_rate}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,团队长业绩分红奖比例</div>
+                                </div>
                               
                               
                                 <div class="layui-form-item">
