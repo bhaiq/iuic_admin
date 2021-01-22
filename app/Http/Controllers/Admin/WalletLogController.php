@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\AccountLog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -22,11 +23,13 @@ class WalletLogController extends Controller
             $page = $request->get('page', 1);
             $limit = $request->get('limit', 10);
             $soso = $request->get('soso', 0);
-
+            $start_time = Carbon::now()->startOfDay();
+            $end_time = Carbon::now()->endOfDay();
             $p = AccountLog::from('account_log as al')
                 ->select('al.*', 'u.new_account as mobile', 'c.name as coin_name', 'a.name as realname')
                 ->join('user as u', 'u.id', 'al.uid')
                 ->join('coin as c', 'c.id', 'al.coin_id')
+                ->whereBetWeen('al.created_at',[$start_time,$end_time])
                 ->leftJoin('authentication as a', 'a.uid', 'al.uid');
 
             // 筛选条件
