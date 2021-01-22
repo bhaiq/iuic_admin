@@ -18,7 +18,7 @@ class WalletLogController extends Controller
 
     public function index(Request $request)
     {
-        return 1;
+//        return 1;
         if ($request->ajax()) {
 
             $page = $request->get('page', 1);
@@ -42,7 +42,7 @@ class WalletLogController extends Controller
                         ->orwhere('al.remark', 'like', '%' . $soso . '%');
                 });
             }
-
+            return 1;
             $data['code'] = 0;
             $data['msg'] = '查询成功';
             $data['count'] = $p->count();
