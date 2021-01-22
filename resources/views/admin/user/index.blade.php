@@ -53,7 +53,7 @@
                         width: 70
                     }
                     , {
-                        field: 'new_accounts',
+                        field: 'new_account',
                         title: '账号',
                         width: 120
                     }
