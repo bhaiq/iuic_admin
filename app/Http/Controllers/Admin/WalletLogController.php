@@ -28,7 +28,7 @@ class WalletLogController extends Controller
             $end_time = Carbon::now()->endOfDay();
             $p = AccountLog::from('account_log as al')
                 ->whereBetWeen('al.created_at',[$start_time,$end_time])
-                ->where('al.uid',577)
+//                ->where('al.uid',577)
                 ->select('al.*', 'u.new_account as mobile', 'c.name as coin_name', 'a.name as realname')
                 ->join('user as u', 'u.id', 'al.uid')
                 ->join('coin as c', 'c.id', 'al.coin_id')
