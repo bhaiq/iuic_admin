@@ -32,7 +32,13 @@ class WalletLogController extends Controller
                 ->join('user as u', 'u.id', 'al.uid')
                 ->join('coin as c', 'c.id', 'al.coin_id')
                 ->leftJoin('authentication as a', 'a.uid', 'al.uid');
-
+            $pcount = AccountLog::from('account_log as al')
+                ->whereBetWeen('al.created_at',[$start_time,$end_time])
+                ->select('al.*', 'u.new_account as mobile', 'c.name as coin_name', 'a.name as realname')
+                ->join('user as u', 'u.id', 'al.uid')
+                ->join('coin as c', 'c.id', 'al.coin_id')
+                ->leftJoin('authentication as a', 'a.uid', 'al.uid')
+                ->count();
             // 筛选条件
             if ($soso) {
                 $p->where(function ($query) use ($soso) {
@@ -45,7 +51,7 @@ class WalletLogController extends Controller
 //            return 1;
             $data['code'] = 0;
             $data['msg'] = '查询成功';
-//            $data['count'] = $p->count();
+            $data['count'] = $pcount;
             dd($data);
             $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
             $data['data'] = $p->get()->toArray();
