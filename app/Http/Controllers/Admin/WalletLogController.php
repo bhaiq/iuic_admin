@@ -46,7 +46,7 @@ class WalletLogController extends Controller
             $data['code'] = 0;
             $data['msg'] = '查询成功';
             $data['count'] = count($p->get()->toArray());
-            dd($data);
+//            dd($data);
             $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
             $data['data'] = $p->get()->toArray();
 
