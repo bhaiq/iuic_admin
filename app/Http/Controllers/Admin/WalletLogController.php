@@ -42,11 +42,11 @@ class WalletLogController extends Controller
                         ->orwhere('al.remark', 'like', '%' . $soso . '%');
                 });
             }
-            return 1;
+//            return 1;
             $data['code'] = 0;
             $data['msg'] = '查询成功';
             $data['count'] = $p->count();
-
+            dd($data);
             $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
             $data['data'] = $p->get()->toArray();
 
