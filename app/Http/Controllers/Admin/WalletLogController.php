@@ -67,7 +67,7 @@ class WalletLogController extends Controller
 //            $p->latest('al.created_at')->skip(($page - 1) * $limit)->take($limit);
 //            $p->latest('al.created_at')->paginate($limit);
             foreach ($p as $k => $v){
-                $data['data'][$k]['new_account'] = $v->user->mobile;
+                $data['data'][$k]['new_account'] = $v->authentication->name;
                 if(empty($v->authentication->name)){
                     $data['data'][$k]['realname'] = "未实名";
                 }else{
