@@ -3,12 +3,14 @@
 @section('pageHeaderOne', '用户管理')
 @section('pageHeaderTwo', 'IUIC')
 @section('pageHeaderTwoUrl', '/admin/star_community/index')
-@section('pageHeaderThree', '编辑星级社群')
+{{--@section('pageHeaderThree', '编辑星级社群')--}}
+@section('pageHeaderThree', '编辑运营中心')
 
 @section('body')
 
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>编辑星级社群</legend>
+        {{--<legend>编辑星级社群</legend>--}}
+        <legend>编辑运营中心</legend>
     </fieldset>
 
     <form class="layui-form" method="POST" action="/admin/star_community/{{ $id }}">

@@ -47,7 +47,8 @@
 
 @if(isset($id))
 <div class="layui-form-item">
-    <label class="layui-form-label">星级社群</label>
+    {{--<label class="layui-form-label">星级社群</label>--}}
+    <label class="layui-form-label">运营中心</label>
     <div class="layui-input-block">
         <select name="star_community">
 

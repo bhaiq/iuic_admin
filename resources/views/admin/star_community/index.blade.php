@@ -1,7 +1,8 @@
 @extends('admin.base')
 
 @section('pageHeaderOne', '用户管理')
-@section('pageHeaderTwo', 'IUIC社群奖')
+{{--@section('pageHeaderTwo', 'IUIC社群奖')--}}
+@section('pageHeaderTwo', 'IUIC运营中心奖')
 @section('pageHeaderTwoUrl', '/admin/star_community/index')
 
 @section('body')
@@ -58,7 +59,8 @@
                     }
                     , {
                         field: 'name',
-                        title: '星级社群',
+                        // title: '星级社群',
+                        title: '运营中心',
                     }
                     , {
                         field: 'price',

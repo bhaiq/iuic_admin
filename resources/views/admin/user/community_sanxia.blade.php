@@ -11,7 +11,8 @@
   
 
     <div class="layui-form-item">
-        <label class="layui-form-label">是否开通社群分享奖-伞下</label>
+        {{--<label class="layui-form-label">是否开通社群分享奖-伞下</label>--}}
+        <label class="layui-form-label">是否开通运营中心分享奖-伞下</label>
         <div class="layui-input-inline" style="width:80%;">
             
                <select name="is_community_sanxia">
@@ -24,7 +25,8 @@
 	
   
    	<div class="layui-form-item">
-        <label class="layui-form-label">社群分享奖比例-伞下</label>
+        {{--<label class="layui-form-label">社群分享奖比例-伞下</label>--}}
+        <label class="layui-form-label">运营中心分享奖比例-伞下</label>
         <div class="layui-input-inline" style="width:80%;">
             <input type="text" name="community_sanxia_bl" autocomplete="off" value="" class="layui-input">
         </div>

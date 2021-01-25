@@ -192,7 +192,8 @@
                   
                   	, {
                         field: 'is_independent_management',
-                        title: '社群分享奖-伞下',
+                        // title: '社群分享奖-伞下',
+                        title: '运营中心分享奖-伞下',
                         width: 75,
                         templet: function (d) {
                             if(d.is_community_sanxia == 1){
@@ -205,23 +206,29 @@
                     }
                   	, {
                         field: 'community_sanxia_bl',
-                        title: '社群分享奖比例-伞下',
+                        // title: '社群分享奖比例-伞下',
+                        title: '运营中心分享奖比例-伞下',
                         width: 75
                     }
                   	, {
                         field: 'star_community',
-                        title: '社群等级',
+                        // title: '社群等级',
+                        title: '运营中心',
                         width: 90,
                         templet: function (d) {
                             if(d.star_community == 1){
-                                return '<span>一星社群</span>';
+                                // return '<span>一星社群</span>';
+                                return '<span>区县运营中心</span>';
                             }else if(d.star_community == 2){
-                                return '<span>二星社群</span>';
+                                // return '<span>二星社群</span>';
+                                return '<span>市运营中心</span>';
                             }else if(d.star_community == 3){
-                                return '<span>三星社群</span>';
+                                // return '<span>三星社群</span>';
+                                return '<span>省运营中心</span>';
                             }else{
-                                return '<span>没有社群</span>';
-                            }	
+                                // return '<span>没有社群</span>';
+                                return '<span>无</span>';
+                            }
                         }
                     }
                   	
@@ -278,7 +285,8 @@
                             @endif
 							
                             @if(Gate::forUser(auth('admin')->user())->check('admin.user.edit'))
-                                str += '<a class="layui-btn layui-btn-xs"  onclick="active(\'/admin/user/community_sanxia\','+ d.id +',\'社群分享奖-伞下\',\'GET\',\'800px\',\'330px\')">社群分享奖-伞下</a>';
+                                // str += '<a class="layui-btn layui-btn-xs"  onclick="active(\'/admin/user/community_sanxia\','+ d.id +',\'社群分享奖-伞下\',\'GET\',\'800px\',\'330px\')">社群分享奖-伞下</a>';
+                                str += '<a class="layui-btn layui-btn-xs"  onclick="active(\'/admin/user/community_sanxia\','+ d.id +',\'运营中心分享奖-伞下\',\'GET\',\'800px\',\'330px\')">运营中心分享奖-伞下</a>';
                             @endif
                             
                             if(d.p_status == 1){

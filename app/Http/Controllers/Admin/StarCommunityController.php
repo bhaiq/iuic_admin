@@ -79,7 +79,8 @@ class StarCommunityController extends Controller
         // dd($b);
         $b->save();
 
-        AdminLog::addLog('修改了ID为' . $id . '的星级社群信息');
+//        AdminLog::addLog('修改了ID为' . $id . '的星级社群信息');
+        AdminLog::addLog('修改了ID为' . $id . '的运营中心信息');
 
         return redirect('/admin/star_community/index')->with('success', '修改成功');
     }

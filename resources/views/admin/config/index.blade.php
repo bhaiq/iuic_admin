@@ -589,7 +589,7 @@
                               	<div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第一级</label>
+                                                style="font-size:8px;color:red;"></i>iuic每月运营中心分红第一级</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="community_lv1" required lay-verify="required"
                                                placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
@@ -601,7 +601,8 @@
                               	<div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第二级</label>
+                                                style="font-size:8px;color:red;"></i>iuic每月运营中心分红第二级</label>
+                                                {{--style="font-size:8px;color:red;"></i>iuic每月社群分红第二级</label>--}}
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="community_lv2" required lay-verify="required"
                                                placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
@@ -612,7 +613,7 @@
                               	<div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第三级</label>
+                                                style="font-size:8px;color:red;"></i>iuic每月运营中心分红第三级</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="community_lv3" required lay-verify="required"
                                                placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
@@ -624,7 +625,7 @@
                               	<div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第四级</label>
+                                                style="font-size:8px;color:red;"></i>iuic每月运营中心分红第四级</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="community_lv4" required lay-verify="required"
                                                placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
@@ -636,47 +637,47 @@
                               	<div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第一级比例</label>
+                                                style="font-size:8px;color:red;"></i>iuic每月运营中心分红第一级比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="community_bl_lv1" required lay-verify="required"
                                                placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
                                                value="{{$community_bl_lv1}}">
                                     </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月社群分红第一级比例</div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月运营中心分红第一级比例</div>
                                 </div>
                               	<div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第二级比例</label>
+                                                style="font-size:8px;color:red;"></i>iuic每月运营中心分红第二级比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="community_bl_lv2" required lay-verify="required"
                                                placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
                                                value="{{$community_bl_lv2}}">
                                     </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月社群分红第二级比例</div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月运营中心分红第二级比例</div>
                                 </div>
                               	<div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第三级比例</label>
+                                                style="font-size:8px;color:red;"></i>iuic每月运营中心分红第三级比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="community_bl_lv3" required lay-verify="required"
                                                placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
                                                value="{{$community_bl_lv3}}">
                                     </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月社群分红第三级比例</div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月运营中心分红第三级比例</div>
                                 </div>
                               
                               	<div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>iuic每月社群分红第四级比例</label>
+                                                style="font-size:8px;color:red;"></i>iuic每月运营中心分红第四级比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="community_bl_lv4" required lay-verify="required"
                                                placeholder="请输入要达到的累计业绩" autocomplete="off" class="layui-input"
                                                value="{{$community_bl_lv4}}">
                                     </div>
-                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月社群分红第四级比例</div>
+                                    <div class="layui-form-mid layui-word-aux">注：0.02表示2%,iuic每月运营中心分红第四级比例</div>
                                 </div>
 
                                 <div class="layui-form-item">
@@ -962,7 +963,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>一星社群矿池加速释放比例</label>
+                                                style="font-size:8px;color:red;"></i>区县运营中心矿池加速释放比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="one_star_kuangji_release_rate" required lay-verify="required"
                                                placeholder="请输入比例" autocomplete="off" class="layui-input"
@@ -974,7 +975,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>二星社群矿池加速释放比例</label>
+                                                style="font-size:8px;color:red;"></i>市运营中心矿池加速释放比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="two_star_kuangji_release_rate" required lay-verify="required"
                                                placeholder="请输入比例" autocomplete="off" class="layui-input"
@@ -986,7 +987,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;"><i
                                                 class="layui-icon layui-icon-rate-solid"
-                                                style="font-size:8px;color:red;"></i>三星社群矿池加速释放比例</label>
+                                                style="font-size:8px;color:red;"></i>省运营中心矿池加速释放比例</label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="text" name="three_star_kuangji_release_rate" required lay-verify="required"
                                                placeholder="请输入比例" autocomplete="off" class="layui-input"
