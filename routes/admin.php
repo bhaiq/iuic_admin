@@ -356,4 +356,30 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('performance_bonus/index', ['as' => 'admin.performance_bonus.index', 'uses' => 'PerformanceController@index']);
     Route::resource('performance_bonus', 'PerformanceController', ['names' => ['update' => 'admin.performance_bonus.edit', 'store' => 'admin.performance_bonus.create']]);
 
+    ///////////////////////生态2管理///////////////////////
+    //生态等级配置
+    Route::any('ecology/index', ['as' => 'admin.ecology.index', 'uses' => 'EcologyConfigController@index']);
+    Route::resource('ecology', 'EcologyConfigController', ['names' => ['update' => 'admin.ecology.edit', 'store' => 'admin.ecology.create']]);
+
+    //生态2公共配置
+    Route::post('ecology_configpub/update', ['as' => 'admin.ecology_configpub.edit', 'uses' => 'EcologyConfigpubController@update']);
+    Route::get('ecology_configpub', ['as' => 'admin.ecology_configpub.index', 'uses' => 'EcologyConfigpubController@index']);
+    Route::any('ecology_configpub/index', ['as' => 'admin.ecology_configpub.index', 'uses' => 'EcologyConfigpubController@index']);
+
+    //车奖排行榜
+    Route::any('ecology_carranking/index', ['as' => 'admin.ecology_carranking.index', 'uses' => 'EcologyCarrankingController@index']);
+    Route::any('ecology_carranking/status', ['as' => 'admin.ecology_carranking.edit', 'uses' => 'EcologyCarrankingController@setStatus']);
+
+    //购买积分订单
+    Route::any('ecology_buypoint/index', ['as' => 'admin.ecology_buypoint.index', 'uses' => 'EcologyBuypointController@index']);
+
+    //日全网新增业绩结算
+    Route::any('ecology_creadits_day/index', ['as' => 'admin.ecology_creadits_day.index', 'uses' => 'EcologyCreaditsDayController@index']);
+    Route::resource('ecology_creadits_day', 'EcologyCreaditsDayController', ['names' => ['update' => 'admin.ecology_creadits_day.edit', 'store' => 'admin.ecology_creadits_day.create']]);
+
+    //积分划转法币USDT
+    Route::any('ecology_creadit_transfer/index', ['as' => 'admin.ecology_creadit_transfer.index', 'uses' => 'EcologyCreaditTransferController@index']);
+
+
+    ///////////////////////生态2管理///////////////////////
 });
