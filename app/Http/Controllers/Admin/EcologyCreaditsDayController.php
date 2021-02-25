@@ -9,6 +9,9 @@ use App\Models\AdminLog;
 use App\Models\EcologyCreaditsDay;
 use App\Models\EcologyCreaditsDayFushu;
 
+use App\Services\EcologySettlement;
+// use App\Jobs\EcologySettlementQueue;
+
 class EcologyCreaditsDayController extends Controller
 {
 
@@ -84,13 +87,16 @@ class EcologyCreaditsDayController extends Controller
             return redirect(URL::previous())->with('fail', '请勿重复结算');
         }
 
+        $dqtime = date('Y-m-d H:i:s');//当前时间
         $EcologyCreaditsDay = new EcologyCreaditsDay();
 
         $ecdData = [
             'total_cny_actual' => $total_cny_actual,
             'set_status' => $set_status,
-            'set_time' => date('Y-m-d H:i:s'),
+            'set_time' => $dqtime,
         ];
+
+        $EcologySettlement = new EcologySettlement;
 
         \DB::beginTransaction();
         try {
@@ -98,12 +104,18 @@ class EcologyCreaditsDayController extends Controller
             $EcologyCreaditsDay->where("id",$id)->update($ecdData);
             /////待处理/////
             //结算
-
+            $settlement = $EcologySettlement->settlement($id,$total_cny_actual,$res,$dqtime);
+            if($settlement['code'] == 0){
+                return redirect(URL::previous())->with('fail', '结算失败:'.$settlement['msg']);
+            }
+            
+            // 加入队列处理
+            // dispatch(new EcologySettlementQueue($id,$total_cny_actual,$res,$dqtime));
             /////待处理/////
             \DB::commit();
         } catch (\Exception $e) {
             \DB::rollBack();
-            // throw $e;
+            throw $e;
             return redirect(URL::previous())->with('fail', '修改失败');
         }
         AdminLog::addLog('手动结算日期【'.$res['day_time'].'】(id:'.$res['id'].')日全网新增业绩');
