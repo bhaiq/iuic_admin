@@ -28,7 +28,8 @@ class UserController extends Controller
         'transaction_password' => '',
         'invite_code' => '',
       	'star_community' => '',
-        'energy_captain_award' => ''
+        'energy_captain_award' => '',
+        'is_ecology_service' => ''
     ];
 
     // 用户列表

@@ -80,7 +80,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">生态2手续费奖</label>
         <div class="layui-input-block">
-            <select name="energy_captain_award">
+            <select name="is_ecology_service">
 
                 @foreach($ecology_service as $k => $v)
                     <option value="{{$k}}" @if($k == $is_ecology_service) selected @endif>{{$v}}</option>
