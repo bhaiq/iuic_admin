@@ -82,8 +82,8 @@
         <div class="layui-input-block">
             <select name="energy_captain_award">
 
-                @foreach($is_ecology_service as $k => $v)
-                    <option value="{{$k}}" @if($k == $ecology_service) selected @endif>{{$v}}</option>
+                @foreach($ecology_service as $k => $v)
+                    <option value="{{$k}}" @if($k == $is_ecology_service) selected @endif>{{$v}}</option>
                 @endforeach
 
             </select>
