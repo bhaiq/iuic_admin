@@ -76,6 +76,21 @@
 </div>
 @endif
 
+@if(isset($id))
+    <div class="layui-form-item">
+        <label class="layui-form-label">生态2手续费奖</label>
+        <div class="layui-input-block">
+            <select name="energy_captain_award">
+
+                @foreach($is_ecology_service as $k => $v)
+                    <option value="{{$k}}" @if($k == $ecology_service) selected @endif>{{$v}}</option>
+                @endforeach
+
+            </select>
+        </div>
+    </div>
+@endif
+
 @if(!isset($id))
 <div class="layui-form-item">
     <label class="layui-form-label">邀请码</label>

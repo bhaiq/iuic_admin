@@ -183,6 +183,9 @@ class UserController extends Controller
         $data['energy_captain'] = [
             '关闭', '开启'
         ];
+        $data['ecology_service'] = [
+            '关闭', '开启'
+        ];
         // 获取用户级别信息
         $ui = UserInfo::where('uid', $id)->first();
         if($ui){
@@ -254,6 +257,7 @@ class UserController extends Controller
         $user->mobile = $request->get('mobile');
 		$user->star_community = $request->get('star_community');
         $user->energy_captain_award = $request->get('energy_captain_award');
+        $user->is_ecology_service = $request->get('is_ecology_service');
         $user->save();
 
         // 获取用户级别信息
