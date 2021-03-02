@@ -110,6 +110,7 @@
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">{{$rate_service*100}}% 指定人员加权分 日结</div>
                                 </div>
+
                                 {{--<div class="layui-form-item layui-form-text">--}}
                                     {{--<label class="layui-form-label">指定人员id集合</label>--}}
                                     {{--<div class="layui-input-block">--}}
