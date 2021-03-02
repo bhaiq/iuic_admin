@@ -28,6 +28,13 @@
     </div>
 </div>
 
+<div class="layui-form-item">
+    <label class="layui-form-label">生态2手续费团队长奖比例</label>
+    <div class="layui-input-block">
+        <input type="text" name="ecology_team_bl" maxlength="120" autocomplete="off" value="{{$ecology_team_bl}}" class="layui-input" required>
+    </div>
+</div>
+
 @if(isset($id))
 <div class="layui-form-item">
     <label class="layui-form-label">用户级别</label>
