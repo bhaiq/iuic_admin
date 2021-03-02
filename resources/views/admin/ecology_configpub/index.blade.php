@@ -110,13 +110,13 @@
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">{{$rate_service*100}}% 指定人员加权分 日结</div>
                                 </div>
-                                <div class="layui-form-item layui-form-text">
-                                    <label class="layui-form-label">指定人员id集合</label>
-                                    <div class="layui-input-block">
-                                        <textarea placeholder="多个用户id,用英文逗号 ' , ' 隔开 如: 1,2,3,4" class="layui-textarea" name="designees">{{$designees}}</textarea>
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">多个用户id,用英文逗号 ' , ' 隔开 如: 1,2,3,4</div>
-                                </div>
+                                {{--<div class="layui-form-item layui-form-text">--}}
+                                    {{--<label class="layui-form-label">指定人员id集合</label>--}}
+                                    {{--<div class="layui-input-block">--}}
+                                        {{--<textarea placeholder="多个用户id,用英文逗号 ' , ' 隔开 如: 1,2,3,4" class="layui-textarea" name="designees">{{$designees}}</textarea>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="layui-form-mid layui-word-aux">多个用户id,用英文逗号 ' , ' 隔开 如: 1,2,3,4</div>--}}
+                                {{--</div>--}}
                                 <div class="layui-form-item">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
