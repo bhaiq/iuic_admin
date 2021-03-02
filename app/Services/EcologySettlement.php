@@ -162,8 +162,11 @@ class EcologySettlement
             return false;
         }
         //冻结积分不足 全释放
-        if ($oneNum > $ecRes['amount_freeze']) {
+        if ($oneNum >= $ecRes['amount_freeze']) {
             $oneNum = $ecRes['amount_freeze'];
+            //插入释放完成时间
+            User::where('id',$uid)->update(['ecology_lv_close'=>1]);
+            EcologyCreadits::where('uid',$uid)->update(['release_end_time'=>date('Y-m-d H:i')]);
         }
 
         // -冻结积分
