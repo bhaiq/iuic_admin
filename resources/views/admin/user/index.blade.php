@@ -124,6 +124,30 @@
                         sort: true
                     }
                     , {
+                        field: 'ecology_lv',
+                        title: '生态2等级',
+                        width: 75,
+                        templet: function (d) {
+                            if(d.ecology_lv == 1){
+                                return "普通消费者";
+
+                            }else if(d.ecology_lv == 2){
+                                return "合格消费者";
+                            }else if(d.ecology_lv == 3){
+                                return "一级生态";
+                            }else if(d.ecology_lv == 4){
+                                return "二级生态";
+                            }else if(d.ecology_lv == 5){
+                                return "三级生态";
+                            }else if(d.ecology_lv == 6){
+                                return "四级生态";
+                            }else if(d.ecology_lv == 7){
+                                return "五级生态";
+                            }
+
+                        }
+                    }
+                    , {
                         field: 'is_bonus',
                         title: '分红奖',
                         width: 75,
