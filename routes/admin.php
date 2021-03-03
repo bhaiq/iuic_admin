@@ -380,6 +380,9 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     //积分划转法币USDT
     Route::any('ecology_creadit_transfer/index', ['as' => 'admin.ecology_creadit_transfer.index', 'uses' => 'EcologyCreaditTransferController@index']);
 
+    //日全网新增手续费结算
+    Route::any('ecology_service_day/index', ['as' => 'admin.ecology_service_day.index', 'uses' => 'EcologyServiceDayController@index']);
+    Route::resource('ecology_service_day', 'EcologyServiceDayController', ['names' => ['update' => 'admin.ecology_service_day.edit', 'store' => 'admin.ecology_creadits_day.create']]);
 
     ///////////////////////生态2管理///////////////////////
 });
