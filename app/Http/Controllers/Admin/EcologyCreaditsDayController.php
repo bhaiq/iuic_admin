@@ -15,6 +15,7 @@ use App\Services\EcologySettlement;
 class EcologyCreaditsDayController extends Controller
 {
 
+
     protected $fields = [
         'day_time' => '',
         'total_cny' => '',
