@@ -385,4 +385,8 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::resource('ecology_service_day', 'EcologyServiceDayController', ['names' => ['update' => 'admin.ecology_service_day.edit', 'store' => 'admin.ecology_creadits_day.create']]);
 
     ///////////////////////生态2管理///////////////////////
+    // 积分钱包
+    Route::any('creadit_wallet/ajax', ['as' => 'admin.creadit_wallet.edit', 'uses' => 'CreaditWalletController@ajax']);
+    Route::get('creadit_wallet', ['as' => 'admin.creadit_wallet.index', 'uses' => 'CreaditWalletController@index']);
+    Route::any('creadit_wallet/index', ['as' => 'admin.creadit_wallet.index', 'uses' => 'CreaditWalletController@index']);
 });

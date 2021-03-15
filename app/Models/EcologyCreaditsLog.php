@@ -22,6 +22,7 @@ class EcologyCreaditsLog extends Model
         	'6'=>'生态2手续费团队长奖',
         	'7'=>'生态2手续费奖',
         	'8'=>'生态2手续费合伙人奖',
+        	'9'=>'后台操作',
         ];
         return ['msg'=>$arr[$value],'value'=>$value];
     }
