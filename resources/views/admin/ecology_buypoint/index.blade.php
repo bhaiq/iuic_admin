@@ -107,7 +107,7 @@
                         title: '消耗IUIC',
                         align: 'center',
                     }, {
-                        field: 'already_amount',
+                        field: 'creadit_amount',
                         title: '获得冻结积分',
                         align: 'center',
                     }, {
