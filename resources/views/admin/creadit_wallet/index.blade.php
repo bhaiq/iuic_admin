@@ -93,7 +93,7 @@
                             var str = '';
 
                             @if(Gate::forUser(auth('admin')->user())->check('admin.creadit_wallet.edit'))
-                                str += '<a class="layui-btn layui-btn-xs layui-btn-warm"  onclick="active(\'/admin/creadit_wallet/ajax\','+ d.id +',\'用户钱包\',\'GET\',\'800px\',\'330px\')">余额操作</a>';
+                                str += '<a class="layui-btn layui-btn-xs layui-btn-warm"  onclick="active(\'/admin/creadit_wallet/ajax\','+ d.id +',\'积分钱包\',\'GET\',\'800px\',\'330px\')">余额操作</a>';
                             @endif
 
                             return str;

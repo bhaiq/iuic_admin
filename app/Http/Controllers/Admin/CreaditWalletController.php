@@ -144,6 +144,6 @@ class CreaditWalletController extends Controller
             'amount_freeze' => $a->amount_freeze,
         ];
 
-        return view('admin.wallet.ajax', $data);
+        return view('admin.creadit_wallet.ajax', $data);
     }
 }
