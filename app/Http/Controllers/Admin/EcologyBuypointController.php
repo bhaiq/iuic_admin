@@ -57,7 +57,7 @@ class EcologyBuypointController extends Controller
 
                 // $data['data'][$k]['status_value'] = $v['status']['value'];
                 // $data['data'][$k]['status_msg'] = $v['status']['msg'];
-                $num = EcologyCreadits::where('uid',$this->uid)->count();
+                $num = EcologyCreadits::where('uid',$v['uid'])->count();
                 if($num > 1){
                     $data['data'][$k]['pural'] = "复投";
                 }else{
