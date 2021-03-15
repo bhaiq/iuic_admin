@@ -7,7 +7,7 @@ use App\Models\EcologyCreadits;
 use App\Models\EcologyCreaditsLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 
 class CreaditWalletController extends Controller
 {
