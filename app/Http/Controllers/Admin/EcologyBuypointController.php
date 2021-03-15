@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\AdminLog;
+use App\Models\EcologyCreadits;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -56,7 +57,13 @@ class EcologyBuypointController extends Controller
 
                 // $data['data'][$k]['status_value'] = $v['status']['value'];
                 // $data['data'][$k]['status_msg'] = $v['status']['msg'];
-                 $data['data'][$k]['pural'] = $v->pural;
+                $num = EcologyCreadits::where('uid',$this->uid)->count();
+                if($num > 1){
+                    $data['data'][$k]['pural'] = "复投";
+                }else{
+                    $data['data'][$k]['pural'] = "新增";
+                }
+
 
             }
 
