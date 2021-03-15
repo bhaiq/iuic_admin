@@ -115,6 +115,10 @@
                         title: '已释放积分',
                         align: 'center',
                     }, {
+                        field: 'pural',
+                        title: '是否复投',
+                        align: 'center',
+                    }, {
                         field: 'end_time',
                         title: '释放结束时间',
                         align: 'center',
