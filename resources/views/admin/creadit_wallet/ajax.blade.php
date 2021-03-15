@@ -1,6 +1,7 @@
 <form class="layui-form layui-form-pane" method="post" action="" enctype="multipart/form-data" style="padding: 30px;">
     @csrf
     <input type="hidden" name="id" value="{{$id}}">
+    <input type="hidden" name="type" value="1">
 
     <div class="layui-form-item">
         <label class="layui-form-label">可用积分</label>
