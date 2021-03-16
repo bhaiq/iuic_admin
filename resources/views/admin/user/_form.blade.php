@@ -110,5 +110,12 @@
 @endif
 
 <div class="layui-form-item">
+    <label class="layui-form-label">生态2指定领导人伞下管理奖</label>
+    <div class="layui-input-block">
+        <input type="text" name="ecology_leader_bl" maxlength="120" autocomplete="off" value="{{$ecology_leader_bl}}" class="layui-input" required>
+    </div>
+</div>
+
+<div class="layui-form-item">
 
 </div>

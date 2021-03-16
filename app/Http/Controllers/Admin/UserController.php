@@ -30,7 +30,8 @@ class UserController extends Controller
       	'star_community' => '',
         'energy_captain_award' => '',
         'is_ecology_service' => '',
-        'ecology_team_bl' => ''
+        'ecology_team_bl' => '',
+        'ecology_leader_bl' => ''
     ];
 
     // 用户列表
@@ -261,6 +262,7 @@ class UserController extends Controller
         $user->energy_captain_award = $request->get('energy_captain_award');
         $user->is_ecology_service = $request->get('is_ecology_service');
         $user->ecology_team_bl = $request->get('ecology_team_bl');
+        $user->ecology_leader_bl = $request->get('ecology_leader_bl');
         $user->save();
 
         // 获取用户级别信息
