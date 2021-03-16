@@ -37,8 +37,9 @@ class EcologyCarrankingController extends Controller
             $data['data'] = $p->get()->toArray();
             $level = EcologyConfig::all()->toArray();
             foreach ($data['data'] as $k => $v){
+                $num = $v['ecology_lv'];
                 $data['data'][$k]['carranking'] = $k+(($page-1)*$limit)+1;
-                $data['data'][$k]['level_name'] = array_column($level,'name',$v['ecology_lv']);
+                $data['data'][$k]['level_name'] = array_map(function ($ar,$num) {return $ar[$num]['email'];}, $level);
             }
 
             return response()->json($data);
