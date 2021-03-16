@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\AdminLog;
+use App\Models\EcologyConfig;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -34,8 +35,10 @@ class EcologyCarrankingController extends Controller
 
             $p->skip(($page - 1) * $limit)->take($limit);
             $data['data'] = $p->get()->toArray();
+            $level = EcologyConfig::all()->toArray();
             foreach ($data['data'] as $k => $v){
                 $data['data'][$k]['carranking'] = $k+(($page-1)*$limit)+1;
+                $data['data'][$k]['level_name'] = array_column($level,'name',$v->ecology_lv);
             }
 
             return response()->json($data);
