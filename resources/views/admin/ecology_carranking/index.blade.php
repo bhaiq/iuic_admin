@@ -86,7 +86,7 @@
                         title: '手机号',
                     }
                     , {
-                        field: 'ecology_lv',
+                        field: 'level_name',
                         title: '生态2等级',
                     }
                     , {
