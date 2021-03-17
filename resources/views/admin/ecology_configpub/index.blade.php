@@ -200,7 +200,7 @@
                                 @csrf
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;">
-                                        <i class="layui-icon layui-icon-rate-solid" style="font-size:8px;color:red;"></i>USDT互转配置
+                                        <i class="layui-icon layui-icon-rate-solid" style="font-size:8px;color:red;"></i>转账手续费
                                     </label>
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="number" step="1" min="0"  name="service_charge" required lay-verify="required" placeholder="请输入手续费" autocomplete="off" class="layui-input" value="{{$service_charge}}">
