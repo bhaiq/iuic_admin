@@ -188,6 +188,48 @@
                             </form>
                         </div>
                     </div>
+
+
+
+
+
+                    <div class="layui-tab-item">
+                        <div class="layui-card-body">
+                            <form class="layui-form layui-form-pane" method="post" action="{{url('admin/ecology_configpub/update')}}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;">
+                                        <i class="layui-icon layui-icon-rate-solid" style="font-size:8px;color:red;"></i>USDT互转配置
+                                    </label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="number" step="1" min="0"  name="service_charge" required lay-verify="required" placeholder="请输入手续费" autocomplete="off" class="layui-input" value="{{$service_charge}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">{{$rate}} USDT</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 200px;">
+                                        <i class="layui-icon layui-icon-rate-solid" style="font-size:8px;color:red;"></i>最少转账数量
+                                    </label>
+                                    <div class="layui-input-inline" style="width:500px;">
+                                        <input type="number" step="1" min="0"  name="tranf_min" required lay-verify="required" placeholder="请输入最少转账数量" autocomplete="off" class="layui-input" value="{{$tranf_min}}">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">{{$tranf_min}}USDT 最少转账数量</div>
+                                </div>
+
+                                {{--<div class="layui-form-item layui-form-text">--}}
+                                {{--<label class="layui-form-label">指定人员id集合</label>--}}
+                                {{--<div class="layui-input-block">--}}
+                                {{--<textarea placeholder="多个用户id,用英文逗号 ' , ' 隔开 如: 1,2,3,4" class="layui-textarea" name="designees">{{$designees}}</textarea>--}}
+                                {{--</div>--}}
+                                {{--<div class="layui-form-mid layui-word-aux">多个用户id,用英文逗号 ' , ' 隔开 如: 1,2,3,4</div>--}}
+                                {{--</div>--}}
+                                <div class="layui-form-item">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
