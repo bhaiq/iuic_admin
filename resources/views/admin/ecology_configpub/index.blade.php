@@ -205,7 +205,7 @@
                                     <div class="layui-input-inline" style="width:500px;">
                                         <input type="number" step="1" min="0"  name="service_charge" required lay-verify="required" placeholder="请输入手续费" autocomplete="off" class="layui-input" value="{{$service_charge}}">
                                     </div>
-                                    <div class="layui-form-mid layui-word-aux">{{$rate}} USDT</div>
+                                    <div class="layui-form-mid layui-word-aux">{{$service_charge}} USDT</div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="width: 200px;">
