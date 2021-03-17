@@ -28,6 +28,7 @@
                     <li class="layui-this">购买积分</li>
                     <li class="">积分划转USDT手续费</li>
                     <li class="">车奖</li>
+                    <li class="">USDT(币币)转账配置</li>
                 </ul>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
