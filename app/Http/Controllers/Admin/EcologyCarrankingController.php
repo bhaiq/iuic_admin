@@ -25,7 +25,7 @@ class EcologyCarrankingController extends Controller
                 ->when($soso, function ($query) use ($soso) {
                     return $query->where('u.new_account', 'like', "%{$soso}%");
                 })
-                ->with('authentication')
+                ->with('user_auth')
                 ->orderBy('u.ecology_lv','desc')
                 ->orderBy('u.ecology_lv_time','asc')
                 ->orderBy('u.car_is_show','desc');
