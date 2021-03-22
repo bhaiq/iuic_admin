@@ -41,7 +41,7 @@ class EcologyCarrankingController extends Controller
             foreach ($data['data'] as $k => $v){
                 $data['data'][$k]['carranking'] = $k+(($page-1)*$limit)+1;
                 $data['data'][$k]['level_name'] = array_search($v['ecology_lv'], array_flip(array_column($level,'name',$v['ecology_lv'])));
-                $data['data'][$k]['realname'] = $v->user_auth->name;
+                $data['data'][$k]['realname'] = $v->user_auth['name'];
             }
 
             return response()->json($data);
