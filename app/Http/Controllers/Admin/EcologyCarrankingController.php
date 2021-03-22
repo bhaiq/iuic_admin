@@ -43,7 +43,7 @@ class EcologyCarrankingController extends Controller
                 if(empty($v->authentication->name)){
                     $data['data'][$k]['realname'] = "未实名";
                 }else{
-                    $data['data'][$k]['realname'] = $v->authentication->name;
+                    $data['data'][$k]['realname'] = $v->user_auth->name;
                 }
             }
 
