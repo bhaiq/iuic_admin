@@ -25,7 +25,8 @@ class EcologyCarrankingController extends Controller
                 ->when($soso, function ($query) use ($soso) {
                     return $query->where('u.new_account', 'like', "%{$soso}%");
                 })
-                ->leftJoin('authentication as aa', 'aa.uid', 'u.id')
+//                ->leftJoin('authentication as aa', 'aa.uid', 'u.id')
+                ->with('user_auth')
                 ->orderBy('u.ecology_lv','desc')
                 ->orderBy('u.ecology_lv_time','asc')
                 ->orderBy('u.car_is_show','desc');
@@ -40,7 +41,7 @@ class EcologyCarrankingController extends Controller
             foreach ($data['data'] as $k => $v){
                 $data['data'][$k]['carranking'] = $k+(($page-1)*$limit)+1;
                 $data['data'][$k]['level_name'] = array_search($v['ecology_lv'], array_flip(array_column($level,'name',$v['ecology_lv'])));
-                $data['data'][$k]['realname'] = $v['name'];
+                $data['data'][$k]['realname'] = $v->user_auth->name;
             }
 
             return response()->json($data);
