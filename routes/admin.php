@@ -389,4 +389,9 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('creadit_wallet/ajax', ['as' => 'admin.creadit_wallet.edit', 'uses' => 'CreaditWalletController@ajax']);
     Route::get('creadit_wallet', ['as' => 'admin.creadit_wallet.index', 'uses' => 'CreaditWalletController@index']);
     Route::any('creadit_wallet/index', ['as' => 'admin.creadit_wallet.index', 'uses' => 'CreaditWalletController@index']);
+
+
+    // USDT(币币)互转
+    Route::get('tranf_log', ['as' => 'admin.tranf_log.list', 'uses' => 'WalletLogController@list']);
+    Route::any('tranf_log/list', ['as' => 'admin.tranf_log.list', 'uses' => 'WalletLogController@list']);
 });
