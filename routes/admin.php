@@ -391,7 +391,7 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
     Route::any('creadit_wallet/index', ['as' => 'admin.creadit_wallet.index', 'uses' => 'CreaditWalletController@index']);
 
 
-    // USDT(币币)互转
+    // USDT(币币)互转,
     Route::get('tranf_log', ['as' => 'admin.tranf_log.index', 'uses' => 'TranfController@index']);
     Route::any('tranf_log/index', ['as' => 'admin.tranf_log.index', 'uses' => 'TranfController@index']);
 });
