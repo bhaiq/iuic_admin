@@ -392,6 +392,6 @@ Route::group(['middleware' => ['auth:admin', 'menu', 'authAdmin']], function () 
 
 
     // USDT(币币)互转
-    Route::get('tranf_log', ['as' => 'admin.tranf_log.list', 'uses' => 'WalletLogController@list']);
-    Route::any('tranf_log/list', ['as' => 'admin.tranf_log.list', 'uses' => 'WalletLogController@list']);
+    Route::get('tranf_log', ['as' => 'admin.tranf_log.index', 'uses' => 'TranfController@index']);
+    Route::any('tranf_log/index', ['as' => 'admin.tranf_log.index', 'uses' => 'TranfController@index']);
 });
