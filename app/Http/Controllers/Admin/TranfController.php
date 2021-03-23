@@ -20,7 +20,7 @@ class TranfController extends Controller
                 ->with('coin')
                 ->with('authentication')
                 ->orderBy('created_at','desc')
-                ->whereIn('scence',['35','36'])
+                ->whereIn('scene',['35','36'])
                 ->where(function($query) use($soso){
                     if(!empty($soso)){
                         $uid = User::where('new_account',$soso)->value('id');
